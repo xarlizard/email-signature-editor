@@ -1,98 +1,58 @@
 {
-  "name": "npm-package-template",
-  "version": "1.1.0",
-  "description": "A comprehensive TypeScript npm package template with automated publishing, testing, and modern tooling",
+  "name": "email-signature-editor",
+  "version": "1.0.0",
+  "description": "A simple React UI for editing and previewing HTML email signatures, ready for copy-paste into Gmail",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    ".github/ISSUE_TEMPLATE",
-    ".github/workflows",
-    ".github/pull_request_template.md",
-    "dist",
-    "docs",
-    "templates",
-    "README.md",
-    "LICENSE",
-    "CHANGELOG.md"
-  ],
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
-    "typecheck": "tsc --noEmit",
-    "dev": "pwsh -ExecutionPolicy Bypass -File scripts/dev.ps1",
-    "dev:test": "pwsh -ExecutionPolicy Bypass -File scripts/dev.ps1 -Task test",
-    "dev:build": "pwsh -ExecutionPolicy Bypass -File scripts/dev.ps1 -Task build",
-    "dev:lint": "pwsh -ExecutionPolicy Bypass -File scripts/dev.ps1 -Task lint",
-    "dev:typecheck": "pwsh -ExecutionPolicy Bypass -File scripts/dev.ps1 -Task typecheck",
-    "prepublishOnly": "npm run build && npm run test && npm run lint && npm run typecheck",
-    "setup": "node scripts/setup.js",
-    "setup:ps": "pwsh -ExecutionPolicy Bypass -File scripts/setup.ps1",
-    "release": "node scripts/release.js patch",
-    "release:minor": "node scripts/release.js minor",
-    "release:major": "node scripts/release.js major",
-    "release:ps": "pwsh -ExecutionPolicy Bypass -File scripts/release.ps1",
-    "release:ps:minor": "pwsh -ExecutionPolicy Bypass -File scripts/release.ps1 -VersionType minor",
-    "release:ps:major": "pwsh -ExecutionPolicy Bypass -File scripts/release.ps1 -VersionType major"
+    "typecheck": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xarlizard/npm-package-template.git"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "homepage": "https://github.com/xarlizard/npm-package-template#readme",
-  "bugs": {
-    "url": "https://github.com/xarlizard/npm-package-template/issues"
-  },
-  "keywords": [
-    "npm",
-    "template",
-    "typescript",
-    "rollup",
-    "jest",
-    "eslint",
-    "github-actions",
-    "automated-publishing"
-  ],
-  "author": {
-    "name": "Xarlizard",
-    "email": "38315638+xarlizard@users.noreply.github.com",
-    "url": "https://github.com/xarlizard"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
+  "dependencies": {
+    "i18next": "^25.8.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-i18next": "^16.5.4",
+    "react-simple-code-editor": "^0.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@jest/globals": "^30.2.0",
-    "@rollup/plugin-typescript": "^12.3.0",
-    "@types/jest": "^30.0.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^8.51.0",
     "@typescript-eslint/parser": "^8.55.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^16.5.0",
-    "jest": "^30.2.0",
     "prettier": "^3.7.4",
-    "rollup": "^4.54.0",
-    "ts-jest": "^29.4.6",
-    "tslib": "^2.8.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^6.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xarlizard/email-signature-editor.git"
+  },
+  "homepage": "https://github.com/xarlizard/email-signature-editor#readme",
+  "bugs": {
+    "url": "https://github.com/xarlizard/email-signature-editor/issues"
+  },
+  "keywords": [
+    "email",
+    "signature",
+    "gmail",
+    "html",
+    "editor",
+    "react"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

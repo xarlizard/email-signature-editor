@@ -1,0 +1,29 @@
+{
+  "language": "Language",
+  "app": {
+    "title": "Email Signature Editor",
+    "subtitle": "Edit your HTML signature and copy it into Gmail"
+  },
+  "actions": {
+    "copy": "Copy to clipboard",
+    "copied": "Copied!",
+    "layoutHorizontal": "Horizontal layout",
+    "layoutVertical": "Vertical layout"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Preview",
+    "template": "Template",
+    "values": "Values"
+  },
+  "fields": {
+    "name": "Name",
+    "position": "Position",
+    "company": "Company",
+    "linkedinUrl": "LinkedIn URL",
+    "phone": "Phone",
+    "email": "Email",
+    "website": "Website",
+    "image": "Image URL"
+  }
+}

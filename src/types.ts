@@ -1,43 +1,41 @@
-/**
- * Example configuration interface
- */
-export interface ExampleConfig {
-    /** The name to greet */
-    name: string;
-    /** Whether to use async greeting */
-    async?: boolean;
-    /** Optional greeting prefix */
-    prefix?: string;
+export const TEMPLATE_VARIABLES = [
+  'NAME',
+  'POSITION',
+  'COMPANY',
+  'LINKEDIN_URL',
+  'PHONE',
+  'EMAIL',
+  'WEBSITE',
+  'IMAGE',
+] as const;
+
+export type TemplateVariable = (typeof TEMPLATE_VARIABLES)[number];
+
+export interface SignatureValues {
+  NAME: string;
+  POSITION: string;
+  COMPANY: string;
+  LINKEDIN_URL: string;
+  PHONE: string;
+  EMAIL: string;
+  WEBSITE: string;
+  IMAGE: string;
 }
 
-/**
- * Example result type
- */
-export type GreetingResult = {
-    message: string;
-    timestamp: Date;
-    config: ExampleConfig;
+export const DEFAULT_SIGNATURE_VALUES: SignatureValues = {
+  NAME: 'Your Name',
+  POSITION: 'Your Position',
+  COMPANY: 'Your company',
+  LINKEDIN_URL: 'https://www.linkedin.com/in/username',
+  PHONE: '+34000000000',
+  EMAIL: 'demo@email.com',
+  WEBSITE: 'https://www.demo.com',
+  IMAGE: 'https://content.timbal.ai/assets/email-signature.png',
 };
 
-/**
- * Example enum
- */
-export enum GreetingType {
-    FORMAL = 'formal',
-    CASUAL = 'casual',
-    FRIENDLY = 'friendly',
-}
-
-/**
- * Example utility type
- */
-export type PartialConfig = Partial<ExampleConfig>;
-
-/**
- * Example generic type
- */
-export interface ApiResponse<T> {
-    data: T;
-    success: boolean;
-    error?: string;
+export interface Template {
+  id: string;
+  name: string;
+  html: string;
+  defaultValues: SignatureValues;
 }

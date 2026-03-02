@@ -1,0 +1,29 @@
+{
+  "language": "Idioma",
+  "app": {
+    "title": "Editor de firma de correo",
+    "subtitle": "Edita tu firma HTML y cópiala en Gmail"
+  },
+  "actions": {
+    "copy": "Copiar al portapapeles",
+    "copied": "¡Copiado!",
+    "layoutHorizontal": "Diseño horizontal",
+    "layoutVertical": "Diseño vertical"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Vista previa",
+    "template": "Plantilla",
+    "values": "Valores"
+  },
+  "fields": {
+    "name": "Nombre",
+    "position": "Cargo",
+    "company": "Empresa",
+    "linkedinUrl": "URL de LinkedIn",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "website": "Sitio web",
+    "image": "URL de imagen"
+  }
+}
