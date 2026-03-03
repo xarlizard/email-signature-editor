@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Editor from 'react-simple-code-editor';
-import { Copy, LayoutGrid, LayoutList } from 'lucide-react';
+import { Copy, LayoutGrid, LayoutList, Moon, Sun } from 'lucide-react';
 import { TEMPLATES, resolveTemplate } from './templates';
 import type { SignatureValues } from './types';
 import { DEFAULT_SIGNATURE_VALUES } from './types';
@@ -31,6 +31,7 @@ export default function App() {
   );
   const [copied, setCopied] = useState(false);
   const [layoutVertical, setLayoutVertical] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const previewIframeRef = useRef<HTMLIFrameElement>(null);
 
   const resolvedHtml = resolveTemplate(templateHtml, values);
@@ -60,6 +61,15 @@ export default function App() {
       resizePreviewToContent();
     }
   }, [layoutVertical, resolvedHtml, resizePreviewToContent]);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    return () => document.documentElement.classList.remove('dark');
+  }, [darkMode]);
 
   const handleTemplateChange = useCallback(
     (templateId: string) => {
@@ -97,6 +107,10 @@ export default function App() {
     setLayoutVertical((prev) => !prev);
   }, []);
 
+  const toggleTheme = useCallback(() => {
+    setDarkMode((prev) => !prev);
+  }, []);
+
   const fieldConfig = [
     { key: 'NAME' as const, labelKey: 'name' as const },
     { key: 'POSITION' as const, labelKey: 'position' as const },
@@ -110,27 +124,30 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <header className="border-b bg-card">
+      <header className="border-b app-header text-foreground">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h1 className="text-xl font-semibold tracking-tight">
+              <h1 className="text-xl font-semibold tracking-tight text-foreground">
                 {t('app.title')}
               </h1>
               <p className="text-sm text-muted-foreground mt-0.5">
                 {t('app.subtitle')}
               </p>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 text-foreground">
               <div className="flex items-center gap-2">
-                <Label htmlFor="template" className="text-muted-foreground text-xs">
+                <Label htmlFor="template" className="text-muted-foreground text-xs shrink-0">
                   {t('labels.template')}
                 </Label>
                 <Select
                   value={selectedTemplateId}
                   onValueChange={handleTemplateChange}
                 >
-                  <SelectTrigger id="template" className="w-[140px]">
+                  <SelectTrigger
+                    id="template"
+                    className="h-9 w-[140px] border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 text-foreground"
+                  >
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -146,7 +163,10 @@ export default function App() {
                 value={i18n.language}
                 onValueChange={(v) => i18n.changeLanguage(v)}
               >
-                <SelectTrigger className="w-[80px]" aria-label={t('language')}>
+                <SelectTrigger
+                  className="h-9 w-[80px] border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 text-foreground"
+                  aria-label={t('language')}
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -154,6 +174,19 @@ export default function App() {
                   <SelectItem value="es">ES</SelectItem>
                 </SelectContent>
               </Select>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                title={darkMode ? t('actions.lightMode') : t('actions.darkMode')}
+                aria-label={darkMode ? t('actions.lightMode') : t('actions.darkMode')}
+              >
+                {darkMode ? (
+                  <Sun className="size-4" />
+                ) : (
+                  <Moon className="size-4" />
+                )}
+              </Button>
               <Button
                 variant="outline"
                 size="icon"
@@ -177,7 +210,7 @@ export default function App() {
             </div>
           </div>
 
-          <Card className="mt-4 border-0 bg-muted/30">
+          <Card className="mt-4 border values-card">
             <CardHeader className="pb-3">
               <CardTitle className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                 {t('labels.values')}
@@ -205,7 +238,7 @@ export default function App() {
                       }
                       value={values[key]}
                       onChange={(e) => updateValue(key, e.target.value)}
-                      className="h-8 text-sm"
+                      className="h-8 text-sm bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:hover:bg-input/50"
                     />
                   </div>
                 ))}
@@ -227,12 +260,12 @@ export default function App() {
             layoutVertical ? 'order-2 border-t' : 'md:border-r'
           }`}
         >
-          <div className="px-4 py-2 bg-muted/30 border-b">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="panel-header panel-header-html">
+            <h2 className="text-xs font-semibold uppercase tracking-wider">
               {t('labels.html')}
             </h2>
           </div>
-          <div className="flex-1 min-h-[300px] overflow-auto">
+          <div className="flex-1 min-h-[300px] overflow-auto editor-panel">
             <Editor
               value={templateHtml}
               onValueChange={setTemplateHtml}
@@ -254,13 +287,13 @@ export default function App() {
             layoutVertical ? 'order-1' : ''
           }`}
         >
-          <div className="px-4 py-2 bg-muted/30 border-b">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="panel-header panel-header-preview">
+            <h2 className="text-xs font-semibold uppercase tracking-wider">
               {t('labels.preview')}
             </h2>
           </div>
           <div
-            className={`overflow-auto bg-background ${
+            className={`overflow-auto preview-display ${
               layoutVertical ? 'flex-none' : 'flex-1 min-h-[300px]'
             }`}
           >

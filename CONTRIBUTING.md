@@ -1,9 +1,8 @@
-# Contributing to NPM Package Template
+# Contributing to Email Signature Editor
 
-First off, thank you for considering contributing to this npm package template! 🎉
+First off, thank you for considering contributing to Email Signature Editor! 🎉
 
-This template is designed to help developers quickly bootstrap production-ready npm packages. Your contributions help
-make this template even better for the community.
+This project helps users create and edit HTML email signatures with a live preview, ready for copy-paste into Gmail. Your contributions help make it better for everyone.
 
 ## 📋 Table of Contents
 
@@ -23,14 +22,14 @@ participating, you are expected to uphold this code.
 
 ### 🐛 Reporting Bugs
 
-Before creating bug reports, please check the existing issues to avoid duplicates. When you create a bug report, please
+Before creating bug reports, please check the [existing issues](https://github.com/xarlizard/email-signature-editor/issues) to avoid duplicates. When you create a bug report, please
 include:
 
 - **Clear title and description**
 - **Steps to reproduce** the issue
 - **Expected behavior** vs actual behavior
-- **Environment details** (Node.js version, OS, etc.)
-- **Code samples** if applicable
+- **Environment details** (Node.js version, OS, browser, etc.)
+- **Code samples** or screenshots if applicable
 
 ### 🚀 Suggesting Enhancements
 
@@ -52,90 +51,74 @@ Documentation improvements are always welcome:
 
 ### 🔧 Code Contributions
 
-#### Template Features
+#### Features
 
-- Build system improvements
-- Testing enhancements
-- CI/CD workflow improvements
-- Development tooling
+- New signature templates
+- UI/UX improvements
+- i18n translations (new languages)
+- Accessibility enhancements
 
-#### Example Code
+#### Technical
 
-- More usage examples
-- Better TypeScript examples
-- Edge case handling
 - Performance optimizations
+- Build and tooling improvements
+- Code refactoring
 
 ## Development Setup
 
 ### Prerequisites
 
-- Node.js 16+ (18+ recommended)
+- Node.js 18+
 - npm 8+
 - Git
-- PowerShell (for Windows-specific scripts)
 
 ### Setup Steps
 
 1. **Fork and Clone**
 
    ```bash
-   git clone https://github.com/xarlizard/npm-package-template.git
-   cd npm-package-template
+   git clone https://github.com/xarlizard/email-signature-editor.git
+   cd email-signature-editor
    ```
 
 2. **Install Dependencies**
 
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
-3. **Run Development Tasks**
+3. **Run Development Server**
 
    ```bash
-   # Run all checks
    npm run dev
+   ```
 
-   # Individual tasks
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+4. **Run Checks**
+
+   ```bash
    npm run build
-   npm run test
    npm run lint
    npm run typecheck
-   ```
-
-4. **Test the Template**
-   ```bash
-   # Test package installation
-   npm pack
-   mkdir test-install
-   cd test-install
-   npm init -y
-   npm install ../npm-package-template-*.tgz
    ```
 
 ### Project Structure
 
 ```
-├── src/                    # Source code
-│   ├── __tests__/         # Test files
-│   ├── index.ts           # Main entry point
-│   ├── types.ts           # Type definitions
-│   └── utils.ts           # Utility functions
-├── scripts/               # Build and release scripts
-├── examples/              # Usage examples
-├── .github/               # GitHub workflows and templates
-├── .vscode/               # VS Code configuration
-└── docs/                  # Documentation
+├── src/
+│   ├── App.tsx              # Main editor UI
+│   ├── main.tsx             # Entry point
+│   ├── components/ui/       # shadcn components
+│   ├── templates/           # Signature templates
+│   │   ├── default.ts       # Default template
+│   │   └── index.ts         # Template registry
+│   ├── i18n/                # Translations (en, es)
+│   ├── lib/                 # Utilities
+│   └── utils/               # Highlight, etc.
+├── .github/                 # GitHub workflows and templates
+└── docs/                    # Documentation
 ```
-
-### Testing
-
-We use Jest for testing. Please ensure:
-
-- **All tests pass**: `npm test`
-- **Coverage remains high**: `npm run test:coverage`
-- **New features have tests**: Add tests for new functionality
-- **Tests are descriptive**: Use clear test names and descriptions
 
 ### Code Style
 
@@ -143,7 +126,7 @@ We use ESLint and Prettier for code formatting:
 
 - **Linting**: `npm run lint`
 - **Auto-fix**: `npm run lint:fix`
-- **Prettier**: Runs on save (if configured)
+- **Format**: `npm run format`
 
 ## Pull Request Process
 
@@ -157,13 +140,14 @@ We use ESLint and Prettier for code formatting:
 
 2. **Make your changes**
    - Follow the style guidelines
-   - Add tests for new functionality
    - Update documentation as needed
 
 3. **Test your changes**
 
    ```bash
-   npm run dev  # Run all checks
+   npm run build
+   npm run lint
+   npm run typecheck
    ```
 
 4. **Commit your changes**
@@ -191,16 +175,15 @@ type(scope): description
 - `docs`: Documentation changes
 - `style`: Code style changes
 - `refactor`: Code refactoring
-- `test`: Test changes
 - `chore`: Maintenance tasks
 
 **Examples:**
 
 ```
-feat: add TypeScript configuration template
-fix: resolve build issue with Windows paths
-docs: update README with new setup instructions
-chore: update dependencies to latest versions
+feat: add new signature template
+fix: resolve preview height in vertical layout
+docs: update README with production URL
+chore: update dependencies
 ```
 
 ### Pull Request Guidelines
@@ -208,7 +191,7 @@ chore: update dependencies to latest versions
 1. **Fill out the PR template** completely
 2. **Link related issues** using "Closes #123"
 3. **Update documentation** if needed
-4. **Ensure CI passes** (all checks green)
+4. **Ensure CI passes** (lint, typecheck, build)
 5. **Request review** from maintainers
 
 ### Review Process
@@ -224,7 +207,6 @@ chore: update dependencies to latest versions
 
 - Use strict TypeScript configuration
 - Export types and interfaces
-- Document public APIs with JSDoc
 - Use meaningful variable names
 
 ### Code Structure
@@ -245,15 +227,14 @@ chore: update dependencies to latest versions
 
 ### Getting Help
 
-- **GitHub Issues**: For bugs and feature requests
-- **GitHub Discussions**: For questions and ideas
-- **Discord/Slack**: If available, for real-time chat
+- **GitHub Issues**: [Report bugs or request features](https://github.com/xarlizard/email-signature-editor/issues)
+- **Pull Requests**: [Submit contributions](https://github.com/xarlizard/email-signature-editor/pulls)
 
 ### Recognition
 
 Contributors will be recognized in:
 
-- README.md contributors section
+- README.md
 - CHANGELOG.md release notes
 - GitHub releases (when applicable)
 
@@ -263,6 +244,6 @@ By contributing, you agree that your contributions will be licensed under the sa
 
 ---
 
-Thank you for contributing to make this template better for everyone! 🚀
+Thank you for contributing to Email Signature Editor! 🚀
 
 **Happy coding!** 💻✨
