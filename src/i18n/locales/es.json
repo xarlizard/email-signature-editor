@@ -7,6 +7,8 @@
   "actions": {
     "copy": "Copiar al portapapeles",
     "copied": "¡Copiado!",
+    "lightMode": "Modo claro",
+    "darkMode": "Modo oscuro",
     "layoutHorizontal": "Diseño horizontal",
     "layoutVertical": "Diseño vertical"
   },

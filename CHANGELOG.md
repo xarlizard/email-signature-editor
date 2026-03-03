@@ -5,76 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.1.0] - 2025-12-14
-
-### Changed
-- **BREAKING**: Migrated to hybrid authentication approach (Trusted Publishing with NPM_TOKEN fallback)
-  - Primary: npm Trusted Publishing (OIDC) - no tokens needed, more secure
-  - Fallback: NPM_TOKEN secret - automatic fallback if Trusted Publishing fails
-  - Updated publish workflow to try Trusted Publishing first, then fall back to NPM_TOKEN
-  - Updated `.npmrc` to remove npm token reference (GitHub Packages token remains)
-  - Updated all documentation to reflect hybrid authentication approach
-  - Updated all dependencies to latest versions
-- **BREAKING**: Migrated ESLint configuration to flat config format (ESLint 9)
-  - Replaced `.eslintrc.json` with `eslint.config.js`
-  - Added `@eslint/js` and `globals` as new dependencies
-  - Updated ESLint configuration to use new flat config format
-
-### Security
-- Enhanced security by prioritizing Trusted Publishing (OIDC) over access tokens
-- Eliminates need for long-lived tokens when Trusted Publishing is configured
-- Maintains backward compatibility with NPM_TOKEN for flexibility
-
-### Documentation
-- Updated `docs/TEMPLATE_SETUP.md` with Trusted Publishing setup instructions
-- Updated `README.md` to highlight Trusted Publishing feature
-- Updated `docs/WORKFLOWS.md` to explain Trusted Publishing in publish workflow
-- Updated release scripts to remove token references
-
-## [1.0.3] - 2025-08-05
+## [1.0.0] - 2026-03-02
 
 ### Added
-- Deploy workflow for production environment with URL and README badge
-- Updated some dependencies
 
-## [1.0.2] - 2025-07-17
-
-### Added
-- Templates folder with blank files to fill with your desired package information
-- Minor fixes
-
-## [1.0.1] - 2025-07-16
-
-### Added
-- Minor fix (package version bump, merged dependabot dependencies bumps)
-
-## [1.0.0] - 2025-07-16
-
-### Added
-- TypeScript setup with strict configuration
-- Rollup build system (ESM + CJS)
-- Jest testing with coverage
-- ESLint for code quality
-- Automated CI/CD with GitHub Actions
-- Dual registry publishing (NPM & GitHub Packages)
-- Smart NPM publishing (scoped fallback)
-- PowerShell and Node.js scripts for release/dev
-- Security policy and CodeQL analysis
-- Dependabot for dependency updates
-- Comprehensive documentation and setup guide
-- GitHub template support for easy customization
-
----
-
-**Getting Started:**
-- Use this template via GitHub or clone the repository
-- Run `npm install` and `npm run setup`
-- Customize files and add your code to `src/`
-- Run `npm run dev` for development
-- Create a GitHub release to publish
-
-**Notes:**
-- Update placeholders like `YOUR_USERNAME` and `YOUR_PACKAGE_NAME`
-- Customize README and package.json for your project
-- Automated publishing supports both scoped and unscoped names
-
+- **React email signature editor** – Vite + React + TypeScript web app for editing HTML email signatures
+- **Split layout** – HTML editor on one side, live preview on the other
+- **Copy to clipboard** – One-click copy of resolved signature for pasting into Gmail
+- **Template variables** – Editable placeholders: `{{NAME}}`, `{{POSITION}}`, `{{COMPANY}}`, `{{LINKEDIN_URL}}`, `{{PHONE}}`, `{{EMAIL}}`, `{{WEBSITE}}`, `{{IMAGE}}`
+- **Variable highlighting** – `{{VARIABLE}}` placeholders highlighted in the HTML editor (uses `react-simple-code-editor`)
+- **Values form** – Form to edit all template variables; copy exports resolved HTML with values applied
+- **Template selector** – Select template dropdown (resets HTML editor, keeps values when re-selecting)
+- **Layout toggle** – Switch between horizontal (side-by-side) and vertical (stacked) panel alignment
+- **Vertical layout** – Preview on top, editor below; preview height sizes to content (no empty space)
+- **i18n** – English and Spanish with `react-i18next`; language selector in header
+- **Tailwind CSS v4** – Modern styling with `@tailwindcss/vite`
+- **shadcn/ui** – Button, Card, Input, Label, Select components; New York style, neutral theme
+- **Lucide React** – Icons for layout toggle and copy button
+- **Production deployment** – Live demo at [https://email-signature-editor.pages.dev/](https://email-signature-editor.pages.dev/)
