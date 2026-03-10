@@ -1,0 +1,31 @@
+{
+  "language": "Sprache",
+  "app": {
+    "title": "E-Mail-Signatur-Editor",
+    "subtitle": "Bearbeiten Sie Ihre HTML-Signatur und kopieren Sie sie in Gmail"
+  },
+  "actions": {
+    "copy": "In Zwischenablage kopieren",
+    "copied": "Kopiert!",
+    "lightMode": "Hellmodus",
+    "darkMode": "Dunkelmodus",
+    "layoutHorizontal": "Horizontale Ansicht",
+    "layoutVertical": "Vertikale Ansicht"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Vorschau",
+    "template": "Vorlage",
+    "values": "Werte"
+  },
+  "fields": {
+    "name": "Name",
+    "position": "Position",
+    "company": "Unternehmen",
+    "linkedinUrl": "LinkedIn-URL",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "website": "Webseite",
+    "image": "Bild-URL"
+  }
+}
