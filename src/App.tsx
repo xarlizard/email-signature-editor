@@ -8,6 +8,7 @@ import { AppHeader } from './components/AppHeader';
 import { ValuesForm } from './components/ValuesForm';
 import { HtmlPanel } from './components/HtmlPanel';
 import { PreviewPanel } from './components/PreviewPanel';
+import { GitHubFooter } from './components/GitHubFooter';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 export default function App() {
@@ -209,6 +210,7 @@ export default function App() {
             )}
           </div>
         </div>
+        <GitHubFooter />
       </div>
     </TooltipProvider>
   );
