@@ -1,0 +1,31 @@
+{
+  "language": "Язык",
+  "app": {
+    "title": "Редактор подписи email",
+    "subtitle": "Редактируйте HTML-подпись и копируйте в Gmail"
+  },
+  "actions": {
+    "copy": "Копировать в буфер",
+    "copied": "Скопировано!",
+    "lightMode": "Светлый режим",
+    "darkMode": "Тёмный режим",
+    "layoutHorizontal": "Горизонтальная раскладка",
+    "layoutVertical": "Вертикальная раскладка"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Предпросмотр",
+    "template": "Шаблон",
+    "values": "Значения"
+  },
+  "fields": {
+    "name": "Имя",
+    "position": "Должность",
+    "company": "Компания",
+    "linkedinUrl": "URL LinkedIn",
+    "phone": "Телефон",
+    "email": "Email",
+    "website": "Website",
+    "image": "URL изображения"
+  }
+}

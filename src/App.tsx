@@ -153,7 +153,7 @@ export default function App() {
           templates={TEMPLATES}
           selectedTemplateId={selectedTemplateId}
           onTemplateChange={handleTemplateChange}
-          language={i18n.language}
+          language={i18n.language || 'en'}
           onLanguageChange={(v) => i18n.changeLanguage(v)}
           darkMode={darkMode}
           onThemeToggle={toggleTheme}

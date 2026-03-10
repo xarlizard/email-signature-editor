@@ -1,0 +1,31 @@
+{
+  "language": "Idioma",
+  "app": {
+    "title": "Editor de signatura de correu",
+    "subtitle": "Editeu la vostra signatura HTML i copieu-la a Gmail"
+  },
+  "actions": {
+    "copy": "Copiar al portapapers",
+    "copied": "Copiat!",
+    "lightMode": "Mode clar",
+    "darkMode": "Mode fosc",
+    "layoutHorizontal": "Disposició horitzontal",
+    "layoutVertical": "Disposició vertical"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Vista prèvia",
+    "template": "Plantilla",
+    "values": "Valors"
+  },
+  "fields": {
+    "name": "Nom",
+    "position": "Càrrec",
+    "company": "Empresa",
+    "linkedinUrl": "URL de LinkedIn",
+    "phone": "Telèfon",
+    "email": "Correu electrònic",
+    "website": "Lloc web",
+    "image": "URL de la imatge"
+  }
+}

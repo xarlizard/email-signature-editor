@@ -1,0 +1,31 @@
+{
+  "language": "语言",
+  "app": {
+    "title": "Email 签名编辑器",
+    "subtitle": "编辑您的 HTML 签名并复制到 Gmail"
+  },
+  "actions": {
+    "copy": "复制到剪贴板",
+    "copied": "已复制！",
+    "lightMode": "浅色模式",
+    "darkMode": "深色模式",
+    "layoutHorizontal": "水平布局",
+    "layoutVertical": "垂直布局"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "预览",
+    "template": "模板",
+    "values": "值"
+  },
+  "fields": {
+    "name": "姓名",
+    "position": "职位",
+    "company": "公司",
+    "linkedinUrl": "LinkedIn 链接",
+    "phone": "电话",
+    "email": "邮箱",
+    "website": "网站",
+    "image": "图片链接"
+  }
+}

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import type { SignatureValues } from '@/types';
@@ -25,12 +25,7 @@ export function ValuesForm({ values, onUpdate }: ValuesFormProps) {
 
   return (
     <Card className="border values-card">
-      <CardHeader className="pb-2 pt-3">
-        <CardTitle className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-          {t('labels.values')}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="pt-0 pb-3">
+      <CardContent className="py-3">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {fieldConfig.map(({ key, labelKey }) => (
             <div key={key} className="space-y-1.5">
@@ -52,7 +47,7 @@ export function ValuesForm({ values, onUpdate }: ValuesFormProps) {
                 }
                 value={values[key]}
                 onChange={(e) => onUpdate(key, e.target.value)}
-                className="h-8 text-sm"
+                className="h-8 text-sm bg-background text-foreground dark:bg-background"
               />
             </div>
           ))}

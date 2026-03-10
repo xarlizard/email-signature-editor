@@ -1,0 +1,31 @@
+{
+  "language": "Taal",
+  "app": {
+    "title": "E-mailhandtekening-editor",
+    "subtitle": "Bewerk uw HTML-handtekening en kopieer deze naar Gmail"
+  },
+  "actions": {
+    "copy": "Kopiëren naar klembord",
+    "copied": "Gekopieerd!",
+    "lightMode": "Lichtmodus",
+    "darkMode": "Donkere modus",
+    "layoutHorizontal": "Horizontale weergave",
+    "layoutVertical": "Verticale weergave"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Voorbeeld",
+    "template": "Sjabloon",
+    "values": "Waarden"
+  },
+  "fields": {
+    "name": "Naam",
+    "position": "Functie",
+    "company": "Bedrijf",
+    "linkedinUrl": "LinkedIn-URL",
+    "phone": "Telefoon",
+    "email": "E-mail",
+    "website": "Website",
+    "image": "Afbeelding-URL"
+  }
+}

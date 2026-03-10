@@ -1,0 +1,31 @@
+{
+  "language": "Langue",
+  "app": {
+    "title": "Éditeur de signature email",
+    "subtitle": "Modifiez votre signature HTML et copiez-la dans Gmail"
+  },
+  "actions": {
+    "copy": "Copier dans le presse-papiers",
+    "copied": "Copié !",
+    "lightMode": "Mode clair",
+    "darkMode": "Mode sombre",
+    "layoutHorizontal": "Disposition horizontale",
+    "layoutVertical": "Disposition verticale"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Aperçu",
+    "template": "Modèle",
+    "values": "Valeurs"
+  },
+  "fields": {
+    "name": "Nom",
+    "position": "Poste",
+    "company": "Entreprise",
+    "linkedinUrl": "URL LinkedIn",
+    "phone": "Téléphone",
+    "email": "Email",
+    "website": "Site web",
+    "image": "URL de l'image"
+  }
+}

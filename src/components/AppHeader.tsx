@@ -16,6 +16,27 @@ import {
 } from '@/components/ui/tooltip';
 import type { Template } from '@/types';
 
+const LANGUAGES = [
+  { value: 'en', label: 'EN' },
+  { value: 'es', label: 'ES' },
+  { value: 'fr', label: 'FR' },
+  { value: 'de', label: 'DE' },
+  { value: 'it', label: 'IT' },
+  { value: 'nl', label: 'NL' },
+  { value: 'ca', label: 'CA' },
+  { value: 'ru', label: 'RU' },
+  { value: 'zh', label: 'ZH' },
+] as const;
+
+type SupportedLang = (typeof LANGUAGES)[number]['value'];
+const SUPPORTED_VALUES = new Set<SupportedLang>(LANGUAGES.map((l) => l.value));
+
+function normalizeLanguage(lang: string): SupportedLang {
+  if (SUPPORTED_VALUES.has(lang as SupportedLang)) return lang as SupportedLang;
+  const base = lang.split('-')[0] as SupportedLang;
+  return SUPPORTED_VALUES.has(base) ? base : 'en';
+}
+
 interface AppHeaderProps {
   templates: Template[];
   selectedTemplateId: string;
@@ -71,7 +92,7 @@ export function AppHeader({
           </Select>
         </div>
 
-        <Select value={language} onValueChange={onLanguageChange}>
+        <Select value={normalizeLanguage(language)} onValueChange={onLanguageChange}>
           <SelectTrigger
             className="h-8 w-[72px] border-0 bg-primary text-primary-foreground shadow-xs hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover [&_svg]:text-primary-foreground [&_svg]:opacity-100"
             aria-label={t('language')}
@@ -79,8 +100,11 @@ export function AppHeader({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="en">EN</SelectItem>
-            <SelectItem value="es">ES</SelectItem>
+            {LANGUAGES.map(({ value, label }) => (
+              <SelectItem key={value} value={value}>
+                {label}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
