@@ -207,6 +207,15 @@ html.dark {
   * {
     @apply border-border outline-ring/50;
   }
+  button,
+  [role="button"],
+  a[href] {
+    cursor: pointer;
+  }
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
