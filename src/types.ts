@@ -33,7 +33,7 @@ export const DEFAULT_SIGNATURE_VALUES: SignatureValues = {
   PHONE: '+34000000000',
   EMAIL: 'demo@email.com',
   WEBSITE: 'https://www.demo.com',
-  IMAGE: 'https://content.timbal.ai/assets/email-signature.png',
+  IMAGE: 'https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-701751695037005zdurfaim0y.png',
   DISCLAIMER: '',
 };
 
