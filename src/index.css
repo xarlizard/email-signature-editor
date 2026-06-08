@@ -9,6 +9,16 @@ html.dark {
   color-scheme: dark;
 }
 
+/* react-simple-code-editor base */
+.react-simple-code-editor {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.react-simple-code-editor textarea {
+  outline: none;
+  resize: none;
+}
+
 /* Variable placeholder highlighting in HTML editor */
 .editor-wrapper .variable-token,
 .html-editor .variable-token {
