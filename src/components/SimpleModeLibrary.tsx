@@ -1,9 +1,11 @@
+import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus, Trash2 } from 'lucide-react';
+import { ChevronDown, Copy, Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { TEMPLATES, resolveTemplate } from '@/templates';
 import type { SavedSignature } from '@/lib/savedSignatures';
+import { copyRichHtmlToClipboard, copyTextToClipboard } from '@/utils/utils';
 import {
   SIGNATURE_PREVIEW_DOC_PREFIX,
   SIGNATURE_PREVIEW_DOC_SUFFIX,
@@ -24,6 +26,32 @@ export function SimpleModeLibrary({
   onDeleteSaved,
 }: SimpleModeLibraryProps) {
   const { t } = useTranslation();
+  const copySelectRefs = useRef<Record<string, HTMLSelectElement | null>>({});
+
+  const openNativeCopySelector = (id: string) => {
+    const select = copySelectRefs.current[id];
+    if (!select) return;
+    const picker = select as HTMLSelectElement & { showPicker?: () => void };
+    if (picker.showPicker) {
+      picker.showPicker();
+      return;
+    }
+    select.focus();
+    select.click();
+  };
+
+  const handleCopyChoice = async (
+    choice: string,
+    html: string
+  ) => {
+    if (choice === 'gmail') {
+      await copyRichHtmlToClipboard(html);
+      return;
+    }
+    if (choice === 'html') {
+      await copyTextToClipboard(html);
+    }
+  };
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 py-4">
@@ -97,6 +125,38 @@ export function SimpleModeLibrary({
                         <p className="mt-1 text-xs text-muted-foreground">
                           {new Date(item.createdAt).toLocaleString()}
                         </p>
+                      </div>
+                      <div className="relative shrink-0" onClick={(e) => e.stopPropagation()}>
+                        <select
+                          ref={(node) => {
+                            copySelectRefs.current[item.id] = node;
+                          }}
+                          defaultValue=""
+                          className="pointer-events-none absolute h-0 w-0 opacity-0"
+                          aria-label="Copy options"
+                          onChange={async (e) => {
+                            await handleCopyChoice(e.target.value, html);
+                            e.target.value = '';
+                          }}
+                        >
+                          <option value="" disabled hidden />
+                          <option value="gmail">For Gmail</option>
+                          <option value="html">Html code</option>
+                        </select>
+                        <Button
+                          type="button"
+                          variant="default"
+                          size="sm"
+                          className="gap-1.5"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openNativeCopySelector(item.id);
+                          }}
+                        >
+                          <Copy className="size-3.5" />
+                          Copy
+                          <ChevronDown className="size-3.5" />
+                        </Button>
                       </div>
                       <Button
                         type="button"
