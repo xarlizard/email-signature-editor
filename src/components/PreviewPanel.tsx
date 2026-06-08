@@ -20,7 +20,7 @@ export function PreviewPanel({
   const { t } = useTranslation();
 
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden">
+    <div className="flex h-full min-h-96 flex-col overflow-hidden">
       <div className="panel-header panel-header-preview flex shrink-0 items-center justify-between gap-2 px-3">
         <div className="flex items-center gap-2">
           <Eye className="size-3.5 text-muted-foreground" />
