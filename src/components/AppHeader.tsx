@@ -47,8 +47,8 @@ interface AppHeaderProps {
   onThemeToggle: () => void;
   layoutVertical: boolean;
   onLayoutToggle: () => void;
-  advancedMode: boolean;
-  onAdvancedModeToggle: () => void;
+  mode: 'library' | 'simple' | 'advanced';
+  onModeToggle?: () => void;
 }
 
 export function AppHeader({
@@ -61,10 +61,12 @@ export function AppHeader({
   onThemeToggle,
   layoutVertical,
   onLayoutToggle,
-  advancedMode,
-  onAdvancedModeToggle,
+  mode,
+  onModeToggle,
 }: AppHeaderProps) {
   const { t } = useTranslation();
+  const isAdvancedMode = mode === 'advanced';
+  const showModeToggle = mode !== 'library' && onModeToggle;
 
   return (
     <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-background px-4">
@@ -75,7 +77,7 @@ export function AppHeader({
       </div>
 
       <div className="ml-auto flex items-center gap-3">
-        {advancedMode && (
+        {isAdvancedMode && (
           <div className="flex items-center gap-2">
             <Label htmlFor="template" className="sr-only">
               {t('labels.template')}
@@ -117,31 +119,37 @@ export function AppHeader({
         <div className="flex items-center gap-1">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="default"
-                size="sm"
-                onClick={onAdvancedModeToggle}
-                aria-label={
-                  advancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')
-                }
-                className="h-8 gap-1.5 px-2.5"
-              >
-                {advancedMode ? (
-                  <>
-                    <Sparkles className="size-4" />
-                    <span className="hidden sm:inline">{t('actions.simple')}</span>
-                  </>
-                ) : (
-                  <>
-                    <SlidersHorizontal className="size-4" />
-                    <span className="hidden sm:inline">{t('actions.advanced')}</span>
-                  </>
-                )}
-              </Button>
+              {showModeToggle ? (
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={onModeToggle}
+                  aria-label={
+                    isAdvancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')
+                  }
+                  className="h-8 gap-1.5 px-2.5"
+                >
+                  {isAdvancedMode ? (
+                    <>
+                      <Sparkles className="size-4" />
+                      <span className="hidden sm:inline">{t('actions.simple')}</span>
+                    </>
+                  ) : (
+                    <>
+                      <SlidersHorizontal className="size-4" />
+                      <span className="hidden sm:inline">{t('actions.advanced')}</span>
+                    </>
+                  )}
+                </Button>
+              ) : (
+                <span className="hidden" />
+              )}
             </TooltipTrigger>
-            <TooltipContent side="bottom">
-              {advancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')}
-            </TooltipContent>
+            {showModeToggle ? (
+              <TooltipContent side="bottom">
+                {isAdvancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')}
+              </TooltipContent>
+            ) : null}
           </Tooltip>
 
           <Tooltip>
@@ -165,7 +173,7 @@ export function AppHeader({
             </TooltipContent>
           </Tooltip>
 
-          {advancedMode && (
+          {isAdvancedMode && (
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button

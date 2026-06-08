@@ -1,6 +1,6 @@
 {
   "name": "email-signature-editor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple React UI for editing and previewing HTML email signatures, ready for copy-paste into Gmail",
   "type": "module",
   "scripts": {
@@ -29,6 +29,7 @@
     "react-i18next": "^17.0.8",
     "react-icons": "^5.6.0",
     "react-resizable-panels": "^4.11.2",
+    "react-router": "^7.17.0",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0"
   },
