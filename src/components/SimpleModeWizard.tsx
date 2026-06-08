@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ChevronLeft, ChevronRight, Copy, Library, Save } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -31,8 +32,6 @@ const TOTAL_STEPS = FIELD_STEPS + 2;
 export const SIMPLE_REVIEW_STEP = REVIEW_STEP;
 
 interface SimpleModeWizardProps {
-  step: number;
-  onStepChange: (step: number) => void;
   values: SignatureValues;
   onUpdate: (key: keyof SignatureValues, value: string) => void;
   resolvedHtml: string;
@@ -42,6 +41,7 @@ interface SimpleModeWizardProps {
   copiedPreview: boolean;
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
   onIframeLoad: () => void;
+  initialStep?: number;
   onBackToLibrary: () => void;
   onSave: () => void;
   saveSuccess: boolean;
@@ -50,8 +50,6 @@ interface SimpleModeWizardProps {
 }
 
 export function SimpleModeWizard({
-  step,
-  onStepChange,
   values,
   onUpdate,
   resolvedHtml,
@@ -61,6 +59,7 @@ export function SimpleModeWizard({
   copiedPreview,
   iframeRef,
   onIframeLoad,
+  initialStep = 0,
   onBackToLibrary,
   onSave,
   saveSuccess,
@@ -68,6 +67,7 @@ export function SimpleModeWizard({
   onTemplateApply,
 }: SimpleModeWizardProps) {
   const { t } = useTranslation();
+  const [step, setStep] = useState(initialStep);
 
   const isTemplateStep = step === STEP_TEMPLATE;
   const isReview = step === REVIEW_STEP;
@@ -77,14 +77,14 @@ export function SimpleModeWizard({
 
   const handlePickTemplate = (templateId: string) => {
     onTemplateApply(templateId);
-    onStepChange(1);
+    setStep(1);
   };
 
   const advanceStep = () => {
     if (isTemplateStep) {
-      onStepChange(1);
+      setStep(1);
     } else {
-      onStepChange(Math.min(REVIEW_STEP, step + 1));
+      setStep((s) => Math.min(REVIEW_STEP, s + 1));
     }
   };
 
@@ -259,7 +259,7 @@ export function SimpleModeWizard({
         <Button
           type="button"
           variant="outline"
-          onClick={() => onStepChange(Math.max(STEP_TEMPLATE, step - 1))}
+          onClick={() => setStep((s) => Math.max(STEP_TEMPLATE, s - 1))}
           disabled={step === STEP_TEMPLATE}
           className="gap-1"
         >
@@ -284,7 +284,7 @@ export function SimpleModeWizard({
             <Button
               type="button"
               variant="secondary"
-              onClick={() => onStepChange(1)}
+              onClick={() => setStep(1)}
               className="gap-1"
             >
               {t('simpleMode.editAgain')}

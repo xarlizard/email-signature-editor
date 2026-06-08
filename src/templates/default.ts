@@ -2,23 +2,46 @@ import type { SignatureValues, Template } from '../types';
 import { DEFAULT_SIGNATURE_VALUES } from '../types';
 import { DISCLAIMER_SNIPPET } from './disclaimerSnippet';
 
-const DEFAULT_TEMPLATE_HTML =  `<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px;">
+const ICON = (src: string, alt: string) =>
+  `<span style="display: inline-block; background-color: rgb(34, 34, 34);"><img src="${src}" alt="${alt}" width="13" style="display: block; background-color: rgb(34, 34, 34);"></span>`;
+
+const DEFAULT_TEMPLATE_HTML = `<table cellpadding="0" cellspacing="0" border="0" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
   <tr>
-    <td style="padding-right: 20px; vertical-align: top;">
-      <img src="{{IMAGE}}" role="presentation" width="80" height="80" style="display: block; border-radius: 50%; object-fit: cover;">
+    <td style="vertical-align: top; text-align: center;">
+      <img src="{{IMAGE}}" role="presentation" width="130" style="display: block; max-width: 128px;">
     </td>
-    <td>
-      <p style="margin: 0 0 2px 0; font-size: 18px; font-weight: 700; color: #1a1a2e;">{{NAME}}</p>
-      <p style="margin: 0 0 4px 0; font-size: 13px; color: #4a4a6a;">{{POSITION}}</p>
-      <p style="margin: 0 0 8px 0; font-size: 13px; font-weight: 600; color: #16213e;">{{COMPANY}}</p>
-      <p style="margin: 0 0 6px 0; font-size: 12px;">
-        <a href="{{LINKEDIN_URL}}" target="_blank" style="color: #0a66c2; text-decoration: none;">LinkedIn</a>
-      </p>
-      <table cellpadding="0" cellspacing="0" border="0" style="font-size: 12px; color: #555;">
-        <tr><td style="padding: 2px 0;"><a href="tel:{{PHONE}}" style="color: #555; text-decoration: none;">{{PHONE}}</a></td></tr>
-        <tr><td style="padding: 2px 0;"><a href="mailto:{{EMAIL}}" style="color: #555; text-decoration: none;">{{EMAIL}}</a></td></tr>
-        <tr><td style="padding: 2px 0;"><a href="{{WEBSITE}}" style="color: #555; text-decoration: none;">{{WEBSITE}}</a></td></tr>
+    <td width="46"><div></div></td>
+    <td style="padding: 0; vertical-align: middle;">
+      <h2 style="margin: 0; font-size: 18px; color: rgb(34, 34, 34); font-weight: 600;">
+        <span>{{NAME}}</span>
+        <span style="display: inline-block; vertical-align: middle; margin-left: 8px;">
+          <a href="{{LINKEDIN_URL}}" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="18" height="18" style="display: block; border: 0;" alt="LinkedIn">
+          </a>
+        </span>
+      </h2>
+      <p style="margin: 0; color: rgb(34, 34, 34); font-size: 14px; line-height: 22px;">{{POSITION}}</p>
+      <p style="margin: 0; font-weight: 500; color: rgb(34, 34, 34); font-size: 14px; line-height: 22px;">{{COMPANY}}</p>
+      <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; font-family: Arial;">
+        <tr><td height="30"></td></tr>
+        <tr><td height="1" style="width: 100%; border-bottom: 1px solid rgb(34, 34, 34); border-left: none; display: block;"></td></tr>
+        <tr><td height="30"></td></tr>
       </table>
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial;">
+        <tr height="25" style="vertical-align: middle;">
+          <td width="30" style="vertical-align: bottom;">${ICON('https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png', 'mobilePhone')}</td>
+          <td style="padding: 0; color: rgb(34, 34, 34);"><a href="tel:{{PHONE}}" style="text-decoration: none; color: rgb(34, 34, 34); font-size: 14px;">{{PHONE}}</a></td>
+        </tr>
+        <tr height="25" style="vertical-align: middle;">
+          <td width="30" style="vertical-align: bottom;">${ICON('https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png', 'emailAddress')}</td>
+          <td style="padding: 0;"><a href="mailto:{{EMAIL}}" style="text-decoration: none; color: rgb(34, 34, 34); font-size: 14px;">{{EMAIL}}</a></td>
+        </tr>
+        <tr height="25" style="vertical-align: middle;">
+          <td width="30" style="vertical-align: bottom;">${ICON('https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png', 'website')}</td>
+          <td style="padding: 0;"><a href="{{WEBSITE}}" style="text-decoration: none; color: rgb(34, 34, 34); font-size: 14px;">{{WEBSITE}}</a></td>
+        </tr>
+      </table>
+      <table cellpadding="0" cellspacing="0" border="0"><tr><td height="30"></td></tr></table>
     </td>
   </tr>
 </table>${DISCLAIMER_SNIPPET}`;
