@@ -2,9 +2,6 @@ import type { SignatureValues, Template } from '../types';
 import { DEFAULT_SIGNATURE_VALUES } from '../types';
 import { DISCLAIMER_SNIPPET } from './disclaimerSnippet';
 
-const ICON = (src: string, alt: string) =>
-  `<span style="display: inline-block; background-color: rgb(34, 34, 34);"><img src="${src}" alt="${alt}" width="13" style="display: block; background-color: rgb(34, 34, 34);"></span>`;
-
 const DEFAULT_TEMPLATE_HTML =  `<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px;">
   <tr>
     <td style="padding-right: 20px; vertical-align: top;">
