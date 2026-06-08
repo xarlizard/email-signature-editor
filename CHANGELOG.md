@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-06-08
+
+### Added
+
+- **App routing with `react-router`** – Introduced route-based navigation with three pages: **Library (Home)** at `/`, **Edit (Simple)** at `/edit`, and **Edit (Advanced)** at `/edit/advanced`
+- **App module structure** – Moved app orchestration into `src/app/` with dedicated `pages/`, `contexts/`, and `routes/` folders
+- **Shared user context provider** – Added a single provider to centralize local-storage-backed library data and active editing state across pages
+
+### Changed
+
+- **Home experience is now the default page** – The project now lands on the saved-signatures library view by default
+- **Edit flow now uses explicit routes** – Creating or opening a signature transitions into `/edit`, and advanced editing is handled by `/edit/advanced`
+- **Simple/Advanced state is synchronized in real time** – Field values and template HTML are shared through context, so toggling between edit modes no longer resets in-progress data
+- **Simple mode preference persistence removed** – Removed `MODE_STORAGE_KEY` behavior; edit mode now defaults to simple mode unless navigated to advanced route
+
 
 ## [1.1.0] - 2026-03-29
 
