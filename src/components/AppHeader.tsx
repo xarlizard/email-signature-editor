@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { LayoutGrid, LayoutList, Moon, SlidersHorizontal, Sparkles, Sun } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
+import { Link, useLocation } from 'react-router';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import {
   Select,
   SelectContent,
@@ -14,7 +14,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { Template } from '@/types';
 
 const LANGUAGES = [
   { value: 'en', label: 'EN' },
@@ -38,71 +37,62 @@ function normalizeLanguage(lang: string): SupportedLang {
 }
 
 interface AppHeaderProps {
-  templates: Template[];
-  selectedTemplateId: string;
-  onTemplateChange: (id: string) => void;
   language: string;
   onLanguageChange: (lang: string) => void;
   darkMode: boolean;
   onThemeToggle: () => void;
-  layoutVertical: boolean;
-  onLayoutToggle: () => void;
-  mode: 'library' | 'simple' | 'advanced';
-  onModeToggle?: () => void;
 }
 
 export function AppHeader({
-  templates,
-  selectedTemplateId,
-  onTemplateChange,
   language,
   onLanguageChange,
   darkMode,
   onThemeToggle,
-  layoutVertical,
-  onLayoutToggle,
-  mode,
-  onModeToggle,
 }: AppHeaderProps) {
   const { t } = useTranslation();
-  const isAdvancedMode = mode === 'advanced';
-  const showModeToggle = mode !== 'library' && onModeToggle;
+  const location = useLocation();
+
+  const navRoutes = [
+    { path: "/", label: t('nav.home') },
+    { path: "/templates", label: t('nav.templates') },
+    { path: "/signatures", label: t('nav.signatures') },
+  ];
 
   return (
-    <header className="flex h-14 shrink-0 items-center gap-4 border-b border-border bg-background px-4">
-      <div className="flex items-center gap-1">
-        <span className="text-lg font-semibold tracking-tight text-foreground">
-          {t('app.title')}
-        </span>
-      </div>
+    <header className="flex h-14 shrink-0 items-center justify-center border-b border-border bg-background px-4">
+      <nav className="flex items-center gap-1">
+        {navRoutes.map(({ path, label }) => {
+          const isActive = location.pathname === path;
+          return (
+            <Button
+              key={path}
+              asChild
+              variant={isActive ? 'secondary' : 'ghost'}
+              size="sm"
+              className="h-8 px-4 hover:bg-secondary hover:text-secondary-foreground"
+            >
+              <Link to={path}>{label}</Link>
+            </Button>
+          );
+        })}
 
-      <div className="ml-auto flex items-center gap-3">
-        {isAdvancedMode && (
-          <div className="flex items-center gap-2">
-            <Label htmlFor="template" className="sr-only">
-              {t('labels.template')}
-            </Label>
-            <Select value={selectedTemplateId} onValueChange={onTemplateChange}>
-              <SelectTrigger
-                id="template"
-                className="h-8 w-[130px] border-0 bg-primary text-primary-foreground shadow-xs hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover [&_svg]:text-primary-foreground [&_svg]:opacity-100"
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {templates.map((tmpl) => (
-                  <SelectItem key={tmpl.id} value={tmpl.id}>
-                    {tmpl.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
+        <div className="mx-1 h-4 w-px bg-border" />
+
+        <Button
+          key={"login"}
+          asChild
+          variant={location.pathname === "/login" ? 'secondary' : 'ghost'}
+          size="sm"
+          className="h-8 px-4 hover:bg-secondary hover:text-secondary-foreground"
+        >
+          <Link to="/login">{t('nav.login')}</Link>
+        </Button>
+
+        <div className="mx-1 h-4 w-px bg-border" />
 
         <Select value={normalizeLanguage(language)} onValueChange={onLanguageChange}>
           <SelectTrigger
-            className="h-8 w-[72px] border-0 bg-primary text-primary-foreground shadow-xs hover:bg-primary-hover dark:bg-primary dark:hover:bg-primary-hover [&_svg]:text-primary-foreground [&_svg]:opacity-100"
+            className="h-8 w-[72px] border-0 dark:bg-transparent bg-transparent text-foreground shadow-none hover:bg-secondary hover:text-secondary-foreground [&_svg]:opacity-100 hover:[&_svg]:text-secondary-foreground"
             aria-label={t('language')}
           >
             <SelectValue />
@@ -116,93 +106,23 @@ export function AppHeader({
           </SelectContent>
         </Select>
 
-        <div className="flex items-center gap-1">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              {showModeToggle ? (
-                <Button
-                  variant="default"
-                  size="sm"
-                  onClick={onModeToggle}
-                  aria-label={
-                    isAdvancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')
-                  }
-                  className="h-8 gap-1.5 px-2.5"
-                >
-                  {isAdvancedMode ? (
-                    <>
-                      <Sparkles className="size-4" />
-                      <span className="hidden sm:inline">{t('actions.simple')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <SlidersHorizontal className="size-4" />
-                      <span className="hidden sm:inline">{t('actions.advanced')}</span>
-                    </>
-                  )}
-                </Button>
-              ) : (
-                <span className="hidden" />
-              )}
-            </TooltipTrigger>
-            {showModeToggle ? (
-              <TooltipContent side="bottom">
-                {isAdvancedMode ? t('actions.switchToSimple') : t('actions.switchToAdvanced')}
-              </TooltipContent>
-            ) : null}
-          </Tooltip>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="default"
-                size="icon"
-                onClick={onThemeToggle}
-                aria-label={darkMode ? t('actions.lightMode') : t('actions.darkMode')}
-                className="size-8"
-              >
-                {darkMode ? (
-                  <Sun className="size-4" />
-                ) : (
-                  <Moon className="size-4" />
-                )}
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">
-              {darkMode ? t('actions.lightMode') : t('actions.darkMode')}
-            </TooltipContent>
-          </Tooltip>
-
-          {isAdvancedMode && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="default"
-                  size="icon"
-                  onClick={onLayoutToggle}
-                  aria-label={
-                    layoutVertical
-                      ? t('actions.layoutHorizontal')
-                      : t('actions.layoutVertical')
-                  }
-                  className="size-8"
-                >
-                  {layoutVertical ? (
-                    <LayoutGrid className="size-4" />
-                  ) : (
-                    <LayoutList className="size-4" />
-                  )}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                {layoutVertical
-                  ? t('actions.layoutHorizontal')
-                  : t('actions.layoutVertical')}
-              </TooltipContent>
-            </Tooltip>
-          )}
-        </div>
-      </div>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onThemeToggle}
+              aria-label={darkMode ? t('actions.lightMode') : t('actions.darkMode')}
+              className="size-8"
+            >
+              {darkMode ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            {darkMode ? t('actions.lightMode') : t('actions.darkMode')}
+          </TooltipContent>
+        </Tooltip>
+      </nav>
     </header>
   );
 }

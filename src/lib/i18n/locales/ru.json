@@ -1,0 +1,69 @@
+{
+  "language": "Язык",
+  "nav": {
+    "home": "Главная",
+    "signatures": "Подписи",
+    "templates": "Шаблоны",
+    "login": "Войти",
+    "account": "Аккаунт"
+  },
+  "app": {
+    "title": "Редактор подписи email",
+    "subtitle": "Редактируйте HTML-подпись и копируйте в Gmail"
+  },
+  "actions": {
+    "copy": "Копировать в буфер",
+    "copied": "Скопировано!",
+    "lightMode": "Светлый режим",
+    "darkMode": "Тёмный режим",
+    "layoutHorizontal": "Горизонтальная раскладка",
+    "layoutVertical": "Вертикальная раскладка",
+    "simple": "Простой",
+    "advanced": "Расширенный",
+    "switchToSimple": "Перейти в простой режим",
+    "switchToAdvanced": "Перейти в расширенный режим"
+  },
+  "simpleMode": {
+    "step": "Шаг {{current}} из {{total}}",
+    "next": "Далее",
+    "back": "Назад",
+    "review": "Просмотр",
+    "fieldHint": "Нажмите «Далее», чтобы продолжить. Изменить можно позже в расширенном режиме.",
+    "fieldHintDisclaimer": "Нажмите «Просмотр», чтобы увидеть и скопировать новую подпись.",
+    "reviewTitle": "Ваша подпись",
+    "reviewDescription": "Предпросмотр подписи и копирование для Gmail.",
+    "copyForGmail": "Копировать для Gmail",
+    "copyHtml": "Копировать HTML",
+    "editAgain": "Редактировать с начала",
+    "save": "Сохранить",
+    "saved": "Сохранено!",
+    "backToLibrary": "Библиотека",
+    "libraryTitle": "Ваши подписи",
+    "librarySubtitle": "Откройте сохранённую подпись или создайте новую.",
+    "createNew": "Создать новую подпись",
+    "noSaved": "Сохранённых подписей пока нет.",
+    "delete": "Удалить",
+    "untitled": "Подпись — {{date}}",
+    "chooseTemplate": "Выберите шаблон",
+    "chooseTemplateDescription": "Выберите макет подписи. Поля можно изменить на следующих шагах.",
+    "templateTapHint": "Нажмите, чтобы выбрать и продолжить"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Предпросмотр",
+    "template": "Шаблон",
+    "values": "Значения"
+  },
+  "fields": {
+    "name": "Имя",
+    "position": "Должность",
+    "company": "Компания",
+    "linkedinUrl": "URL LinkedIn",
+    "phone": "Телефон",
+    "email": "Email",
+    "website": "Веб-сайт",
+    "image": "URL изображения",
+    "disclaimer": "Дисклеймер (необязательно)",
+    "disclaimerPlaceholder": "Юридический или информационный текст под подписью. Переносы строк сохраняются."
+  }
+}

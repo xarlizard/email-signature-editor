@@ -1,0 +1,69 @@
+{
+  "language": "Sprache",
+  "nav": {
+    "home": "Startseite",
+    "signatures": "Signaturen",
+    "templates": "Vorlagen",
+    "login": "Anmelden",
+    "account": "Konto"
+  },
+  "app": {
+    "title": "E-Mail-Signatur-Editor",
+    "subtitle": "Bearbeiten Sie Ihre HTML-Signatur und kopieren Sie sie in Gmail"
+  },
+  "actions": {
+    "copy": "In Zwischenablage kopieren",
+    "copied": "Kopiert!",
+    "lightMode": "Hellmodus",
+    "darkMode": "Dunkelmodus",
+    "layoutHorizontal": "Horizontale Ansicht",
+    "layoutVertical": "Vertikale Ansicht",
+    "simple": "Einfach",
+    "advanced": "Erweitert",
+    "switchToSimple": "Zum einfachen Modus wechseln",
+    "switchToAdvanced": "Zum erweiterten Modus wechseln"
+  },
+  "simpleMode": {
+    "step": "Schritt {{current}} von {{total}}",
+    "next": "Weiter",
+    "back": "Zurück",
+    "review": "Überprüfen",
+    "fieldHint": "Mit Weiter fortfahren. Sie können dies später im erweiterten Modus ändern.",
+    "fieldHintDisclaimer": "Klicken Sie auf Überprüfen, um Ihre neue Signatur anzuzeigen und zu kopieren.",
+    "reviewTitle": "Ihre Signatur",
+    "reviewDescription": "Vorschau anzeigen und für Gmail kopieren.",
+    "copyForGmail": "Für Gmail kopieren",
+    "copyHtml": "HTML kopieren",
+    "editAgain": "Von vorne bearbeiten",
+    "save": "Speichern",
+    "saved": "Gespeichert!",
+    "backToLibrary": "Bibliothek",
+    "libraryTitle": "Ihre Signaturen",
+    "librarySubtitle": "Gespeicherte Signatur öffnen oder neue erstellen.",
+    "createNew": "Neue Signatur erstellen",
+    "noSaved": "Noch keine Signaturen gespeichert.",
+    "delete": "Löschen",
+    "untitled": "Signatur — {{date}}",
+    "chooseTemplate": "Vorlage wählen",
+    "chooseTemplateDescription": "Wählen Sie ein Layout für Ihre Signatur. Die Felder können Sie in den nächsten Schritten anpassen.",
+    "templateTapHint": "Klicken zum Auswählen und Fortfahren"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Vorschau",
+    "template": "Vorlage",
+    "values": "Werte"
+  },
+  "fields": {
+    "name": "Name",
+    "position": "Position",
+    "company": "Unternehmen",
+    "linkedinUrl": "LinkedIn-URL",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "website": "Webseite",
+    "image": "Bild-URL",
+    "disclaimer": "Haftungsausschluss (optional)",
+    "disclaimerPlaceholder": "Rechtlicher oder informativer Text unter Ihrer Signatur. Zeilenumbrüche bleiben erhalten."
+  }
+}

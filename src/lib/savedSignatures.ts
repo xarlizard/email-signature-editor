@@ -1,4 +1,4 @@
-import type { SignatureValues } from '@/types';
+import type { SignatureValues } from '@/types/types';
 
 const STORAGE_KEY = 'email-signature-saved-sigs';
 

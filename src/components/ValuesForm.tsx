@@ -3,7 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import type { SignatureValues } from '@/types';
+import type { SignatureValues } from '@/types/types';
 
 const fieldConfig = [
   { key: 'NAME' as const, labelKey: 'name' as const },

@@ -1,0 +1,69 @@
+{
+  "language": "Lingua",
+  "nav": {
+    "home": "Home",
+    "signatures": "Firme",
+    "templates": "Modelli",
+    "login": "Accedi",
+    "account": "Account"
+  },
+  "app": {
+    "title": "Editor firma email",
+    "subtitle": "Modifica la tua firma HTML e copiala in Gmail"
+  },
+  "actions": {
+    "copy": "Copia negli appunti",
+    "copied": "Copiato!",
+    "lightMode": "Modalità chiara",
+    "darkMode": "Modalità scura",
+    "layoutHorizontal": "Layout orizzontale",
+    "layoutVertical": "Layout verticale",
+    "simple": "Semplice",
+    "advanced": "Avanzato",
+    "switchToSimple": "Passa alla modalità semplice",
+    "switchToAdvanced": "Passa alla modalità avanzata"
+  },
+  "simpleMode": {
+    "step": "Passo {{current}} di {{total}}",
+    "next": "Avanti",
+    "back": "Indietro",
+    "review": "Rivedi",
+    "fieldHint": "Usa Avanti per continuare. Potrai modificare in seguito in modalità avanzata.",
+    "fieldHintDisclaimer": "Tocca Rivedi per vedere e copiare la tua nuova firma.",
+    "reviewTitle": "La tua firma",
+    "reviewDescription": "Anteprima della firma e copia per Gmail.",
+    "copyForGmail": "Copia per Gmail",
+    "copyHtml": "Copia HTML",
+    "editAgain": "Modifica dall'inizio",
+    "save": "Salva",
+    "saved": "Salvato!",
+    "backToLibrary": "Libreria",
+    "libraryTitle": "Le tue firme",
+    "librarySubtitle": "Apri una firma salvata o creane una nuova.",
+    "createNew": "Crea nuova firma",
+    "noSaved": "Nessuna firma salvata.",
+    "delete": "Elimina",
+    "untitled": "Firma — {{date}}",
+    "chooseTemplate": "Scegli un modello",
+    "chooseTemplateDescription": "Scegli un layout per la firma. Potrai modificare i campi nei passaggi successivi.",
+    "templateTapHint": "Clicca per selezionare e continuare"
+  },
+  "labels": {
+    "html": "HTML",
+    "preview": "Anteprima",
+    "template": "Modello",
+    "values": "Valori"
+  },
+  "fields": {
+    "name": "Nome",
+    "position": "Posizione",
+    "company": "Azienda",
+    "linkedinUrl": "URL LinkedIn",
+    "phone": "Telefono",
+    "email": "Email",
+    "website": "Sito web",
+    "image": "URL immagine",
+    "disclaimer": "Disclaimer (facoltativo)",
+    "disclaimerPlaceholder": "Testo legale o informativo sotto la firma. Le interruzioni di riga sono mantenute."
+  }
+}
