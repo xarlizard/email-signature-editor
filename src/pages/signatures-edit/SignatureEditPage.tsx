@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import { fieldsFromRows } from '@/lib/templateFields';
 import { SignatureWizard } from '@/pages/signatures-edit/components/SignatureWizard';
 import { useUserContext } from '@/contexts/UserContext';
 import {
@@ -9,10 +10,12 @@ import {
 export default function SignatureEditPage() {
   const {
     applyTemplateWithDefaults,
+    selectedTemplate,
     resolvedHtml,
     saveSignature,
     saveSuccess,
     selectedTemplateId,
+    templates,
     setSimpleStep,
     simpleStep,
     updateValue,
@@ -36,9 +39,12 @@ export default function SignatureEditPage() {
     markCopied('preview');
   }, [markCopied, resolvedHtml]);
 
+  const reviewStep = fieldsFromRows(selectedTemplate.rows).length + 1;
+  const effectiveStep = Math.min(simpleStep, reviewStep);
+
   return (
     <SignatureWizard
-      step={simpleStep}
+      step={effectiveStep}
       onStepChange={setSimpleStep}
       values={values}
       onUpdate={updateValue}
@@ -51,6 +57,8 @@ export default function SignatureEditPage() {
       onIframeLoad={() => {}}
       onSave={saveSignature}
       saveSuccess={saveSuccess}
+      templates={templates}
+      selectedTemplate={selectedTemplate}
       selectedTemplateId={selectedTemplateId}
       onTemplateApply={applyTemplateWithDefaults}
     />

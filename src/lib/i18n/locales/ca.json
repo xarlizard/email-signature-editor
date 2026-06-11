@@ -23,7 +23,7 @@
     "switchToSimple": "Canvia al mode simple",
     "switchToAdvanced": "Canvia al mode avançat"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "Pas {{current}} de {{total}}",
     "next": "Següent",
     "back": "Enrere",
@@ -47,6 +47,12 @@
     "chooseTemplate": "Trieu una plantilla",
     "chooseTemplateDescription": "Trieu un disseny per a la signatura. Podreu editar els camps en els passos següents.",
     "templateTapHint": "Premeu per seleccionar i continuar"
+  },
+  "templates": {
+    "libraryTitle": "Les vostres plantilles",
+    "librarySubtitle": "Obriu una plantilla desada o creeu-ne una de nova.",
+    "noSaved": "Encara no hi ha plantilles desades.",
+    "delete": "Suprimir"
   },
   "labels": {
     "html": "HTML",

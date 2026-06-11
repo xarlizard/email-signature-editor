@@ -23,7 +23,7 @@
     "switchToSimple": "切换到简单模式",
     "switchToAdvanced": "切换到高级模式"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "第 {{current}} 步，共 {{total}} 步",
     "next": "下一步",
     "back": "返回",
@@ -47,6 +47,12 @@
     "chooseTemplate": "选择模板",
     "chooseTemplateDescription": "为签名选择版式。可在后续步骤中编辑各字段。",
     "templateTapHint": "点击选择并继续"
+  },
+  "templates": {
+    "libraryTitle": "您的模板",
+    "librarySubtitle": "打开已保存的模板或新建一个。",
+    "noSaved": "暂无已保存的模板。",
+    "delete": "删除"
   },
   "labels": {
     "html": "HTML",

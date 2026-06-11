@@ -23,7 +23,7 @@
     "switchToSimple": "Schakel naar eenvoudige modus",
     "switchToAdvanced": "Schakel naar geavanceerde modus"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "Stap {{current}} van {{total}}",
     "next": "Volgende",
     "back": "Terug",
@@ -47,6 +47,12 @@
     "chooseTemplate": "Kies een sjabloon",
     "chooseTemplateDescription": "Kies een lay-out voor uw handtekening. U kunt de velden in de volgende stappen aanpassen.",
     "templateTapHint": "Klik om te selecteren en door te gaan"
+  },
+  "templates": {
+    "libraryTitle": "Uw sjablonen",
+    "librarySubtitle": "Open een opgeslagen sjabloon of maak een nieuwe.",
+    "noSaved": "Nog geen opgeslagen sjablonen.",
+    "delete": "Verwijderen"
   },
   "labels": {
     "html": "HTML",

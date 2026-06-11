@@ -23,7 +23,7 @@
     "switchToSimple": "Passer en mode simple",
     "switchToAdvanced": "Passer en mode avancé"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "Étape {{current}} sur {{total}}",
     "next": "Suivant",
     "back": "Retour",
@@ -47,6 +47,12 @@
     "chooseTemplate": "Choisir un modèle",
     "chooseTemplateDescription": "Choisissez une mise en page pour votre signature. Vous pourrez modifier les champs aux étapes suivantes.",
     "templateTapHint": "Cliquez pour sélectionner et continuer"
+  },
+  "templates": {
+    "libraryTitle": "Vos modèles",
+    "librarySubtitle": "Ouvrez un modèle enregistré ou créez-en un nouveau.",
+    "noSaved": "Aucun modèle enregistré pour le moment.",
+    "delete": "Supprimer"
   },
   "labels": {
     "html": "HTML",

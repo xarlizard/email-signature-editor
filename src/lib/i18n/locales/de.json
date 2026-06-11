@@ -23,7 +23,7 @@
     "switchToSimple": "Zum einfachen Modus wechseln",
     "switchToAdvanced": "Zum erweiterten Modus wechseln"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "Schritt {{current}} von {{total}}",
     "next": "Weiter",
     "back": "Zurück",
@@ -47,6 +47,12 @@
     "chooseTemplate": "Vorlage wählen",
     "chooseTemplateDescription": "Wählen Sie ein Layout für Ihre Signatur. Die Felder können Sie in den nächsten Schritten anpassen.",
     "templateTapHint": "Klicken zum Auswählen und Fortfahren"
+  },
+  "templates": {
+    "libraryTitle": "Ihre Vorlagen",
+    "librarySubtitle": "Öffnen Sie eine gespeicherte Vorlage oder erstellen Sie eine neue.",
+    "noSaved": "Noch keine Vorlagen gespeichert.",
+    "delete": "Löschen"
   },
   "labels": {
     "html": "HTML",

@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Card, CardContent } from '@/components/ui/card';
-import { TEMPLATES, resolveTemplate } from '@/lib/templates';
+import { resolveTemplateFromSchema } from '@/lib/templates';
 import { DEFAULT_SIGNATURE_VALUES } from '@/types/types';
+import type { NewTemplate } from '@/types/types';
 import {
   SIGNATURE_PREVIEW_DOC_PREFIX,
   SIGNATURE_PREVIEW_DOC_SUFFIX,
@@ -26,11 +27,13 @@ function TemplatePreviewFrame({ html }: { html: string }) {
 }
 
 interface TemplatePickerGridProps {
+  templates: NewTemplate[];
   selectedTemplateId: string;
   onSelectTemplate: (templateId: string) => void;
 }
 
 export function TemplatePickerGrid({
+  templates,
   selectedTemplateId,
   onSelectTemplate,
 }: TemplatePickerGridProps) {
@@ -38,12 +41,8 @@ export function TemplatePickerGrid({
 
   return (
     <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
-      {TEMPLATES.map((template) => {
-        const previewValues = {
-          ...DEFAULT_SIGNATURE_VALUES,
-          ...template.defaultValues,
-        };
-        const html = resolveTemplate(template.html, previewValues);
+      {templates.map((template) => {
+        const html = resolveTemplateFromSchema(template, DEFAULT_SIGNATURE_VALUES);
         const isSelected = template.id === selectedTemplateId;
         return (
           <li key={template.id} className="min-w-0">
@@ -67,7 +66,7 @@ export function TemplatePickerGrid({
               <CardContent className="p-2.5 sm:p-3">
                 <p className="text-sm font-medium leading-tight">{template.name}</p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  {t('simpleMode.templateTapHint')}
+                  {t('signatures.templateTapHint')}
                 </p>
               </CardContent>
             </Card>

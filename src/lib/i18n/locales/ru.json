@@ -23,7 +23,7 @@
     "switchToSimple": "Перейти в простой режим",
     "switchToAdvanced": "Перейти в расширенный режим"
   },
-  "simpleMode": {
+  "signatures": {
     "step": "Шаг {{current}} из {{total}}",
     "next": "Далее",
     "back": "Назад",
@@ -47,6 +47,12 @@
     "chooseTemplate": "Выберите шаблон",
     "chooseTemplateDescription": "Выберите макет подписи. Поля можно изменить на следующих шагах.",
     "templateTapHint": "Нажмите, чтобы выбрать и продолжить"
+  },
+  "templates": {
+    "libraryTitle": "Ваши шаблоны",
+    "librarySubtitle": "Откройте сохранённый шаблон или создайте новый.",
+    "noSaved": "Сохранённых шаблонов пока нет.",
+    "delete": "Удалить"
   },
   "labels": {
     "html": "HTML",

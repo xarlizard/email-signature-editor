@@ -1,3 +1,4 @@
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Copy, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,7 +8,6 @@ interface PreviewPanelProps {
   onCopy: () => void;
   copied: boolean;
   iframeRef: React.RefObject<HTMLIFrameElement | null>;
-  onIframeLoad: () => void;
 }
 
 export function PreviewPanel({
@@ -15,12 +15,28 @@ export function PreviewPanel({
   onCopy,
   copied,
   iframeRef,
-  onIframeLoad,
 }: PreviewPanelProps) {
   const { t } = useTranslation();
 
+  const autoResize = useCallback(() => {
+    const iframe = iframeRef.current;
+    if (!iframe?.contentDocument?.body) return;
+    try {
+      const doc = iframe.contentDocument;
+      const height = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+      iframe.style.height = `${height}px`;
+    } catch {
+      // cross-origin safety
+    }
+  }, [iframeRef]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(autoResize, 50);
+    return () => window.clearTimeout(timer);
+  }, [resolvedHtml, autoResize]);
+
   return (
-    <div className="flex h-full min-h-96 flex-col overflow-hidden">
+    <div className="flex flex-col">
       <div className="panel-header panel-header-preview flex shrink-0 items-center justify-between gap-2 px-3">
         <div className="flex items-center gap-2">
           <Eye className="size-3.5 text-muted-foreground" />
@@ -38,12 +54,12 @@ export function PreviewPanel({
           {copied ? t('actions.copied') : t('actions.copy')}
         </Button>
       </div>
-      <div className="min-h-0 flex-1 overflow-auto overscroll-contain preview-display">
+      <div className="overflow-hidden">
         <iframe
           ref={iframeRef}
           title="Signature preview"
-          className="block min-h-full w-full border-0"
-          onLoad={onIframeLoad}
+          className="block w-full border-0"
+          onLoad={autoResize}
           srcDoc={
             '<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{margin:0;padding:16px;font-family:Arial,sans-serif;}</style></head><body>' +
             resolvedHtml +

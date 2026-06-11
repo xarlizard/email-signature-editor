@@ -3,6 +3,7 @@ import Editor from '@monaco-editor/react';
 import { Copy, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useUserContext } from '@/contexts/UserContext';
+import { normalizeBuilderVariablesToLegacy } from '@/lib/templates/builder';
 
 interface HtmlPanelProps {
   value: string;
@@ -16,7 +17,7 @@ export function HtmlPanel({ value, onChange, onCopy, copied }: HtmlPanelProps) {
   const { darkMode } = useUserContext();
 
   return (
-    <div className="flex h-full min-h-96 flex-col overflow-hidden">
+    <div className="flex min-h-[30rem] flex-1 flex-col overflow-hidden">
       <div className="panel-header panel-header-html flex shrink-0 items-center justify-between gap-2 px-3">
         <div className="flex items-center gap-2">
           <Code2 className="size-3.5 text-muted-foreground" />
@@ -40,7 +41,7 @@ export function HtmlPanel({ value, onChange, onCopy, copied }: HtmlPanelProps) {
           height="100%"
           defaultLanguage="html"
           value={value}
-          onChange={(newValue) => onChange(newValue || '')}
+          onChange={(newValue) => onChange(normalizeBuilderVariablesToLegacy(newValue || ''))}
           options={{
             minimap: { enabled: false },
             fontSize: 13,

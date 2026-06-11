@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router';
-import { SIMPLE_REVIEW_STEP } from '@/pages/signatures-edit/components/SignatureWizard';
-import { SimpleModeLibrary } from '@/pages/signatures/components/SimpleModeLibrary';
+import { PageContent } from '@/pages/signatures/components/PageContent';
 import { useUserContext } from '@/contexts/UserContext';
 
 export default function SignaturesPage() {
@@ -16,14 +15,14 @@ export default function SignaturesPage() {
 
   const handleOpenSaved = useCallback(
     (id: string) => {
-      if (!openSavedSession(id, SIMPLE_REVIEW_STEP)) return;
+      if (!openSavedSession(id, 999)) return;
       navigate("/signatures/edit");
     },
     [navigate, openSavedSession]
   );
 
   return (
-    <SimpleModeLibrary
+    <PageContent
       items={savedLibrary}
       onCreateNew={handleCreateNew}
       onOpenSaved={handleOpenSaved}
