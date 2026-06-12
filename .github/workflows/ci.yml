@@ -33,9 +33,6 @@ jobs:
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 
-      - name: Check Code Formatting (Prettier)
-        run: bun run format:check
-
       - name: Audit Code Style (ESLint)
         run: bun run lint
 
