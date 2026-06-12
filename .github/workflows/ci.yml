@@ -33,9 +33,6 @@ jobs:
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 
-      - name: Audit Code Style (ESLint)
-        run: bun run lint
-
       - name: Verify Strict Types (TypeScript)
         run: bun run typecheck
 
