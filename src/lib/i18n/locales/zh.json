@@ -11,6 +11,71 @@
     "title": "Email 签名编辑器",
     "subtitle": "编辑您的 HTML 签名并复制到 Gmail"
   },
+  "home": {
+    "createSignature": "创建签名",
+    "browseTemplates": "浏览模板",
+    "howItWorksTitle": "使用方式",
+    "howItWorksSubtitle": "几分钟内从零开始制作专业、可直接用于 Gmail 的签名——无需设计工具。",
+    "steps": {
+      "items": [
+        {
+          "title": "选择模板",
+          "description": "从现代、简约或紧凑版式开始，或打开模板编辑器创建自己的模板。"
+        },
+        {
+          "title": "填写信息",
+          "description": "填写姓名、职位、公司、链接和图片。输入时预览会实时更新。"
+        },
+        {
+          "title": "复制到 Gmail",
+          "description": "复制适用于 Gmail 的富文本 HTML 或原始 HTML 代码，然后粘贴到签名设置中。"
+        }
+      ]
+    },
+    "featuresTitle": "您所需的一切",
+    "featuresSubtitle": "专注于专业邮件签名的编辑器——模板、预览和复制工具集于一处。",
+    "features": {
+      "items": [
+        {
+          "title": "模板库",
+          "description": "内置版式以及可随时复制和完善的已保存自定义模板。"
+        },
+        {
+          "title": "引导式签名流程",
+          "description": "分步向导：选择模板、填写字段、复制前预览确认。"
+        },
+        {
+          "title": "实时预览",
+          "description": "粘贴到收件箱前，即可看到签名的实际效果。"
+        },
+        {
+          "title": "HTML 编辑器",
+          "description": "打开模板编辑器，完全控制标记、行和每个字段的样式。"
+        },
+        {
+          "title": "Gmail 就绪复制",
+          "description": "复制适用于 Gmail 的格式化 HTML，或其他客户端的 HTML 片段。"
+        },
+        {
+          "title": "在浏览器中运行",
+          "description": "签名和模板保存在您的设备上。支持九种语言及浅色或深色主题。"
+        }
+      ]
+    },
+    "templatesTitle": "从成熟版式开始",
+    "templatesSubtitle": "应用内置三个默认模板。可自定义任意模板或保存自己的模板。",
+    "templateDescriptions": {
+      "default": "均衡版式，姓名加粗并含联系信息行——适合大多数团队。",
+      "minimal": "简洁衬线字体与紧凑联系信息块。",
+      "compact": "单块密集版式，在最小空间内展示最多信息。"
+    },
+    "ctaTitle": "准备好升级您的收件箱了吗？",
+    "ctaSubtitle": "立即创建第一个签名。无需账户——一切都在浏览器本地运行。",
+    "showcaseAriaLabel": "滚动展示的签名示例",
+    "showcaseModernAriaLabel": "现代模板签名示例",
+    "showcaseCompactAriaLabel": "紧凑模板签名示例",
+    "featuresAriaLabel": "产品功能"
+  },
   "actions": {
     "copy": "复制到剪贴板",
     "copied": "已复制！",
@@ -52,7 +117,79 @@
     "libraryTitle": "您的模板",
     "librarySubtitle": "打开已保存的模板或新建一个。",
     "noSaved": "暂无已保存的模板。",
-    "delete": "删除"
+    "delete": "删除",
+    "untitled": "未命名模板",
+    "builtin": "内置模板",
+    "duplicate": "复制",
+    "defaultSection": "默认模板",
+    "savedSection": "已保存模板"
+  },
+  "templateEditor": {
+    "title": "模板编辑器",
+    "subtitle": "编辑模板名称、图片、文本和行。",
+    "save": "保存",
+    "untitled": "未命名模板",
+    "sections": {
+      "attributes": "模板属性",
+      "rows": "模板行"
+    },
+    "templateName": "模板名称",
+    "imageUrl": "图片链接",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "图片位置",
+    "imageSize": "图片大小",
+    "imageShape": "图片形状",
+    "textFont": "文本字体",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "文本颜色",
+    "textColorPlaceholder": "#222222",
+    "textSize": "文本大小",
+    "textStyle": "文本样式",
+    "templateRows": "模板行",
+    "addRow": "添加行",
+    "rowLabel": "第 {{number}} 行",
+    "addField": "添加字段",
+    "deleteRow": "删除行",
+    "removeField": "移除字段",
+    "fieldStyle": "字段样式",
+    "fieldStyleHint": "覆盖此字段的模板默认文本样式。",
+    "resetToDefault": "恢复默认",
+    "field": "字段",
+    "font": "字体",
+    "color": "颜色",
+    "default": "默认",
+    "previewTitle": "签名预览",
+    "placement": {
+      "left": "左侧",
+      "right": "右侧",
+      "top": "顶部"
+    },
+    "size": {
+      "xs": "特小",
+      "sm": "小",
+      "md": "中",
+      "lg": "大"
+    },
+    "shape": {
+      "rounded": "圆角",
+      "circle": "圆形",
+      "square": "方形"
+    },
+    "textShape": {
+      "normal": "常规",
+      "bold": "粗体",
+      "italic": "斜体"
+    },
+    "builderFields": {
+      "text": "免责声明",
+      "name": "姓名",
+      "company": "公司",
+      "role": "职位",
+      "phone": "电话",
+      "email": "邮箱",
+      "link": "网站",
+      "socials": "社交链接"
+    }
   },
   "labels": {
     "html": "HTML",

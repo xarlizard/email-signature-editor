@@ -1,6 +1,7 @@
 import type {
   SignatureValues,
   TemplateBuilderField,
+  TemplateRows,
 } from '@/types/types';
 
 export const FIELD_TO_SIGNATURE_KEY: Record<
@@ -29,8 +30,8 @@ export const SIGNATURE_KEY_TO_LABEL: Record<keyof SignatureValues, string> = {
   DISCLAIMER: 'disclaimer',
 };
 
-export function fieldsFromRows(rows: TemplateBuilderField[][]): (keyof SignatureValues)[] {
-  const keys = rows.flat().map((field) => FIELD_TO_SIGNATURE_KEY[field]);
+export function fieldsFromRows(rows: TemplateRows): (keyof SignatureValues)[] {
+  const keys = rows.flat().map((field) => FIELD_TO_SIGNATURE_KEY[field.label]);
   const unique = Array.from(new Set(keys));
   return unique;
 }

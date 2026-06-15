@@ -17,7 +17,7 @@ export function HtmlPanel({ value, onChange, onCopy, copied }: HtmlPanelProps) {
   const { darkMode } = useUserContext();
 
   return (
-    <div className="flex min-h-[30rem] flex-1 flex-col overflow-hidden">
+    <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden">
       <div className="panel-header panel-header-html flex shrink-0 items-center justify-between gap-2 px-3">
         <div className="flex items-center gap-2">
           <Code2 className="size-3.5 text-muted-foreground" />
@@ -35,9 +35,9 @@ export function HtmlPanel({ value, onChange, onCopy, copied }: HtmlPanelProps) {
           {copied ? t('actions.copied') : t('actions.copy')}
         </Button>
       </div>
-      <div className="editor-panel min-h-0 flex-1">
+      <div className="editor-panel relative min-h-0 flex-1">
         <Editor
-          theme={darkMode ? "vs-dark" : "vs-light"}
+          theme={darkMode ? 'vs-dark' : 'vs-light'}
           height="100%"
           defaultLanguage="html"
           value={value}

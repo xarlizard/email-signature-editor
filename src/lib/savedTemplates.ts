@@ -1,4 +1,11 @@
-import type { NewTemplate } from '@/types/types';
+import {
+  DEFAULT_NEW_TEMPLATE,
+  type NewTemplate,
+} from '@/types/types';
+import {
+  normalizeTemplateRows,
+  normalizeTemplateTextConfig,
+} from '@/lib/templateRows';
 
 const STORAGE_KEY = 'email-signature-saved-templates';
 
@@ -6,20 +13,34 @@ export interface SavedTemplate extends NewTemplate {
   createdAt: number;
 }
 
+function normalizeSavedTemplate(item: SavedTemplate): SavedTemplate {
+  const text = normalizeTemplateTextConfig(item.config?.text, DEFAULT_NEW_TEMPLATE.config.text);
+  return {
+    ...item,
+    config: {
+      ...item.config,
+      text,
+    },
+    rows: normalizeTemplateRows(item.rows, text),
+  };
+}
+
 function parseStored(raw: string | null): SavedTemplate[] {
   if (!raw) return [];
   try {
     const data = JSON.parse(raw) as unknown;
     if (!Array.isArray(data)) return [];
-    return data.filter(
-      (item): item is SavedTemplate =>
-        typeof item === 'object' &&
-        item !== null &&
-        typeof (item as SavedTemplate).id === 'string' &&
-        typeof (item as SavedTemplate).name === 'string' &&
-        Array.isArray((item as SavedTemplate).rows) &&
-        typeof (item as SavedTemplate).createdAt === 'number'
-    );
+    return data
+      .filter(
+        (item): item is SavedTemplate =>
+          typeof item === 'object' &&
+          item !== null &&
+          typeof (item as SavedTemplate).id === 'string' &&
+          typeof (item as SavedTemplate).name === 'string' &&
+          Array.isArray((item as SavedTemplate).rows) &&
+          typeof (item as SavedTemplate).createdAt === 'number'
+      )
+      .map(normalizeSavedTemplate);
   } catch {
     return [];
   }

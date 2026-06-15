@@ -11,6 +11,71 @@
     "title": "E-mailhandtekening-editor",
     "subtitle": "Bewerk uw HTML-handtekening en kopieer deze naar Gmail"
   },
+  "home": {
+    "createSignature": "Handtekening maken",
+    "browseTemplates": "Sjablonen bekijken",
+    "howItWorksTitle": "Hoe het werkt",
+    "howItWorksSubtitle": "Van nul naar een professionele Gmail-klare handtekening in minuten — zonder designtools.",
+    "steps": {
+      "items": [
+        {
+          "title": "Kies een sjabloon",
+          "description": "Begin met Modern, Minimal of Compact — of open de sjablooneditor om uw eigen sjabloon te bouwen."
+        },
+        {
+          "title": "Vul uw gegevens in",
+          "description": "Vul naam, functie, bedrijf, links en afbeelding in. Het voorbeeld wordt live bijgewerkt terwijl u typt."
+        },
+        {
+          "title": "Kopieer naar Gmail",
+          "description": "Kopieer rich HTML voor Gmail of de ruwe HTML-string en plak deze in uw handtekeninginstellingen."
+        }
+      ]
+    },
+    "featuresTitle": "Alles wat u nodig heeft",
+    "featuresSubtitle": "Een gerichte editor voor professionele e-mailhandtekeningen — sjablonen, voorbeeld en kopieertools op één plek.",
+    "features": {
+      "items": [
+        {
+          "title": "Sjabloonbibliotheek",
+          "description": "Ingebouwde lay-outs plus opgeslagen aangepaste sjablonen die u altijd kunt dupliceren en verfijnen."
+        },
+        {
+          "title": "Begeleide handtekeningflow",
+          "description": "Stapsgewijze wizard om een sjabloon te kiezen, velden in te vullen en te controleren voor het kopiëren."
+        },
+        {
+          "title": "Live voorbeeld",
+          "description": "Zie precies hoe uw handtekening eruitziet voordat u deze in uw inbox plakt."
+        },
+        {
+          "title": "HTML-editor",
+          "description": "Open de sjablooneditor voor volledige controle over markup, rijen en stijl per veld."
+        },
+        {
+          "title": "Gmail-klare kopie",
+          "description": "Kopieer opgemaakte HTML voor Gmail of een HTML-fragment voor andere clients."
+        },
+        {
+          "title": "Werkt in uw browser",
+          "description": "Handtekeningen en sjablonen blijven op uw apparaat. Negen talen en licht of donker thema."
+        }
+      ]
+    },
+    "templatesTitle": "Begin met een beproefde lay-out",
+    "templatesSubtitle": "Drie standaardsjablonen worden meegeleverd. Pas er een aan of sla uw eigen op.",
+    "templateDescriptions": {
+      "default": "Evenwichtige lay-out met vetgedrukte naam en contactrij — ideaal voor de meeste teams.",
+      "minimal": "Strakke serif-typografie met compact contactblok.",
+      "compact": "Compacte enkelbloklay-out wanneer u maximale informatie op minimale ruimte nodig heeft."
+    },
+    "ctaTitle": "Klaar om uw inbox te upgraden?",
+    "ctaSubtitle": "Maak nu uw eerste handtekening. Geen account nodig — alles draait lokaal in uw browser.",
+    "showcaseAriaLabel": "Scrollende handtekeningvoorbeelden",
+    "showcaseModernAriaLabel": "Handtekeningvoorbeelden met Modern-sjabloon",
+    "showcaseCompactAriaLabel": "Handtekeningvoorbeelden met Compact-sjabloon",
+    "featuresAriaLabel": "Productfuncties"
+  },
   "actions": {
     "copy": "Kopiëren naar klembord",
     "copied": "Gekopieerd!",
@@ -52,7 +117,79 @@
     "libraryTitle": "Uw sjablonen",
     "librarySubtitle": "Open een opgeslagen sjabloon of maak een nieuwe.",
     "noSaved": "Nog geen opgeslagen sjablonen.",
-    "delete": "Verwijderen"
+    "delete": "Verwijderen",
+    "untitled": "Naamloos sjabloon",
+    "builtin": "Ingebouwd sjabloon",
+    "duplicate": "Dupliceren",
+    "defaultSection": "Standaardsjablonen",
+    "savedSection": "Opgeslagen sjablonen"
+  },
+  "templateEditor": {
+    "title": "Sjablooneditor",
+    "subtitle": "Bewerk sjabloonnaam, afbeelding, tekst en rijen.",
+    "save": "Opslaan",
+    "untitled": "Naamloos sjabloon",
+    "sections": {
+      "attributes": "Sjabloonattributen",
+      "rows": "Sjabloonrijen"
+    },
+    "templateName": "Sjabloonnaam",
+    "imageUrl": "Afbeelding-URL",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Afbeeldingspositie",
+    "imageSize": "Afbeeldingsgrootte",
+    "imageShape": "Afbeeldingsvorm",
+    "textFont": "Tekstlettertype",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Tekstkleur",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Tekstgrootte",
+    "textStyle": "Tekststijl",
+    "templateRows": "Sjabloonrijen",
+    "addRow": "Rij toevoegen",
+    "rowLabel": "Rij {{number}}",
+    "addField": "Veld toevoegen",
+    "deleteRow": "Rij verwijderen",
+    "removeField": "Veld verwijderen",
+    "fieldStyle": "Veldstijl",
+    "fieldStyleHint": "Overschrijft de standaardtekststijl van het sjabloon voor dit veld.",
+    "resetToDefault": "Standaard herstellen",
+    "field": "Veld",
+    "font": "Lettertype",
+    "color": "Kleur",
+    "default": "Standaard",
+    "previewTitle": "Handtekeningvoorbeeld",
+    "placement": {
+      "left": "Links",
+      "right": "Rechts",
+      "top": "Boven"
+    },
+    "size": {
+      "xs": "Extra klein",
+      "sm": "Klein",
+      "md": "Middel",
+      "lg": "Groot"
+    },
+    "shape": {
+      "rounded": "Afgerond",
+      "circle": "Cirkel",
+      "square": "Vierkant"
+    },
+    "textShape": {
+      "normal": "Normaal",
+      "bold": "Vet",
+      "italic": "Cursief"
+    },
+    "builderFields": {
+      "text": "Disclaimer",
+      "name": "Naam",
+      "company": "Bedrijf",
+      "role": "Functie",
+      "phone": "Telefoon",
+      "email": "E-mail",
+      "link": "Website",
+      "socials": "Sociale links"
+    }
   },
   "labels": {
     "html": "HTML",

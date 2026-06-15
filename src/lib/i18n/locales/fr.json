@@ -11,6 +11,71 @@
     "title": "Éditeur de signature email",
     "subtitle": "Modifiez votre signature HTML et copiez-la dans Gmail"
   },
+  "home": {
+    "createSignature": "Créer une signature",
+    "browseTemplates": "Parcourir les modèles",
+    "howItWorksTitle": "Comment ça marche",
+    "howItWorksSubtitle": "Passez de zéro à une signature professionnelle prête pour Gmail en quelques minutes — sans outil de design.",
+    "steps": {
+      "items": [
+        {
+          "title": "Choisissez un modèle",
+          "description": "Commencez avec les mises en page Moderne, Minimal ou Compact — ou ouvrez l'éditeur de modèles pour créer le vôtre."
+        },
+        {
+          "title": "Ajoutez vos informations",
+          "description": "Renseignez nom, poste, entreprise, liens et image. L'aperçu se met à jour en direct pendant la saisie."
+        },
+        {
+          "title": "Copiez dans Gmail",
+          "description": "Copiez le HTML enrichi pour Gmail ou le code HTML brut, puis collez-le dans les paramètres de signature."
+        }
+      ]
+    },
+    "featuresTitle": "Tout ce dont vous avez besoin",
+    "featuresSubtitle": "Un éditeur dédié aux signatures email professionnelles — modèles, aperçu et outils de copie au même endroit.",
+    "features": {
+      "items": [
+        {
+          "title": "Bibliothèque de modèles",
+          "description": "Mises en page intégrées et modèles personnalisés enregistrés que vous pouvez dupliquer et affiner à tout moment."
+        },
+        {
+          "title": "Parcours guidé de signature",
+          "description": "Assistant pas à pas pour choisir un modèle, remplir les champs et vérifier avant de copier."
+        },
+        {
+          "title": "Aperçu en direct",
+          "description": "Voyez exactement à quoi ressemblera votre signature avant de la coller dans votre boîte de réception."
+        },
+        {
+          "title": "Éditeur HTML",
+          "description": "Ouvrez l'éditeur de modèles pour un contrôle total du balisage, des lignes et du style par champ."
+        },
+        {
+          "title": "Copie prête pour Gmail",
+          "description": "Copiez le HTML formaté pour Gmail ou un extrait HTML pour d'autres clients."
+        },
+        {
+          "title": "Fonctionne dans votre navigateur",
+          "description": "Signatures et modèles restent sur votre appareil. Neuf langues et thème clair ou sombre."
+        }
+      ]
+    },
+    "templatesTitle": "Commencez avec une mise en page éprouvée",
+    "templatesSubtitle": "Trois modèles par défaut sont fournis avec l'application. Personnalisez-en un ou enregistrez le vôtre.",
+    "templateDescriptions": {
+      "default": "Mise en page équilibrée avec nom en gras et ligne de contact — idéale pour la plupart des équipes.",
+      "minimal": "Typographie serif épurée avec un bloc de contact compact.",
+      "compact": "Mise en page dense en un seul bloc lorsque vous avez besoin du maximum d'informations dans un minimum d'espace."
+    },
+    "ctaTitle": "Prêt à améliorer votre boîte de réception ?",
+    "ctaSubtitle": "Créez votre première signature maintenant. Aucun compte requis — tout fonctionne localement dans votre navigateur.",
+    "showcaseAriaLabel": "Exemples de signatures défilants",
+    "showcaseModernAriaLabel": "Exemples de signatures avec modèle Moderne",
+    "showcaseCompactAriaLabel": "Exemples de signatures avec modèle Compact",
+    "featuresAriaLabel": "Fonctionnalités du produit"
+  },
   "actions": {
     "copy": "Copier dans le presse-papiers",
     "copied": "Copié !",
@@ -52,7 +117,79 @@
     "libraryTitle": "Vos modèles",
     "librarySubtitle": "Ouvrez un modèle enregistré ou créez-en un nouveau.",
     "noSaved": "Aucun modèle enregistré pour le moment.",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "untitled": "Modèle sans titre",
+    "builtin": "Modèle intégré",
+    "duplicate": "Dupliquer",
+    "defaultSection": "Modèles par défaut",
+    "savedSection": "Modèles enregistrés"
+  },
+  "templateEditor": {
+    "title": "Éditeur de modèles",
+    "subtitle": "Modifiez le nom, l'image, le texte et les lignes du modèle.",
+    "save": "Enregistrer",
+    "untitled": "Modèle sans titre",
+    "sections": {
+      "attributes": "Attributs du modèle",
+      "rows": "Lignes du modèle"
+    },
+    "templateName": "Nom du modèle",
+    "imageUrl": "URL de l'image",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Position de l'image",
+    "imageSize": "Taille de l'image",
+    "imageShape": "Forme de l'image",
+    "textFont": "Police du texte",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Couleur du texte",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Taille du texte",
+    "textStyle": "Style du texte",
+    "templateRows": "Lignes du modèle",
+    "addRow": "Ajouter une ligne",
+    "rowLabel": "Ligne {{number}}",
+    "addField": "Ajouter un champ",
+    "deleteRow": "Supprimer la ligne",
+    "removeField": "Retirer le champ",
+    "fieldStyle": "Style du champ",
+    "fieldStyleHint": "Remplace le style de texte par défaut du modèle pour ce champ.",
+    "resetToDefault": "Réinitialiser par défaut",
+    "field": "Champ",
+    "font": "Police",
+    "color": "Couleur",
+    "default": "Par défaut",
+    "previewTitle": "Aperçu de la signature",
+    "placement": {
+      "left": "Gauche",
+      "right": "Droite",
+      "top": "Haut"
+    },
+    "size": {
+      "xs": "Très petit",
+      "sm": "Petit",
+      "md": "Moyen",
+      "lg": "Grand"
+    },
+    "shape": {
+      "rounded": "Arrondi",
+      "circle": "Cercle",
+      "square": "Carré"
+    },
+    "textShape": {
+      "normal": "Normal",
+      "bold": "Gras",
+      "italic": "Italique"
+    },
+    "builderFields": {
+      "text": "Mention légale",
+      "name": "Nom",
+      "company": "Entreprise",
+      "role": "Poste",
+      "phone": "Téléphone",
+      "email": "Email",
+      "link": "Site web",
+      "socials": "Réseaux sociaux"
+    }
   },
   "labels": {
     "html": "HTML",

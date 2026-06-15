@@ -11,6 +11,71 @@
     "title": "Editor firma email",
     "subtitle": "Modifica la tua firma HTML e copiala in Gmail"
   },
+  "home": {
+    "createSignature": "Crea firma",
+    "browseTemplates": "Sfoglia modelli",
+    "howItWorksTitle": "Come funziona",
+    "howItWorksSubtitle": "Da zero a una firma professionale pronta per Gmail in pochi minuti — senza strumenti di design.",
+    "steps": {
+      "items": [
+        {
+          "title": "Scegli un modello",
+          "description": "Inizia con i layout Moderno, Minimal o Compatto — oppure apri l'editor modelli per crearne uno tuo."
+        },
+        {
+          "title": "Aggiungi i tuoi dati",
+          "description": "Compila nome, ruolo, azienda, link e immagine. L'anteprima si aggiorna in tempo reale mentre digiti."
+        },
+        {
+          "title": "Copia in Gmail",
+          "description": "Copia l'HTML arricchito per Gmail o il codice HTML grezzo, poi incollalo nelle impostazioni della firma."
+        }
+      ]
+    },
+    "featuresTitle": "Tutto ciò che ti serve",
+    "featuresSubtitle": "Un editor dedicato alle firme email professionali — modelli, anteprima e strumenti di copia in un unico posto.",
+    "features": {
+      "items": [
+        {
+          "title": "Libreria di modelli",
+          "description": "Layout integrati e modelli personalizzati salvati che puoi duplicare e perfezionare in qualsiasi momento."
+        },
+        {
+          "title": "Flusso guidato per la firma",
+          "description": "Procedura guidata passo passo per scegliere un modello, compilare i campi e rivedere prima di copiare."
+        },
+        {
+          "title": "Anteprima live",
+          "description": "Vedi esattamente come apparirà la tua firma prima di incollarla nella posta in arrivo."
+        },
+        {
+          "title": "Editor HTML",
+          "description": "Apri l'editor modelli per il controllo completo di markup, righe e stile per campo."
+        },
+        {
+          "title": "Copia pronta per Gmail",
+          "description": "Copia HTML formattato per Gmail o un frammento HTML per altri client."
+        },
+        {
+          "title": "Funziona nel tuo browser",
+          "description": "Firme e modelli restano sul tuo dispositivo. Nove lingue e tema chiaro o scuro."
+        }
+      ]
+    },
+    "templatesTitle": "Inizia con un layout collaudato",
+    "templatesSubtitle": "L'app include tre modelli predefiniti. Personalizzane uno o salva il tuo.",
+    "templateDescriptions": {
+      "default": "Layout equilibrato con nome in grassetto e riga contatti — ideale per la maggior parte dei team.",
+      "minimal": "Tipografia serif pulita con blocco contatti compatto.",
+      "compact": "Layout denso a blocco unico quando serve il massimo delle informazioni in spazio minimo."
+    },
+    "ctaTitle": "Pronto a migliorare la tua posta in arrivo?",
+    "ctaSubtitle": "Crea la tua prima firma ora. Nessun account richiesto — tutto funziona localmente nel browser.",
+    "showcaseAriaLabel": "Esempi di firme scorrevoli",
+    "showcaseModernAriaLabel": "Esempi di firme con modello Moderno",
+    "showcaseCompactAriaLabel": "Esempi di firme con modello Compatto",
+    "featuresAriaLabel": "Funzionalità del prodotto"
+  },
   "actions": {
     "copy": "Copia negli appunti",
     "copied": "Copiato!",
@@ -52,7 +117,79 @@
     "libraryTitle": "I tuoi modelli",
     "librarySubtitle": "Apri un modello salvato o creane uno nuovo.",
     "noSaved": "Nessun modello salvato.",
-    "delete": "Elimina"
+    "delete": "Elimina",
+    "untitled": "Modello senza titolo",
+    "builtin": "Modello integrato",
+    "duplicate": "Duplica",
+    "defaultSection": "Modelli predefiniti",
+    "savedSection": "Modelli salvati"
+  },
+  "templateEditor": {
+    "title": "Editor modelli",
+    "subtitle": "Modifica nome, immagine, testo e righe del modello.",
+    "save": "Salva",
+    "untitled": "Modello senza titolo",
+    "sections": {
+      "attributes": "Attributi del modello",
+      "rows": "Righe del modello"
+    },
+    "templateName": "Nome modello",
+    "imageUrl": "URL immagine",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Posizione immagine",
+    "imageSize": "Dimensione immagine",
+    "imageShape": "Forma immagine",
+    "textFont": "Font testo",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Colore testo",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Dimensione testo",
+    "textStyle": "Stile testo",
+    "templateRows": "Righe del modello",
+    "addRow": "Aggiungi riga",
+    "rowLabel": "Riga {{number}}",
+    "addField": "Aggiungi campo",
+    "deleteRow": "Elimina riga",
+    "removeField": "Rimuovi campo",
+    "fieldStyle": "Stile campo",
+    "fieldStyleHint": "Sostituisce lo stile testo predefinito del modello per questo campo.",
+    "resetToDefault": "Ripristina predefinito",
+    "field": "Campo",
+    "font": "Font",
+    "color": "Colore",
+    "default": "Predefinito",
+    "previewTitle": "Anteprima firma",
+    "placement": {
+      "left": "Sinistra",
+      "right": "Destra",
+      "top": "Alto"
+    },
+    "size": {
+      "xs": "Extra piccolo",
+      "sm": "Piccolo",
+      "md": "Medio",
+      "lg": "Grande"
+    },
+    "shape": {
+      "rounded": "Arrotondato",
+      "circle": "Cerchio",
+      "square": "Quadrato"
+    },
+    "textShape": {
+      "normal": "Normale",
+      "bold": "Grassetto",
+      "italic": "Corsivo"
+    },
+    "builderFields": {
+      "text": "Disclaimer",
+      "name": "Nome",
+      "company": "Azienda",
+      "role": "Ruolo",
+      "phone": "Telefono",
+      "email": "Email",
+      "link": "Sito web",
+      "socials": "Link social"
+    }
   },
   "labels": {
     "html": "HTML",

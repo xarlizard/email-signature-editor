@@ -1,5 +1,27 @@
 import { buildTemplateHtmlFromSchema } from '@/lib/templates/builder';
+import { buildTemplateRows } from '@/lib/templateRows';
 import type { NewTemplate, SignatureValues } from '@/types/types';
+
+const modernText = {
+  font: 'Segoe UI, Arial, sans-serif',
+  color: '#222222',
+  size: 'md' as const,
+  shape: 'normal' as const,
+};
+
+const minimalText = {
+  font: 'Georgia, serif',
+  color: '#333333',
+  size: 'md' as const,
+  shape: 'normal' as const,
+};
+
+const compactText = {
+  font: 'Arial, sans-serif',
+  color: '#333333',
+  size: 'sm' as const,
+  shape: 'normal' as const,
+};
 
 export const TEMPLATES: NewTemplate[] = [
   {
@@ -8,9 +30,18 @@ export const TEMPLATES: NewTemplate[] = [
     html: '',
     config: {
       image: { url: '{{IMAGE}}', placement: 'left', size: 'md', shape: 'circle' },
-      text: { font: 'Segoe UI, Arial, sans-serif', color: '#222222', size: 'md', shape: 'normal' },
+      text: modernText,
     },
-    rows: [['name', 'role'], ['company'], ['socials'], ['phone', 'email', 'link']],
+    rows: buildTemplateRows(
+      [['name'], ['role'], ['company'], ['socials'], ['phone'], ['email'], ['link']],
+      {
+        boldLabels: ['name', 'company', 'socials'],
+        defaultColorLabels: ['phone', 'email', 'link'],
+        baseTextSize: modernText.size,
+        largerSizeLabels: ['name'],
+        smallerSizeLabels: ['socials', 'phone', 'email', 'link'],
+      }
+    ),
   },
   {
     id: 'minimal',
@@ -18,19 +49,25 @@ export const TEMPLATES: NewTemplate[] = [
     html: '',
     config: {
       image: { url: '{{IMAGE}}', placement: 'left', size: 'sm', shape: 'square' },
-      text: { font: 'Georgia, serif', color: '#333333', size: 'md', shape: 'normal' },
+      text: minimalText,
     },
-    rows: [['name'], ['role', 'company'], ['phone', 'email', 'link']],
+    rows: buildTemplateRows(
+      [['name'], ['role', 'company'], ['phone', 'email', 'link']],
+      { boldLabels: ['name'] }
+    ),
   },
   {
     id: 'compact',
     name: 'Compact',
     html: '',
     config: {
-      image: { url: '{{IMAGE}}', placement: 'left', size: 'sm', shape: 'rounded' },
-      text: { font: 'Arial, sans-serif', color: '#333333', size: 'sm', shape: 'normal' },
+      image: { url: '{{IMAGE}}', placement: 'left', size: 'xs', shape: 'rounded' },
+      text: compactText,
     },
-    rows: [['name', 'role', 'company'], ['phone', 'email', 'link', 'socials']],
+    rows: buildTemplateRows(
+      [['name', 'role', 'company', 'socials'], ['phone', 'email', 'link']],
+      { boldLabels: ['name'] }
+    ),
   },
 ];
 

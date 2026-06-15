@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-06-11
+
+### Added
+
+- **Schema-driven template model (`NewTemplate`)** – Templates are now structured data instead of hand-authored HTML files: global **image** and **text** config plus a **rows** layout of typed field chips (`name`, `role`, `company`, `phone`, `email`, `link`, `socials`, `text`)
+- **Per-field text overrides** – Each row field can override font, color, size, and style (`normal` / `bold` / `italic`); unset properties inherit the template default at render time via `resolveFieldText()`
+- **Template HTML builder** – `buildTemplateHtmlFromSchema()` generates table-based email HTML from the schema, including image placement, hyperlink fields, and disclaimer support
+- **Template row helpers** – `templateRows.ts` provides normalization, cloning, row construction (`buildTemplateRows`), and helpers for detecting customized field styles
+- **Visual template editor** (`/templates/edit`) – Build and refine templates with:
+  - **Template attributes** – name, image URL/placement/size/shape, and global text defaults
+  - **Template rows** – add/remove rows, pick field types, and style individual fields
+  - **Live HTML + preview panels** – generated markup and rendered preview stay in sync; copy actions for Gmail and raw HTML
+- **Saved custom templates** – User templates persist in `localStorage` (`savedTemplates.ts`) alongside the three built-in layouts
+- **Duplicate template** – Clone any built-in or saved template from the templates library and open it in the editor
+- **Marketing home page** (`/`) – New landing experience with hero, primary CTAs, and below-the-fold sections
+- **Signature showcase carousel** – Two full-width marquee rows scrolling in opposite directions:
+  - **Modern** (default template) on top, **Compact** on bottom
+  - Five fixed demo signatures (Google, Meta, Microsoft, YouTube, Revolut) with fictional names and shared example contact details
+  - Auto-sized iframe previews with no card chrome — signature content only
+- **Home landing sections** – “How it works” steps, **Everything you need** feature row (horizontal marquee), built-in template summaries, and bottom CTA
+- **Home i18n** – Landing copy under `home.*` in locale files (English fully translated; other locales fall back where needed)
+
+### Changed
+
+- **Built-in templates** – Modern, Minimal, and Compact are now defined as `NewTemplate` schemas in `src/lib/templates/index.ts`; static per-template HTML files were removed
+- **Template resolution** – `resolveTemplateFromSchema()` builds HTML from the schema before substituting `{{VARIABLE}}` values
+- **App routing** – `/` is the marketing home page; saved signatures live at `/signatures`, signature editing at `/signatures/edit`, template library at `/templates`, and template editing at `/templates/edit`
+- **Hyperlink styling** – Phone, email, website, and social fields use dedicated link color defaults (`DEFAULT_HYPERLINK_COLOR`) with per-field overrides in the builder
+- **Text style model** – Replaced `uppercase` with **bold** (`font-weight: bold`); added **`xs`** size for text and images
+
+### Removed
+
+- **Static template HTML modules** – `default.ts`, `minimal.ts`, `compact.ts`, and `disclaimerSnippet.ts` in favor of the shared builder pipeline
+
 ## [1.1.1] - 2026-06-08
 
 ### Added

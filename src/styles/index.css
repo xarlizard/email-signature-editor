@@ -244,6 +244,10 @@ html.dark {
   background: var(--editor-panel-bg);
 }
 
+.editor-panel > section {
+  height: 100% !important;
+}
+
 /* Preview display - always light background so signature renders correctly */
 .preview-display {
   background: oklch(0.98 0.005 0) !important;
@@ -272,4 +276,36 @@ html.dark {
 .resize-handle-vertical:hover {
   background: var(--muted-foreground);
   opacity: 0.3;
+}
+
+@keyframes home-showcase-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes home-showcase-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.home-showcase-marquee {
+  animation: home-showcase-scroll 70s linear infinite;
+  will-change: transform;
+}
+
+.home-showcase-marquee-reverse {
+  animation-name: home-showcase-scroll-reverse;
+}
+
+.home-features-marquee {
+  animation: home-showcase-scroll 55s linear infinite;
+  will-change: transform;
 }
