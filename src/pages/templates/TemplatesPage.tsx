@@ -8,6 +8,7 @@ export default function TemplatesPage() {
   const navigate = useNavigate();
   const {
     deleteTemplateItem,
+    duplicateTemplate,
     openTemplateEditor,
     savedTemplates,
   } = useUserContext();
@@ -20,11 +21,20 @@ export default function TemplatesPage() {
     [navigate, openTemplateEditor]
   );
 
+  const handleDuplicateTemplate = useCallback(
+    (id: string) => {
+      if (!duplicateTemplate(id)) return;
+      navigate("/templates/edit");
+    },
+    [duplicateTemplate, navigate]
+  );
+
   return (
     <PageContent
       defaultTemplates={TEMPLATES}
       savedTemplates={savedTemplates}
       onOpenTemplate={handleOpenSaved}
+      onDuplicateTemplate={handleDuplicateTemplate}
       onDeleteSaved={deleteTemplateItem}
     />
   );

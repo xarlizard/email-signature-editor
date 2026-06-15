@@ -24,6 +24,7 @@ import {
   resolveTemplate,
   TEMPLATES,
 } from '@/lib/templates';
+import { cloneTemplateRows } from '@/lib/templateRows';
 import {
   DEFAULT_NEW_TEMPLATE,
   DEFAULT_SIGNATURE_VALUES,
@@ -59,6 +60,7 @@ interface UserContextValue {
   deleteSavedItem: (id: string) => void;
   saveTemplate: (template: NewTemplate) => string;
   openTemplateEditor: (id: string) => boolean;
+  duplicateTemplate: (id: string) => boolean;
   deleteTemplateItem: (id: string) => void;
   beginTemplateSession: () => void;
 }
@@ -228,6 +230,33 @@ export function UserProvider({ children }: { children: ReactNode }) {
     [templates]
   );
 
+  const duplicateTemplate = useCallback(
+    (id: string) => {
+      const template = templates.find((item) => item.id === id);
+      if (!template) return false;
+
+      const baseName = template.name?.trim() || 'Untitled Template';
+      const duplicate: NewTemplate = {
+        ...template,
+        id: `custom-${Date.now()}`,
+        name: `${baseName} (Copy)`,
+        html: getTemplateHtml(template),
+        config: {
+          image: { ...template.config.image },
+          text: { ...template.config.text },
+        },
+        rows: cloneTemplateRows(template.rows),
+      };
+
+      const saved = upsertSavedTemplate(duplicate);
+      refreshSavedTemplates();
+      setSelectedTemplateId(saved.id);
+      setTemplateHtmlState(getTemplateHtml(saved));
+      return true;
+    },
+    [refreshSavedTemplates, templates]
+  );
+
   const deleteTemplateItem = useCallback(
     (id: string) => {
       deleteSavedTemplate(id);
@@ -268,6 +297,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       deleteSavedItem,
       saveTemplate,
       openTemplateEditor,
+      duplicateTemplate,
       deleteTemplateItem,
       beginTemplateSession,
     }),
@@ -295,6 +325,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       deleteSavedItem,
       saveTemplate,
       openTemplateEditor,
+      duplicateTemplate,
       deleteTemplateItem,
       beginTemplateSession,
     ]

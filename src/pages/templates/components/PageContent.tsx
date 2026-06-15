@@ -16,6 +16,7 @@ interface PageContentProps {
   defaultTemplates: NewTemplate[];
   savedTemplates: SavedTemplate[];
   onOpenTemplate: (id: string) => void;
+  onDuplicateTemplate: (id: string) => void;
   onDeleteSaved: (id: string) => void;
 }
 
@@ -23,6 +24,7 @@ export function PageContent({
   defaultTemplates,
   savedTemplates,
   onOpenTemplate,
+  onDuplicateTemplate,
   onDeleteSaved,
 }: PageContentProps) {
   const { t } = useTranslation();
@@ -58,7 +60,7 @@ export function PageContent({
               className="gap-1.5"
               onClick={(e) => {
                 e.stopPropagation();
-                onOpenTemplate(item.id);
+                onDuplicateTemplate(item.id);
               }}
             >
               <CopyPlus className="size-3.5" />
