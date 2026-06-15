@@ -57,7 +57,7 @@ export function PreviewPanel({
       <div className="overflow-hidden">
         <iframe
           ref={iframeRef}
-          title="Signature preview"
+          title={t('templateEditor.previewTitle')}
           className="block w-full border-0"
           onLoad={autoResize}
           srcDoc={

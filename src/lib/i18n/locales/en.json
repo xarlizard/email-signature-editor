@@ -70,7 +70,11 @@
       "compact": "Dense single-block layout when you need maximum information in minimal space."
     },
     "ctaTitle": "Ready to upgrade your inbox?",
-    "ctaSubtitle": "Create your first signature now. No account required — everything runs locally in your browser."
+    "ctaSubtitle": "Create your first signature now. No account required — everything runs locally in your browser.",
+    "showcaseAriaLabel": "Scrolling signature examples",
+    "showcaseModernAriaLabel": "Modern template signature examples",
+    "showcaseCompactAriaLabel": "Compact template signature examples",
+    "featuresAriaLabel": "Product features"
   },
   "actions": {
     "copy": "Copy to clipboard",
@@ -113,7 +117,79 @@
     "libraryTitle": "Your templates",
     "librarySubtitle": "Open a saved template or create a new one.",
     "noSaved": "No saved templates yet.",
-    "delete": "Delete"
+    "delete": "Delete",
+    "untitled": "Untitled Template",
+    "builtin": "Built-in template",
+    "duplicate": "Duplicate",
+    "defaultSection": "Default templates",
+    "savedSection": "Saved templates"
+  },
+  "templateEditor": {
+    "title": "Template editor",
+    "subtitle": "Edit the template name, image, text and rows.",
+    "save": "Save",
+    "untitled": "Untitled Template",
+    "sections": {
+      "attributes": "Template attributes",
+      "rows": "Template rows"
+    },
+    "templateName": "Template name",
+    "imageUrl": "Image URL",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Image placement",
+    "imageSize": "Image size",
+    "imageShape": "Image shape",
+    "textFont": "Text font",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Text color",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Text size",
+    "textStyle": "Text style",
+    "templateRows": "Template rows",
+    "addRow": "Add row",
+    "rowLabel": "Row {{number}}",
+    "addField": "Add field",
+    "deleteRow": "Delete row",
+    "removeField": "Remove field",
+    "fieldStyle": "Field style",
+    "fieldStyleHint": "Override the template default text style for this field.",
+    "resetToDefault": "Reset to default",
+    "field": "Field",
+    "font": "Font",
+    "color": "Color",
+    "default": "Default",
+    "previewTitle": "Signature preview",
+    "placement": {
+      "left": "Left",
+      "right": "Right",
+      "top": "Top"
+    },
+    "size": {
+      "xs": "Extra small",
+      "sm": "Small",
+      "md": "Medium",
+      "lg": "Large"
+    },
+    "shape": {
+      "rounded": "Rounded",
+      "circle": "Circle",
+      "square": "Square"
+    },
+    "textShape": {
+      "normal": "Normal",
+      "bold": "Bold",
+      "italic": "Italic"
+    },
+    "builderFields": {
+      "text": "Disclaimer",
+      "name": "Name",
+      "company": "Company",
+      "role": "Role",
+      "phone": "Phone",
+      "email": "Email",
+      "link": "Website",
+      "socials": "Social links"
+    }
   },
   "labels": {
     "html": "HTML",

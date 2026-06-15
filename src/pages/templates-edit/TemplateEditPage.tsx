@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Plus, Save, Trash2, X } from 'lucide-react';
 import { HtmlPanel } from '@/pages/templates-edit/components/HtmlPanel';
 import { PreviewPanel } from '@/pages/templates-edit/components/PreviewPanel';
@@ -37,7 +38,13 @@ import {
   copyTextToClipboard,
 } from '@/utils/utils';
 
+const TEMPLATE_SIZES = ['xs', 'sm', 'md', 'lg'] as const;
+const IMAGE_SHAPES = ['rounded', 'circle', 'square'] as const;
+const IMAGE_PLACEMENTS = ['left', 'right', 'top'] as const;
+const TEXT_SHAPES = ['normal', 'bold', 'italic'] as const;
+
 export default function TemplateEditPage() {
+  const { t } = useTranslation();
   const {
     resolvedHtml,
     saveTemplate,
@@ -46,9 +53,14 @@ export default function TemplateEditPage() {
     templateHtml,
   } = useUserContext();
 
+  const builderFieldLabel = useCallback(
+    (field: TemplateBuilderField) => t(`templateEditor.builderFields.${field}`),
+    [t]
+  );
+
   const [builderTemplate, setBuilderTemplate] = useState<NewTemplate>(() => ({
     id: `builder-${Date.now()}`,
-    name: 'Untitled Template',
+    name: t('templateEditor.untitled'),
     html: '',
     config: DEFAULT_NEW_TEMPLATE.config,
     rows: DEFAULT_NEW_TEMPLATE.rows,
@@ -239,8 +251,8 @@ export default function TemplateEditPage() {
       <div className="flex w-full flex-col gap-4 lg:w-[400px] lg:shrink-0">
         <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-card px-4 py-3">
           <div>
-            <h2 className="text-base font-semibold tracking-tight">Template editor</h2>
-            <p className="text-sm text-muted-foreground">Edit the template name, image, text and rows.</p>
+            <h2 className="text-base font-semibold tracking-tight">{t('templateEditor.title')}</h2>
+            <p className="text-sm text-muted-foreground">{t('templateEditor.subtitle')}</p>
           </div>
 
           <Button
@@ -250,7 +262,7 @@ export default function TemplateEditPage() {
             className="gap-1.5"
           >
             <Save className="size-3.5" />
-            Save
+            {t('templateEditor.save')}
           </Button>
         </div>
 
@@ -264,7 +276,7 @@ export default function TemplateEditPage() {
                 className="flex-1"
                 onClick={() => setActiveSection('attributes')}
               >
-                Template attributes
+                {t('templateEditor.sections.attributes')}
               </Button>
               <Button
                 type="button"
@@ -273,27 +285,27 @@ export default function TemplateEditPage() {
                 className="flex-1"
                 onClick={() => setActiveSection('rows')}
               >
-                Template rows
+                {t('templateEditor.sections.rows')}
               </Button>
             </div>
 
             {activeSection === 'attributes' ? (
               <div className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="template-name" className="text-sm font-semibold">Template name</Label>
+                  <Label htmlFor="template-name" className="text-sm font-semibold">{t('templateEditor.templateName')}</Label>
                   <Input
                     id="template-name"
                     value={builderTemplate.name}
                     onChange={(e) =>
                       setBuilderTemplate((prev) => ({ ...prev, name: e.target.value }))
                     }
-                    placeholder="Untitled Template"
+                    placeholder={t('templateEditor.untitled')}
                   />
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="image-url" className="text-sm font-semibold">Image URL</Label>
+                    <Label htmlFor="image-url" className="text-sm font-semibold">{t('templateEditor.imageUrl')}</Label>
                     <Input
                       id="image-url"
                       value={builderTemplate.config.image.url}
@@ -306,12 +318,12 @@ export default function TemplateEditPage() {
                           },
                         }))
                       }
-                      placeholder="https://..."
+                      placeholder={t('templateEditor.imageUrlPlaceholder')}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="image-placement" className="text-sm font-semibold">Image placement</Label>
+                    <Label htmlFor="image-placement" className="text-sm font-semibold">{t('templateEditor.imagePlacement')}</Label>
                     <Select
                       value={builderTemplate.config.image.placement}
                       onValueChange={(value) =>
@@ -328,15 +340,17 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="left">Left</SelectItem>
-                        <SelectItem value="right">Right</SelectItem>
-                        <SelectItem value="top">Top</SelectItem>
+                        {IMAGE_PLACEMENTS.map((placement) => (
+                          <SelectItem key={placement} value={placement}>
+                            {t(`templateEditor.placement.${placement}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="image-size" className="text-sm font-semibold">Image size</Label>
+                    <Label htmlFor="image-size" className="text-sm font-semibold">{t('templateEditor.imageSize')}</Label>
                     <Select
                       value={builderTemplate.config.image.size}
                       onValueChange={(value) =>
@@ -353,16 +367,17 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="xs">Extra small</SelectItem>
-                        <SelectItem value="sm">Small</SelectItem>
-                        <SelectItem value="md">Medium</SelectItem>
-                        <SelectItem value="lg">Large</SelectItem>
+                        {TEMPLATE_SIZES.map((size) => (
+                          <SelectItem key={size} value={size}>
+                            {t(`templateEditor.size.${size}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="image-shape" className="text-sm font-semibold">Image shape</Label>
+                    <Label htmlFor="image-shape" className="text-sm font-semibold">{t('templateEditor.imageShape')}</Label>
                     <Select
                       value={builderTemplate.config.image.shape}
                       onValueChange={(value) =>
@@ -379,15 +394,17 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="rounded">Rounded</SelectItem>
-                        <SelectItem value="circle">Circle</SelectItem>
-                        <SelectItem value="square">Square</SelectItem>
+                        {IMAGE_SHAPES.map((shape) => (
+                          <SelectItem key={shape} value={shape}>
+                            {t(`templateEditor.shape.${shape}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="text-font" className="text-sm font-semibold">Text font</Label>
+                    <Label htmlFor="text-font" className="text-sm font-semibold">{t('templateEditor.textFont')}</Label>
                     <Input
                       id="text-font"
                       value={builderTemplate.config.text.font}
@@ -400,12 +417,12 @@ export default function TemplateEditPage() {
                           },
                         }))
                       }
-                      placeholder="Arial, sans-serif"
+                      placeholder={t('templateEditor.textFontPlaceholder')}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="text-color" className="text-sm font-semibold">Text color</Label>
+                    <Label htmlFor="text-color" className="text-sm font-semibold">{t('templateEditor.textColor')}</Label>
                     <Input
                       id="text-color"
                       value={builderTemplate.config.text.color}
@@ -418,12 +435,12 @@ export default function TemplateEditPage() {
                           },
                         }))
                       }
-                      placeholder="#222222"
+                      placeholder={t('templateEditor.textColorPlaceholder')}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="text-size" className="text-sm font-semibold">Text size</Label>
+                    <Label htmlFor="text-size" className="text-sm font-semibold">{t('templateEditor.textSize')}</Label>
                     <Select
                       value={builderTemplate.config.text.size}
                       onValueChange={(value) =>
@@ -440,16 +457,17 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="xs">Extra small</SelectItem>
-                        <SelectItem value="sm">Small</SelectItem>
-                        <SelectItem value="md">Medium</SelectItem>
-                        <SelectItem value="lg">Large</SelectItem>
+                        {TEMPLATE_SIZES.map((size) => (
+                          <SelectItem key={size} value={size}>
+                            {t(`templateEditor.size.${size}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="text-shape" className="text-sm font-semibold">Text style</Label>
+                    <Label htmlFor="text-shape" className="text-sm font-semibold">{t('templateEditor.textStyle')}</Label>
                     <Select
                       value={builderTemplate.config.text.shape}
                       onValueChange={(value) =>
@@ -466,9 +484,11 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="normal">Normal</SelectItem>
-                        <SelectItem value="bold">Bold</SelectItem>
-                        <SelectItem value="italic">Italic</SelectItem>
+                        {TEXT_SHAPES.map((shape) => (
+                          <SelectItem key={shape} value={shape}>
+                            {t(`templateEditor.textShape.${shape}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -477,10 +497,10 @@ export default function TemplateEditPage() {
             ) : (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label className="text-sm font-semibold">Template Rows</Label>
+                  <Label className="text-sm font-semibold">{t('templateEditor.templateRows')}</Label>
                   <Button variant="outline" size="sm" className="gap-1.5" onClick={addRow}>
                     <Plus className="size-3.5" />
-                    Add row
+                    {t('templateEditor.addRow')}
                   </Button>
                 </div>
 
@@ -490,17 +510,17 @@ export default function TemplateEditPage() {
                       <div className="mb-2 flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <span className="text-xs text-muted-foreground">
-                            Row {rowIndex + 1}
+                            {t('templateEditor.rowLabel', { number: rowIndex + 1 })}
                           </span>
 
                           <Select onValueChange={(value) => addFieldToRow(rowIndex, value as TemplateBuilderField)}>
                             <SelectTrigger className="h-8 w-[180px] border border-input bg-secondary text-xs">
-                              <SelectValue placeholder="Add field" />
+                              <SelectValue placeholder={t('templateEditor.addField')} />
                             </SelectTrigger>
                             <SelectContent>
                               {TEMPLATE_BUILDER_FIELDS.map((field) => (
                                 <SelectItem key={field} value={field}>
-                                  {field}
+                                  {builderFieldLabel(field)}
                                 </SelectItem>
                               ))}
                             </SelectContent>
@@ -511,7 +531,7 @@ export default function TemplateEditPage() {
                           size="icon-sm"
                           onClick={() => removeRow(rowIndex)}
                           disabled={builderTemplate.rows.length === 1}
-                          aria-label="Delete row"
+                          aria-label={t('templateEditor.deleteRow')}
                         >
                           <Trash2 className="size-4" />
                         </Button>
@@ -542,14 +562,14 @@ export default function TemplateEditPage() {
                                 }
                                 className="font-medium"
                               >
-                                {field.label}
+                                {builderFieldLabel(field.label)}
                               </button>
                               <button
                                 type="button"
                                 onClick={() =>
                                   removeFieldFromRow(rowIndex, fieldIndex)
                                 }
-                                aria-label="Remove field"
+                                aria-label={t('templateEditor.removeField')}
                                 className="opacity-70 hover:opacity-100"
                               >
                                 <X className="size-3" />
@@ -566,9 +586,9 @@ export default function TemplateEditPage() {
                   <div className="space-y-4 rounded-md border border-border bg-muted/30 p-4">
                     <div className="flex items-center justify-between gap-2">
                       <div>
-                        <Label className="text-sm font-semibold">Field style</Label>
+                        <Label className="text-sm font-semibold">{t('templateEditor.fieldStyle')}</Label>
                         <p className="text-xs text-muted-foreground">
-                          Override the template default text style for this field.
+                          {t('templateEditor.fieldStyleHint')}
                         </p>
                       </div>
                       <Button
@@ -578,14 +598,14 @@ export default function TemplateEditPage() {
                         onClick={resetSelectedFieldText}
                         disabled={!isRowFieldTextCustomized(selectedRowField)}
                       >
-                        Reset to default
+                        {t('templateEditor.resetToDefault')}
                       </Button>
                     </div>
 
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-2 md:col-span-2">
                         <Label htmlFor="field-label" className="text-sm font-semibold">
-                          Field
+                          {t('templateEditor.field')}
                         </Label>
                         <Select
                           value={selectedRowField.label}
@@ -599,7 +619,7 @@ export default function TemplateEditPage() {
                           <SelectContent>
                             {TEMPLATE_BUILDER_FIELDS.map((field) => (
                               <SelectItem key={field} value={field}>
-                                {field}
+                                {builderFieldLabel(field)}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -608,7 +628,7 @@ export default function TemplateEditPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="field-text-font" className="text-sm font-semibold">
-                          Font
+                          {t('templateEditor.font')}
                         </Label>
                         <Input
                           id="field-text-font"
@@ -634,7 +654,7 @@ export default function TemplateEditPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="field-text-color" className="text-sm font-semibold">
-                          Color
+                          {t('templateEditor.color')}
                         </Label>
                         <Input
                           id="field-text-color"
@@ -660,7 +680,7 @@ export default function TemplateEditPage() {
 
                       <div className="space-y-2">
                         <Label htmlFor="field-text-size" className="text-sm font-semibold">
-                          Size
+                          {t('templateEditor.textSize')}
                         </Label>
                         <Select
                           value={
@@ -681,23 +701,24 @@ export default function TemplateEditPage() {
                           }
                         >
                           <SelectTrigger id="field-text-size" className="h-10">
-                            <SelectValue placeholder="Default" />
+                            <SelectValue placeholder={t('templateEditor.default')} />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value={TEMPLATE_TEXT_DEFAULT_OPTION}>
-                              Default
+                              {t('templateEditor.default')}
                             </SelectItem>
-                            <SelectItem value="xs">Extra small</SelectItem>
-                            <SelectItem value="sm">Small</SelectItem>
-                            <SelectItem value="md">Medium</SelectItem>
-                            <SelectItem value="lg">Large</SelectItem>
+                            {TEMPLATE_SIZES.map((size) => (
+                              <SelectItem key={size} value={size}>
+                                {t(`templateEditor.size.${size}`)}
+                              </SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="field-text-shape" className="text-sm font-semibold">
-                          Style
+                          {t('templateEditor.textStyle')}
                         </Label>
                         <Select
                           value={
@@ -718,15 +739,17 @@ export default function TemplateEditPage() {
                           }
                         >
                           <SelectTrigger id="field-text-shape" className="h-10">
-                            <SelectValue placeholder="Default" />
+                            <SelectValue placeholder={t('templateEditor.default')} />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value={TEMPLATE_TEXT_DEFAULT_OPTION}>
-                              Default
+                              {t('templateEditor.default')}
                             </SelectItem>
-                            <SelectItem value="normal">Normal</SelectItem>
-                            <SelectItem value="bold">Bold</SelectItem>
-                            <SelectItem value="italic">Italic</SelectItem>
+                            {TEXT_SHAPES.map((shape) => (
+                              <SelectItem key={shape} value={shape}>
+                                {t(`templateEditor.textShape.${shape}`)}
+                              </SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                       </div>

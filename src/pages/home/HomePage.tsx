@@ -19,9 +19,10 @@ export default function HomePage() {
         </p>
       </header>
 
-      <SignatureShowcaseCarousel />
+      <div className="flex flex-col gap-6">
+        <SignatureShowcaseCarousel />
 
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 sm:flex-row sm:items-center">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 sm:flex-row sm:items-center">
         <Button asChild size="lg" className="gap-2">
           <Link to="/signatures">
             {t('home.createSignature')}
@@ -34,6 +35,7 @@ export default function HomePage() {
             {t('home.browseTemplates')}
           </Link>
         </Button>
+        </div>
       </div>
 
       <HomeLandingSections />

@@ -11,6 +11,71 @@
     "title": "Editor de firma de correo",
     "subtitle": "Edita tu firma HTML y cópiala en Gmail"
   },
+  "home": {
+    "createSignature": "Crear firma",
+    "browseTemplates": "Explorar plantillas",
+    "howItWorksTitle": "Cómo funciona",
+    "howItWorksSubtitle": "Pasa de cero a una firma profesional lista para Gmail en minutos, sin herramientas de diseño.",
+    "steps": {
+      "items": [
+        {
+          "title": "Elige una plantilla",
+          "description": "Empieza con los diseños Moderno, Minimal o Compacto, o abre el editor de plantillas para crear la tuya."
+        },
+        {
+          "title": "Añade tus datos",
+          "description": "Completa nombre, cargo, empresa, enlaces e imagen. La vista previa se actualiza en tiempo real."
+        },
+        {
+          "title": "Copia en Gmail",
+          "description": "Copia el HTML enriquecido para Gmail o el código HTML y pégalo en la configuración de tu firma."
+        }
+      ]
+    },
+    "featuresTitle": "Todo lo que necesitas",
+    "featuresSubtitle": "Un editor enfocado en firmas de correo profesionales: plantillas, vista previa y herramientas de copia en un solo lugar.",
+    "features": {
+      "items": [
+        {
+          "title": "Biblioteca de plantillas",
+          "description": "Diseños integrados y plantillas personalizadas guardadas que puedes duplicar y perfeccionar cuando quieras."
+        },
+        {
+          "title": "Flujo guiado de firma",
+          "description": "Asistente paso a paso para elegir plantilla, completar campos y revisar antes de copiar."
+        },
+        {
+          "title": "Vista previa en vivo",
+          "description": "Ve exactamente cómo quedará tu firma antes de pegarla en tu bandeja de entrada."
+        },
+        {
+          "title": "Editor HTML",
+          "description": "Abre el editor de plantillas para control total del marcado, filas y estilo por campo."
+        },
+        {
+          "title": "Copia lista para Gmail",
+          "description": "Copia HTML formateado para Gmail o un fragmento HTML para otros clientes."
+        },
+        {
+          "title": "Funciona en tu navegador",
+          "description": "Firmas y plantillas permanecen en tu dispositivo. Nueve idiomas y tema claro u oscuro."
+        }
+      ]
+    },
+    "templatesTitle": "Empieza con un diseño probado",
+    "templatesSubtitle": "La aplicación incluye tres plantillas predeterminadas. Personaliza cualquiera o guarda la tuya.",
+    "templateDescriptions": {
+      "default": "Diseño equilibrado con nombre en negrita y fila de contacto: ideal para la mayoría de equipos.",
+      "minimal": "Tipografía serif limpia con un bloque de contacto compacto.",
+      "compact": "Diseño denso en un solo bloque cuando necesitas máxima información en mínimo espacio."
+    },
+    "ctaTitle": "¿Listo para mejorar tu bandeja de entrada?",
+    "ctaSubtitle": "Crea tu primera firma ahora. No se requiere cuenta: todo funciona localmente en tu navegador.",
+    "showcaseAriaLabel": "Ejemplos de firmas en desplazamiento",
+    "showcaseModernAriaLabel": "Ejemplos de firmas con plantilla Moderna",
+    "showcaseCompactAriaLabel": "Ejemplos de firmas con plantilla Compacta",
+    "featuresAriaLabel": "Funciones del producto"
+  },
   "actions": {
     "copy": "Copiar al portapapeles",
     "copied": "¡Copiado!",
@@ -52,7 +117,79 @@
     "libraryTitle": "Tus plantillas",
     "librarySubtitle": "Abre una plantilla guardada o crea una nueva.",
     "noSaved": "Aún no hay plantillas guardadas.",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "untitled": "Plantilla sin título",
+    "builtin": "Plantilla integrada",
+    "duplicate": "Duplicar",
+    "defaultSection": "Plantillas predeterminadas",
+    "savedSection": "Plantillas guardadas"
+  },
+  "templateEditor": {
+    "title": "Editor de plantillas",
+    "subtitle": "Edita el nombre, la imagen, el texto y las filas de la plantilla.",
+    "save": "Guardar",
+    "untitled": "Plantilla sin título",
+    "sections": {
+      "attributes": "Atributos de plantilla",
+      "rows": "Filas de plantilla"
+    },
+    "templateName": "Nombre de plantilla",
+    "imageUrl": "URL de imagen",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Posición de imagen",
+    "imageSize": "Tamaño de imagen",
+    "imageShape": "Forma de imagen",
+    "textFont": "Fuente de texto",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Color de texto",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Tamaño de texto",
+    "textStyle": "Estilo de texto",
+    "templateRows": "Filas de plantilla",
+    "addRow": "Añadir fila",
+    "rowLabel": "Fila {{number}}",
+    "addField": "Añadir campo",
+    "deleteRow": "Eliminar fila",
+    "removeField": "Quitar campo",
+    "fieldStyle": "Estilo de campo",
+    "fieldStyleHint": "Sobrescribe el estilo de texto predeterminado de la plantilla para este campo.",
+    "resetToDefault": "Restablecer predeterminado",
+    "field": "Campo",
+    "font": "Fuente",
+    "color": "Color",
+    "default": "Predeterminado",
+    "previewTitle": "Vista previa de firma",
+    "placement": {
+      "left": "Izquierda",
+      "right": "Derecha",
+      "top": "Arriba"
+    },
+    "size": {
+      "xs": "Extra pequeño",
+      "sm": "Pequeño",
+      "md": "Mediano",
+      "lg": "Grande"
+    },
+    "shape": {
+      "rounded": "Redondeado",
+      "circle": "Círculo",
+      "square": "Cuadrado"
+    },
+    "textShape": {
+      "normal": "Normal",
+      "bold": "Negrita",
+      "italic": "Cursiva"
+    },
+    "builderFields": {
+      "text": "Aviso legal",
+      "name": "Nombre",
+      "company": "Empresa",
+      "role": "Cargo",
+      "phone": "Teléfono",
+      "email": "Correo electrónico",
+      "link": "Sitio web",
+      "socials": "Redes sociales"
+    }
   },
   "labels": {
     "html": "HTML",

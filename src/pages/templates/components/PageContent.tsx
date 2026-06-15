@@ -34,7 +34,7 @@ export function PageContent({
     isBuiltin: boolean
   ) => {
     const html = resolveTemplateFromSchema(item, DEFAULT_SIGNATURE_VALUES);
-    const title = item.name?.trim() || 'Untitled Template';
+    const title = item.name?.trim() || t('templates.untitled');
 
     return (
       <LibraryCard
@@ -50,7 +50,7 @@ export function PageContent({
           </div>
         }
         title={title}
-        subtitle={isBuiltin ? 'Built-in template' : new Date((item as SavedTemplate).createdAt).toLocaleString()}
+        subtitle={isBuiltin ? t('templates.builtin') : new Date((item as SavedTemplate).createdAt).toLocaleString()}
         footerActions={
           <div className="flex shrink-0 items-center gap-2">
             <Button
@@ -64,7 +64,7 @@ export function PageContent({
               }}
             >
               <CopyPlus className="size-3.5" />
-              Duplicate
+              {t('templates.duplicate')}
             </Button>
             {!isBuiltin ? (
               <Button
@@ -103,7 +103,7 @@ export function PageContent({
 
       <section className="space-y-3">
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Default templates</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t('templates.defaultSection')}</h3>
         </div>
         <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 2xl:grid-cols-3">
           {defaultTemplates.map((item) => renderTemplateCard(item, true))}
@@ -112,7 +112,7 @@ export function PageContent({
 
       <section className="space-y-3">
         <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Saved templates</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">{t('templates.savedSection')}</h3>
         </div>
         {savedTemplates.length === 0 ? (
           <p className="py-6 text-center text-sm text-muted-foreground">{t('templates.noSaved')}</p>

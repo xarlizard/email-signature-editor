@@ -11,6 +11,71 @@
     "title": "E-Mail-Signatur-Editor",
     "subtitle": "Bearbeiten Sie Ihre HTML-Signatur und kopieren Sie sie in Gmail"
   },
+  "home": {
+    "createSignature": "Signatur erstellen",
+    "browseTemplates": "Vorlagen durchsuchen",
+    "howItWorksTitle": "So funktioniert es",
+    "howItWorksSubtitle": "In wenigen Minuten von null zu einer professionellen Gmail-fertigen Signatur — ohne Design-Tools.",
+    "steps": {
+      "items": [
+        {
+          "title": "Vorlage wählen",
+          "description": "Starten Sie mit Modern, Minimal oder Compact — oder öffnen Sie den Vorlagen-Editor, um Ihre eigene zu erstellen."
+        },
+        {
+          "title": "Daten eingeben",
+          "description": "Name, Position, Unternehmen, Links und Bild ausfüllen. Die Vorschau aktualisiert sich live beim Tippen."
+        },
+        {
+          "title": "In Gmail einfügen",
+          "description": "Rich-HTML für Gmail oder den reinen HTML-Code kopieren und in Ihre Signatur-Einstellungen einfügen."
+        }
+      ]
+    },
+    "featuresTitle": "Alles, was Sie brauchen",
+    "featuresSubtitle": "Ein fokussierter Editor für professionelle E-Mail-Signaturen — Vorlagen, Vorschau und Kopier-Tools an einem Ort.",
+    "features": {
+      "items": [
+        {
+          "title": "Vorlagenbibliothek",
+          "description": "Integrierte Layouts plus gespeicherte eigene Vorlagen, die Sie jederzeit duplizieren und verfeinern können."
+        },
+        {
+          "title": "Geführter Signatur-Assistent",
+          "description": "Schritt-für-Schritt-Assistent zum Wählen einer Vorlage, Ausfüllen der Felder und Prüfen vor dem Kopieren."
+        },
+        {
+          "title": "Live-Vorschau",
+          "description": "Sehen Sie genau, wie Ihre Signatur aussehen wird, bevor Sie sie in Ihren Posteingang einfügen."
+        },
+        {
+          "title": "HTML-Editor",
+          "description": "Öffnen Sie den Vorlagen-Editor für volle Kontrolle über Markup, Zeilen und Feldstile."
+        },
+        {
+          "title": "Gmail-fertiges Kopieren",
+          "description": "Formatiertes HTML für Gmail oder ein HTML-Snippet für andere Clients kopieren."
+        },
+        {
+          "title": "Läuft in Ihrem Browser",
+          "description": "Signaturen und Vorlagen bleiben auf Ihrem Gerät. Neun Sprachen und helles oder dunkles Design."
+        }
+      ]
+    },
+    "templatesTitle": "Mit einem bewährten Layout starten",
+    "templatesSubtitle": "Drei Standardvorlagen sind in der App enthalten. Passen Sie eine an oder speichern Sie Ihre eigene.",
+    "templateDescriptions": {
+      "default": "Ausgewogenes Layout mit fettem Namen und Kontaktzeile — ideal für die meisten Teams.",
+      "minimal": "Saubere Serif-Typografie mit kompaktem Kontaktblock.",
+      "compact": "Dichtes Ein-Block-Layout, wenn Sie maximale Information auf minimalem Raum brauchen."
+    },
+    "ctaTitle": "Bereit, Ihren Posteingang aufzuwerten?",
+    "ctaSubtitle": "Erstellen Sie jetzt Ihre erste Signatur. Kein Konto nötig — alles läuft lokal in Ihrem Browser.",
+    "showcaseAriaLabel": "Scrollende Signaturbeispiele",
+    "showcaseModernAriaLabel": "Signaturbeispiele mit Modern-Vorlage",
+    "showcaseCompactAriaLabel": "Signaturbeispiele mit Compact-Vorlage",
+    "featuresAriaLabel": "Produktfunktionen"
+  },
   "actions": {
     "copy": "In Zwischenablage kopieren",
     "copied": "Kopiert!",
@@ -52,7 +117,79 @@
     "libraryTitle": "Ihre Vorlagen",
     "librarySubtitle": "Öffnen Sie eine gespeicherte Vorlage oder erstellen Sie eine neue.",
     "noSaved": "Noch keine Vorlagen gespeichert.",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "untitled": "Unbenannte Vorlage",
+    "builtin": "Integrierte Vorlage",
+    "duplicate": "Duplizieren",
+    "defaultSection": "Standardvorlagen",
+    "savedSection": "Gespeicherte Vorlagen"
+  },
+  "templateEditor": {
+    "title": "Vorlagen-Editor",
+    "subtitle": "Bearbeiten Sie Vorlagenname, Bild, Text und Zeilen.",
+    "save": "Speichern",
+    "untitled": "Unbenannte Vorlage",
+    "sections": {
+      "attributes": "Vorlagenattribute",
+      "rows": "Vorlagenzeilen"
+    },
+    "templateName": "Vorlagenname",
+    "imageUrl": "Bild-URL",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Bildposition",
+    "imageSize": "Bildgröße",
+    "imageShape": "Bildform",
+    "textFont": "Textschrift",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Textfarbe",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Textgröße",
+    "textStyle": "Textstil",
+    "templateRows": "Vorlagenzeilen",
+    "addRow": "Zeile hinzufügen",
+    "rowLabel": "Zeile {{number}}",
+    "addField": "Feld hinzufügen",
+    "deleteRow": "Zeile löschen",
+    "removeField": "Feld entfernen",
+    "fieldStyle": "Feldstil",
+    "fieldStyleHint": "Überschreibt den Standard-Textstil der Vorlage für dieses Feld.",
+    "resetToDefault": "Auf Standard zurücksetzen",
+    "field": "Feld",
+    "font": "Schrift",
+    "color": "Farbe",
+    "default": "Standard",
+    "previewTitle": "Signaturvorschau",
+    "placement": {
+      "left": "Links",
+      "right": "Rechts",
+      "top": "Oben"
+    },
+    "size": {
+      "xs": "Extra klein",
+      "sm": "Klein",
+      "md": "Mittel",
+      "lg": "Groß"
+    },
+    "shape": {
+      "rounded": "Abgerundet",
+      "circle": "Kreis",
+      "square": "Quadrat"
+    },
+    "textShape": {
+      "normal": "Normal",
+      "bold": "Fett",
+      "italic": "Kursiv"
+    },
+    "builderFields": {
+      "text": "Haftungsausschluss",
+      "name": "Name",
+      "company": "Unternehmen",
+      "role": "Position",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "link": "Webseite",
+      "socials": "Soziale Links"
+    }
   },
   "labels": {
     "html": "HTML",

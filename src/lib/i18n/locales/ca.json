@@ -11,6 +11,71 @@
     "title": "Editor de signatura de correu",
     "subtitle": "Editeu la vostra signatura HTML i copieu-la a Gmail"
   },
+  "home": {
+    "createSignature": "Crear signatura",
+    "browseTemplates": "Explorar plantilles",
+    "howItWorksTitle": "Com funciona",
+    "howItWorksSubtitle": "Passeu de zero a una signatura professional llesta per a Gmail en minuts — sense eines de disseny.",
+    "steps": {
+      "items": [
+        {
+          "title": "Trieu una plantilla",
+          "description": "Comenceu amb els dissenys Modern, Minimal o Compact — o obriu l'editor de plantilles per crear la vostra."
+        },
+        {
+          "title": "Afegiu les vostres dades",
+          "description": "Completeu nom, càrrec, empresa, enllaços i imatge. La vista prèvia s'actualitza en directe mentre escriviu."
+        },
+        {
+          "title": "Copieu a Gmail",
+          "description": "Copieu l'HTML enriquit per a Gmail o el codi HTML en brut i enganxeu-lo a la configuració de la signatura."
+        }
+      ]
+    },
+    "featuresTitle": "Tot el que necessiteu",
+    "featuresSubtitle": "Un editor centrat en signatures de correu professionals — plantilles, vista prèvia i eines de còpia en un sol lloc.",
+    "features": {
+      "items": [
+        {
+          "title": "Biblioteca de plantilles",
+          "description": "Dissenys integrats i plantilles personalitzades desades que podeu duplicar i perfeccionar en qualsevol moment."
+        },
+        {
+          "title": "Flux guiado de signatura",
+          "description": "Assistent pas a pas per triar plantilla, omplir camps i revisar abans de copiar."
+        },
+        {
+          "title": "Vista prèvia en directe",
+          "description": "Vegeu exactament com quedarà la signatura abans d'enganxar-la a la safata d'entrada."
+        },
+        {
+          "title": "Editor HTML",
+          "description": "Obriu l'editor de plantilles per al control total del marcatge, files i estil per camp."
+        },
+        {
+          "title": "Còpia llesta per a Gmail",
+          "description": "Copieu HTML formatat per a Gmail o un fragment HTML per a altres clients."
+        },
+        {
+          "title": "Funciona al navegador",
+          "description": "Signatures i plantilles es queden al dispositiu. Nou idiomes i tema clar o fosc."
+        }
+      ]
+    },
+    "templatesTitle": "Comenceu amb un disseny provat",
+    "templatesSubtitle": "L'aplicació inclou tres plantilles per defecte. Personalitzeu-ne qualsevol o deseu la vostra.",
+    "templateDescriptions": {
+      "default": "Disseny equilibrat amb nom en negreta i fila de contacte — ideal per a la majoria d'equips.",
+      "minimal": "Tipografia serif neta amb un bloc de contacte compacte.",
+      "compact": "Disseny dens en un sol bloc quan necessiteu la màxima informació en el mínim espai."
+    },
+    "ctaTitle": "Preparat per millorar la safata d'entrada?",
+    "ctaSubtitle": "Creeu la vostra primera signatura ara. No cal compte — tot funciona localment al navegador.",
+    "showcaseAriaLabel": "Exemples de signatures en desplaçament",
+    "showcaseModernAriaLabel": "Exemples de signatures amb plantilla Moderna",
+    "showcaseCompactAriaLabel": "Exemples de signatures amb plantilla Compacta",
+    "featuresAriaLabel": "Funcions del producte"
+  },
   "actions": {
     "copy": "Copiar al portapapers",
     "copied": "Copiat!",
@@ -52,7 +117,79 @@
     "libraryTitle": "Les vostres plantilles",
     "librarySubtitle": "Obriu una plantilla desada o creeu-ne una de nova.",
     "noSaved": "Encara no hi ha plantilles desades.",
-    "delete": "Suprimir"
+    "delete": "Suprimir",
+    "untitled": "Plantilla sense títol",
+    "builtin": "Plantilla integrada",
+    "duplicate": "Duplicar",
+    "defaultSection": "Plantilles per defecte",
+    "savedSection": "Plantilles desades"
+  },
+  "templateEditor": {
+    "title": "Editor de plantilles",
+    "subtitle": "Editeu el nom, la imatge, el text i les files de la plantilla.",
+    "save": "Desar",
+    "untitled": "Plantilla sense títol",
+    "sections": {
+      "attributes": "Atributs de plantilla",
+      "rows": "Files de plantilla"
+    },
+    "templateName": "Nom de plantilla",
+    "imageUrl": "URL de la imatge",
+    "imageUrlPlaceholder": "https://...",
+    "imagePlacement": "Posició de la imatge",
+    "imageSize": "Mida de la imatge",
+    "imageShape": "Forma de la imatge",
+    "textFont": "Font del text",
+    "textFontPlaceholder": "Arial, sans-serif",
+    "textColor": "Color del text",
+    "textColorPlaceholder": "#222222",
+    "textSize": "Mida del text",
+    "textStyle": "Estil del text",
+    "templateRows": "Files de plantilla",
+    "addRow": "Afegir fila",
+    "rowLabel": "Fila {{number}}",
+    "addField": "Afegir camp",
+    "deleteRow": "Suprimir fila",
+    "removeField": "Treure camp",
+    "fieldStyle": "Estil del camp",
+    "fieldStyleHint": "Substitueix l'estil de text per defecte de la plantilla per a aquest camp.",
+    "resetToDefault": "Restablir per defecte",
+    "field": "Camp",
+    "font": "Font",
+    "color": "Color",
+    "default": "Per defecte",
+    "previewTitle": "Vista prèvia de la signatura",
+    "placement": {
+      "left": "Esquerra",
+      "right": "Dreta",
+      "top": "Dalt"
+    },
+    "size": {
+      "xs": "Extra petit",
+      "sm": "Petit",
+      "md": "Mitjà",
+      "lg": "Gran"
+    },
+    "shape": {
+      "rounded": "Arrodonit",
+      "circle": "Cercle",
+      "square": "Quadrat"
+    },
+    "textShape": {
+      "normal": "Normal",
+      "bold": "Negreta",
+      "italic": "Cursiva"
+    },
+    "builderFields": {
+      "text": "Avís legal",
+      "name": "Nom",
+      "company": "Empresa",
+      "role": "Càrrec",
+      "phone": "Telèfon",
+      "email": "Correu electrònic",
+      "link": "Lloc web",
+      "socials": "Xarxes socials"
+    }
   },
   "labels": {
     "html": "HTML",

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TEMPLATES, resolveTemplateFromSchema } from '@/lib/templates';
 import {
   HOME_SHOWCASE_COMPACT_ROW,
@@ -16,6 +17,7 @@ const MIN_PREVIEW_WIDTH = 200;
 const MAX_PREVIEW_WIDTH = 560;
 const MIN_PREVIEW_HEIGHT = 72;
 const MAX_PREVIEW_HEIGHT = 240;
+const SHOWCASE_ROW_HEIGHT = MAX_PREVIEW_HEIGHT;
 
 function getPreviewHtml(item: HomeShowcaseItem): string {
   const template = TEMPLATES.find((entry) => entry.id === item.templateId);
@@ -68,7 +70,12 @@ function ShowcasePreview({ item }: { item: HomeShowcaseItem }) {
   });
 
   const resizePreview = useCallback(() => {
-    setPreviewSize(measurePreviewSize(iframeRef.current));
+    const next = measurePreviewSize(iframeRef.current);
+    setPreviewSize((current) =>
+      current.width === next.width && current.height === next.height
+        ? current
+        : next
+    );
   }, []);
 
   const previewHtml = useMemo(() => getPreviewHtml(item), [item]);
@@ -98,21 +105,25 @@ function ShowcasePreview({ item }: { item: HomeShowcaseItem }) {
   }, [previewHtml, resizePreview]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      title={`${item.templateName} signature for ${item.values.NAME}`}
-      className="block max-w-[min(92vw,560px)] shrink-0 border-0 bg-transparent"
-      loading="lazy"
-      onLoad={resizePreview}
-      style={{
-        width: previewSize.width,
-        height: previewSize.height,
-      }}
-      srcDoc={
-        SHOWCASE_PREVIEW_DOC_PREFIX + previewHtml + SHOWCASE_PREVIEW_DOC_SUFFIX
-      }
-      sandbox="allow-same-origin"
-    />
+    <div
+      className="flex shrink-0 items-center"
+      style={{ height: SHOWCASE_ROW_HEIGHT }}
+    >
+      <iframe
+        ref={iframeRef}
+        title={`${item.templateName} signature for ${item.values.NAME}`}
+        className="block max-w-[min(92vw,560px)] shrink-0 border-0 bg-transparent"
+        onLoad={resizePreview}
+        style={{
+          width: previewSize.width,
+          height: previewSize.height,
+        }}
+        srcDoc={
+          SHOWCASE_PREVIEW_DOC_PREFIX + previewHtml + SHOWCASE_PREVIEW_DOC_SUFFIX
+        }
+        sandbox="allow-same-origin"
+      />
+    </div>
   );
 }
 
@@ -132,10 +143,11 @@ function ShowcaseMarqueeRow({
   return (
     <div
       className={cn(
-        'home-showcase-marquee flex w-max items-start',
+        'home-showcase-marquee flex w-max items-center',
         gapClassName,
         direction === 'right' && 'home-showcase-marquee-reverse'
       )}
+      style={{ height: SHOWCASE_ROW_HEIGHT }}
       aria-label={label}
     >
       {track.map((item, index) => (
@@ -146,10 +158,12 @@ function ShowcaseMarqueeRow({
 }
 
 export function SignatureShowcaseCarousel() {
+  const { t } = useTranslation();
+
   return (
     <section
-      className="relative w-full space-y-10 overflow-hidden py-2 sm:space-y-12"
-      aria-label="Scrolling signature examples"
+      className="relative w-full space-y-6 overflow-hidden"
+      aria-label={t('home.showcaseAriaLabel')}
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-background to-transparent sm:w-20" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-background to-transparent sm:w-20" />
@@ -158,12 +172,12 @@ export function SignatureShowcaseCarousel() {
         items={HOME_SHOWCASE_MODERN_ROW}
         direction="left"
         gapClassName="gap-25 sm:gap-28"
-        label="Modern template signature examples"
+        label={t('home.showcaseModernAriaLabel')}
       />
       <ShowcaseMarqueeRow
         items={HOME_SHOWCASE_COMPACT_ROW}
         direction="right"
-        label="Compact template signature examples"
+        label={t('home.showcaseCompactAriaLabel')}
       />
     </section>
   );
