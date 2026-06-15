@@ -132,325 +132,334 @@ export default function TemplateEditPage() {
   }, []);
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-4 lg:flex-row lg:items-start">
-    <div className="flex w-full flex-col gap-4 lg:w-[400px] lg:shrink-0">
-      <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-card px-4 py-3">
-        <div>
-          <h2 className="text-base font-semibold tracking-tight">Template editor</h2>
-          <p className="text-sm text-muted-foreground">Edit the template name, image, text and rows.</p>
-        </div>
-
-        <Button
-          variant="secondary"
-          size="sm"
-          onClick={onSaveTemplate}
-          className="gap-1.5"
-        >
-          <Save className="size-3.5" />
-          Save
-        </Button>
-      </div>
-
-      <Card className="border values-card">
-        <CardContent className="space-y-5 py-4">
-          <div className="flex items-center gap-2 rounded-md border border-border bg-muted/40 p-1">
-            <Button
-              type="button"
-              variant={activeSection === 'attributes' ? 'default' : 'ghost'}
-              size="sm"
-              className="flex-1"
-              onClick={() => setActiveSection('attributes')}
-            >
-              Template attributes
-            </Button>
-            <Button
-              type="button"
-              variant={activeSection === 'rows' ? 'default' : 'ghost'}
-              size="sm"
-              className="flex-1"
-              onClick={() => setActiveSection('rows')}
-            >
-              Template rows
-            </Button>
+    <div className="flex min-h-0 flex-1 flex-col gap-4 lg:flex-row lg:items-stretch">
+      <div className="flex w-full flex-col gap-4 lg:w-[400px] lg:shrink-0">
+        <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-card px-4 py-3">
+          <div>
+            <h2 className="text-base font-semibold tracking-tight">Template editor</h2>
+            <p className="text-sm text-muted-foreground">Edit the template name, image, text and rows.</p>
           </div>
 
-          {activeSection === 'attributes' ? (
-            <div className="space-y-5">
-              <div className="space-y-2">
-                <Label htmlFor="template-name" className="text-sm font-semibold">Template name</Label>
-                <Input
-                  id="template-name"
-                  value={builderTemplate.name}
-                  onChange={(e) =>
-                    setBuilderTemplate((prev) => ({ ...prev, name: e.target.value }))
-                  }
-                  placeholder="Untitled Template"
-                />
-              </div>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={onSaveTemplate}
+            className="gap-1.5"
+          >
+            <Save className="size-3.5" />
+            Save
+          </Button>
+        </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="image-url" className="text-sm font-semibold">Image URL</Label>
-                  <Input
-                    id="image-url"
-                    value={builderTemplate.config.image.url}
-                    onChange={(e) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          image: { ...prev.config.image, url: e.target.value },
-                        },
-                      }))
-                    }
-                    placeholder="https://..."
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="image-placement" className="text-sm font-semibold">Image placement</Label>
-                  <Select
-                    value={builderTemplate.config.image.placement}
-                    onValueChange={(value) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          image: { ...prev.config.image, placement: value as NewTemplate['config']['image']['placement'] },
-                        },
-                      }))
-                    }
-                  >
-                    <SelectTrigger id="image-placement" className="h-10">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="left">Left</SelectItem>
-                      <SelectItem value="right">Right</SelectItem>
-                      <SelectItem value="top">Top</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="image-size" className="text-sm font-semibold">Image size</Label>
-                  <Select
-                    value={builderTemplate.config.image.size}
-                    onValueChange={(value) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          image: { ...prev.config.image, size: value as NewTemplate['config']['image']['size'] },
-                        },
-                      }))
-                    }
-                  >
-                    <SelectTrigger id="image-size" className="h-10">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="sm">Small</SelectItem>
-                      <SelectItem value="md">Medium</SelectItem>
-                      <SelectItem value="lg">Large</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="image-shape" className="text-sm font-semibold">Image shape</Label>
-                  <Select
-                    value={builderTemplate.config.image.shape}
-                    onValueChange={(value) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          image: { ...prev.config.image, shape: value as NewTemplate['config']['image']['shape'] },
-                        },
-                      }))
-                    }
-                  >
-                    <SelectTrigger id="image-shape" className="h-10">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="rounded">Rounded</SelectItem>
-                      <SelectItem value="circle">Circle</SelectItem>
-                      <SelectItem value="square">Square</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="text-font" className="text-sm font-semibold">Text font</Label>
-                  <Input
-                    id="text-font"
-                    value={builderTemplate.config.text.font}
-                    onChange={(e) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          text: { ...prev.config.text, font: e.target.value },
-                        },
-                      }))
-                    }
-                    placeholder="Arial, sans-serif"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="text-color" className="text-sm font-semibold">Text color</Label>
-                  <Input
-                    id="text-color"
-                    value={builderTemplate.config.text.color}
-                    onChange={(e) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          text: { ...prev.config.text, color: e.target.value },
-                        },
-                      }))
-                    }
-                    placeholder="#222222"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="text-size" className="text-sm font-semibold">Text size</Label>
-                  <Select
-                    value={builderTemplate.config.text.size}
-                    onValueChange={(value) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          text: { ...prev.config.text, size: value as NewTemplate['config']['text']['size'] },
-                        },
-                      }))
-                    }
-                  >
-                    <SelectTrigger id="text-size" className="h-10">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="sm">Small</SelectItem>
-                      <SelectItem value="md">Medium</SelectItem>
-                      <SelectItem value="lg">Large</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="text-shape" className="text-sm font-semibold">Text style</Label>
-                  <Select
-                    value={builderTemplate.config.text.shape}
-                    onValueChange={(value) =>
-                      setBuilderTemplate((prev) => ({
-                        ...prev,
-                        config: {
-                          ...prev.config,
-                          text: { ...prev.config.text, shape: value as NewTemplate['config']['text']['shape'] },
-                        },
-                      }))
-                    }
-                  >
-                    <SelectTrigger id="text-shape" className="h-10">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="normal">Normal</SelectItem>
-                      <SelectItem value="uppercase">Uppercase</SelectItem>
-                      <SelectItem value="italic">Italic</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+        <Card className="border values-card">
+          <CardContent className="space-y-5 py-4">
+            <div className="flex items-center gap-2 rounded-md border border-border bg-card p-1">
+              <Button
+                type="button"
+                variant={activeSection === 'attributes' ? 'default' : 'ghost'}
+                size="sm"
+                className="flex-1"
+                onClick={() => setActiveSection('attributes')}
+              >
+                Template attributes
+              </Button>
+              <Button
+                type="button"
+                variant={activeSection === 'rows' ? 'default' : 'ghost'}
+                size="sm"
+                className="flex-1"
+                onClick={() => setActiveSection('rows')}
+              >
+                Template rows
+              </Button>
             </div>
-          ) : (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm font-semibold">Template Rows</Label>
-                <Button variant="outline" size="sm" className="gap-1.5" onClick={addRow}>
-                  <Plus className="size-3.5" />
-                  Add row
-                </Button>
-              </div>
 
-              <div className="space-y-3">
-                {builderTemplate.rows.map((row, rowIndex) => (
-                  <div key={`row-${rowIndex}`} className="rounded-md border border-border p-3">
-                    <div className="mb-2 flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">Row {rowIndex + 1}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon-sm"
-                        onClick={() => removeRow(rowIndex)}
-                        disabled={builderTemplate.rows.length === 1}
-                        aria-label="Delete row"
-                      >
-                        <Trash2 className="size-4" />
-                      </Button>
-                    </div>
+            {activeSection === 'attributes' ? (
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="template-name" className="text-sm font-semibold">Template name</Label>
+                  <Input
+                    id="template-name"
+                    value={builderTemplate.name}
+                    onChange={(e) =>
+                      setBuilderTemplate((prev) => ({ ...prev, name: e.target.value }))
+                    }
+                    placeholder="Untitled Template"
+                  />
+                </div>
 
-                    <div className="mb-2 flex flex-wrap gap-2">
-                      {row.map((field, fieldIndex) => (
-                        <div key={`${rowIndex}-${fieldIndex}`} className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-1 text-xs">
-                          <span>{field}</span>
-                          <button
-                            type="button"
-                            onClick={() => removeFieldFromRow(rowIndex, fieldIndex)}
-                            aria-label="Remove field"
-                            className="opacity-70 hover:opacity-100"
-                          >
-                            <X className="size-3" />
-                          </button>
-                        </div>
-                      ))}
-                    </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="image-url" className="text-sm font-semibold">Image URL</Label>
+                    <Input
+                      id="image-url"
+                      value={builderTemplate.config.image.url}
+                      onChange={(e) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            image: { ...prev.config.image, url: e.target.value },
+                          },
+                        }))
+                      }
+                      placeholder="https://..."
+                    />
+                  </div>
 
-                    <Select onValueChange={(value) => addFieldToRow(rowIndex, value as TemplateBuilderField)}>
-                      <SelectTrigger className="h-8 w-[180px] border border-input bg-transparent text-xs">
-                        <SelectValue placeholder="Add field" />
+                  <div className="space-y-2">
+                    <Label htmlFor="image-placement" className="text-sm font-semibold">Image placement</Label>
+                    <Select
+                      value={builderTemplate.config.image.placement}
+                      onValueChange={(value) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            image: { ...prev.config.image, placement: value as NewTemplate['config']['image']['placement'] },
+                          },
+                        }))
+                      }
+                    >
+                      <SelectTrigger id="image-placement" className="h-10">
+                        <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {TEMPLATE_BUILDER_FIELDS.map((field) => (
-                          <SelectItem key={field} value={field}>
-                            {field}
-                          </SelectItem>
-                        ))}
+                        <SelectItem value="left">Left</SelectItem>
+                        <SelectItem value="right">Right</SelectItem>
+                        <SelectItem value="top">Top</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
-                ))}
+
+                  <div className="space-y-2">
+                    <Label htmlFor="image-size" className="text-sm font-semibold">Image size</Label>
+                    <Select
+                      value={builderTemplate.config.image.size}
+                      onValueChange={(value) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            image: { ...prev.config.image, size: value as NewTemplate['config']['image']['size'] },
+                          },
+                        }))
+                      }
+                    >
+                      <SelectTrigger id="image-size" className="h-10">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="sm">Small</SelectItem>
+                        <SelectItem value="md">Medium</SelectItem>
+                        <SelectItem value="lg">Large</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="image-shape" className="text-sm font-semibold">Image shape</Label>
+                    <Select
+                      value={builderTemplate.config.image.shape}
+                      onValueChange={(value) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            image: { ...prev.config.image, shape: value as NewTemplate['config']['image']['shape'] },
+                          },
+                        }))
+                      }
+                    >
+                      <SelectTrigger id="image-shape" className="h-10">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="rounded">Rounded</SelectItem>
+                        <SelectItem value="circle">Circle</SelectItem>
+                        <SelectItem value="square">Square</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="text-font" className="text-sm font-semibold">Text font</Label>
+                    <Input
+                      id="text-font"
+                      value={builderTemplate.config.text.font}
+                      onChange={(e) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            text: { ...prev.config.text, font: e.target.value },
+                          },
+                        }))
+                      }
+                      placeholder="Arial, sans-serif"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="text-color" className="text-sm font-semibold">Text color</Label>
+                    <Input
+                      id="text-color"
+                      value={builderTemplate.config.text.color}
+                      onChange={(e) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            text: { ...prev.config.text, color: e.target.value },
+                          },
+                        }))
+                      }
+                      placeholder="#222222"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="text-size" className="text-sm font-semibold">Text size</Label>
+                    <Select
+                      value={builderTemplate.config.text.size}
+                      onValueChange={(value) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            text: { ...prev.config.text, size: value as NewTemplate['config']['text']['size'] },
+                          },
+                        }))
+                      }
+                    >
+                      <SelectTrigger id="text-size" className="h-10">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="sm">Small</SelectItem>
+                        <SelectItem value="md">Medium</SelectItem>
+                        <SelectItem value="lg">Large</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="text-shape" className="text-sm font-semibold">Text style</Label>
+                    <Select
+                      value={builderTemplate.config.text.shape}
+                      onValueChange={(value) =>
+                        setBuilderTemplate((prev) => ({
+                          ...prev,
+                          config: {
+                            ...prev.config,
+                            text: { ...prev.config.text, shape: value as NewTemplate['config']['text']['shape'] },
+                          },
+                        }))
+                      }
+                    >
+                      <SelectTrigger id="text-shape" className="h-10">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="normal">Normal</SelectItem>
+                        <SelectItem value="uppercase">Uppercase</SelectItem>
+                        <SelectItem value="italic">Italic</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <Label className="text-sm font-semibold">Template Rows</Label>
+                  <Button variant="outline" size="sm" className="gap-1.5" onClick={addRow}>
+                    <Plus className="size-3.5" />
+                    Add row
+                  </Button>
+                </div>
 
-    <div className="flex flex-1 flex-col gap-4">
-      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
-        <PreviewPanel
-          resolvedHtml={resolvedHtml}
-          onCopy={copyPreviewAsRichHtml}
-          copied={copiedSection === 'preview'}
-          iframeRef={previewIframeRef}
-        />
+                <div className="space-y-3">
+                  {builderTemplate.rows.map((row, rowIndex) => (
+                    <div key={`row-${rowIndex}`} className="rounded-md border border-border bg-card p-3">
+                      <div className="mb-2 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            Row {rowIndex + 1}
+                          </span>
+
+                          <Select onValueChange={(value) => addFieldToRow(rowIndex, value as TemplateBuilderField)}>
+                            <SelectTrigger className="h-8 w-[180px] border border-input bg-secondary text-xs">
+                              <SelectValue placeholder="Add field" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {TEMPLATE_BUILDER_FIELDS.map((field) => (
+                                <SelectItem key={field} value={field}>
+                                  {field}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          onClick={() => removeRow(rowIndex)}
+                          disabled={builderTemplate.rows.length === 1}
+                          aria-label="Delete row"
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {row.map((field, fieldIndex) => (
+                          <div
+                            key={`${rowIndex}-${fieldIndex}`}
+                            className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-1 text-xs"
+                          >
+                            <span>{field}</span>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                removeFieldFromRow(rowIndex, fieldIndex)
+                              }
+                              aria-label="Remove field"
+                              className="opacity-70 hover:opacity-100"
+                            >
+                              <X className="size-3" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
-        <HtmlPanel
-          value={templateHtml}
-          onChange={setTemplateHtml}
-          onCopy={() => copyToClipboard(resolvedHtml, 'html')}
-          copied={copiedSection === 'html'}
-        />
+      <div className="flex min-h-0 flex-1 flex-col gap-4">
+        <div className="overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+          <PreviewPanel
+            resolvedHtml={resolvedHtml}
+            onCopy={copyPreviewAsRichHtml}
+            copied={copiedSection === 'preview'}
+            iframeRef={previewIframeRef}
+          />
+        </div>
+
+        <div className="flex min-h-[24rem] flex-1 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+          <HtmlPanel
+            value={templateHtml}
+            onChange={setTemplateHtml}
+            onCopy={() => copyToClipboard(resolvedHtml, 'html')}
+            copied={copiedSection === 'html'}
+          />
+        </div>
       </div>
     </div>
-  </div>
   );
 }
