@@ -11,6 +11,67 @@
     "title": "Email Signature Editor",
     "subtitle": "Edit your HTML signature and copy it into Gmail"
   },
+  "home": {
+    "createSignature": "Create signature",
+    "browseTemplates": "Browse templates",
+    "howItWorksTitle": "How it works",
+    "howItWorksSubtitle": "Go from blank to a polished Gmail-ready signature in minutes — no design tools required.",
+    "steps": {
+      "items": [
+        {
+          "title": "Pick a template",
+          "description": "Start from Modern, Minimal, or Compact layouts — or open the template editor to build your own."
+        },
+        {
+          "title": "Add your details",
+          "description": "Fill in name, role, company, links, and image. Preview updates live as you type."
+        },
+        {
+          "title": "Copy into Gmail",
+          "description": "Copy rich HTML for Gmail or the raw HTML string, then paste into your signature settings."
+        }
+      ]
+    },
+    "featuresTitle": "Everything you need",
+    "featuresSubtitle": "A focused editor for professional email signatures — templates, preview, and copy tools in one place.",
+    "features": {
+      "items": [
+        {
+          "title": "Template library",
+          "description": "Built-in layouts plus saved custom templates you can duplicate and refine anytime."
+        },
+        {
+          "title": "Guided signature flow",
+          "description": "Step-by-step wizard to choose a template, fill fields, and review before copying."
+        },
+        {
+          "title": "Live preview",
+          "description": "See exactly how your signature will look before you paste it into your inbox."
+        },
+        {
+          "title": "HTML editor",
+          "description": "Open the template editor for full control over markup, rows, and per-field styling."
+        },
+        {
+          "title": "Gmail-ready copy",
+          "description": "Copy formatted HTML for Gmail or a plain HTML snippet for other clients."
+        },
+        {
+          "title": "Works in your browser",
+          "description": "Signatures and templates stay on your device. Nine languages and light or dark theme."
+        }
+      ]
+    },
+    "templatesTitle": "Start with a proven layout",
+    "templatesSubtitle": "Three default templates ship with the app. Customize any of them or save your own.",
+    "templateDescriptions": {
+      "default": "Balanced layout with bold name and contact row — great for most teams.",
+      "minimal": "Clean serif typography with a compact contact block.",
+      "compact": "Dense single-block layout when you need maximum information in minimal space."
+    },
+    "ctaTitle": "Ready to upgrade your inbox?",
+    "ctaSubtitle": "Create your first signature now. No account required — everything runs locally in your browser."
+  },
   "actions": {
     "copy": "Copy to clipboard",
     "copied": "Copied!",

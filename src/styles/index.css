@@ -277,3 +277,17 @@ html.dark {
   background: var(--muted-foreground);
   opacity: 0.3;
 }
+
+@keyframes home-showcase-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-showcase-marquee {
+  animation: home-showcase-scroll 70s linear infinite;
+  will-change: transform;
+}
