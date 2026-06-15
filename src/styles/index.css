@@ -287,7 +287,25 @@ html.dark {
   }
 }
 
+@keyframes home-showcase-scroll-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .home-showcase-marquee {
   animation: home-showcase-scroll 70s linear infinite;
+  will-change: transform;
+}
+
+.home-showcase-marquee-reverse {
+  animation-name: home-showcase-scroll-reverse;
+}
+
+.home-features-marquee {
+  animation: home-showcase-scroll 55s linear infinite;
   will-change: transform;
 }

@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import {
@@ -11,6 +12,7 @@ import {
   MousePointerClick,
   Palette,
   Sparkles,
+  type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -26,6 +28,65 @@ const FEATURE_ICONS = [LayoutTemplate, MousePointerClick, Eye, Code2, Copy, Glob
 
 const STEP_ICONS = [LayoutTemplate, Sparkles, Copy] as const;
 
+function FeatureCard({
+  title,
+  description,
+  icon: Icon,
+}: {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}) {
+  return (
+    <Card className="w-72 shrink-0 gap-3 py-5 sm:w-80">
+      <CardHeader className="gap-3 px-5">
+        <div className="flex size-9 items-center justify-center rounded-md bg-muted text-foreground">
+          <Icon className="size-4" />
+        </div>
+        <CardTitle className="text-base">{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
+    </Card>
+  );
+}
+
+function FeaturesMarquee({
+  features,
+}: {
+  features: { title: string; description: string }[];
+}) {
+  const track = useMemo(
+    () =>
+      [...features, ...features].map((feature, index) => ({
+        ...feature,
+        key: `${feature.title}-${index}`,
+        icon: FEATURE_ICONS[index % FEATURE_ICONS.length] ?? Layers,
+      })),
+    [features]
+  );
+
+  return (
+    <div
+      className="relative w-full overflow-hidden py-2"
+      aria-label="Product features"
+    >
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-background to-transparent sm:w-20" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-background to-transparent sm:w-20" />
+
+      <div className="home-features-marquee flex w-max gap-6 sm:gap-8">
+        {track.map((feature) => (
+          <FeatureCard
+            key={feature.key}
+            title={feature.title}
+            description={feature.description}
+            icon={feature.icon}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function HomeLandingSections() {
   const { t } = useTranslation();
 
@@ -40,7 +101,8 @@ export function HomeLandingSections() {
   }[];
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-4 pb-8">
+    <div className="flex w-full flex-col gap-16 pb-8">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-4">
       <section className="space-y-8" aria-labelledby="home-how-it-works">
         <div className="space-y-2 text-center sm:text-left">
           <h2 id="home-how-it-works" className="text-xl font-semibold tracking-tight sm:text-2xl">
@@ -70,9 +132,10 @@ export function HomeLandingSections() {
           })}
         </ol>
       </section>
+      </div>
 
       <section className="space-y-8" aria-labelledby="home-features">
-        <div className="space-y-2 text-center sm:text-left">
+        <div className="mx-auto max-w-5xl space-y-2 px-4 text-center sm:text-left">
           <h2 id="home-features" className="text-xl font-semibold tracking-tight sm:text-2xl">
             {t('home.featuresTitle')}
           </h2>
@@ -81,26 +144,10 @@ export function HomeLandingSections() {
           </p>
         </div>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
-            const Icon = FEATURE_ICONS[index] ?? Layers;
-            return (
-              <li key={feature.title}>
-                <Card className="h-full gap-3 py-5">
-                  <CardHeader className="gap-3 px-5">
-                    <div className="flex size-9 items-center justify-center rounded-md bg-muted text-foreground">
-                      <Icon className="size-4" />
-                    </div>
-                    <CardTitle className="text-base">{feature.title}</CardTitle>
-                    <CardDescription>{feature.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </li>
-            );
-          })}
-        </ul>
+        <FeaturesMarquee features={features} />
       </section>
 
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-4">
       <section className="space-y-6" aria-labelledby="home-templates">
         <div className="space-y-2 text-center sm:text-left">
           <h2 id="home-templates" className="text-xl font-semibold tracking-tight sm:text-2xl">
@@ -151,6 +198,7 @@ export function HomeLandingSections() {
           </Button>
         </div>
       </section>
+      </div>
     </div>
   );
 }
