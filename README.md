@@ -1,15 +1,28 @@
-# Email Signature Editor
+<img src=".github/icon-cropped.png" width="200" alt="App icon" align="left"/>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<div>
+<h3>Email Signature Editor</h3>
+<p>Edit HTML email signatures with a live preview, then copy into Gmail.</p>
+<a href="https://email-signature-editor.pages.dev/">→ Live demo</a>
+</div>
+
+<br/><br/>
+
+<div align="center">
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/xarlizard/email-signature-editor/blob/main/LICENSE)
 [![CI](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml)
 [![Production Deployment](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml)
 
-Edit HTML email signatures with a live preview, then copy into Gmail.
+<br/>
+<br/>
 
-**[→ Live demo](https://email-signature-editor.pages.dev/)**
+<img src=".github/screenshot.png" width="824" alt="Screenshot" style="border-radius: 5px;"/><br/>
 
----
+</div>
+
+<hr>
 
 ## Features
 
