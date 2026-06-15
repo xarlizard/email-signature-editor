@@ -1,62 +1,83 @@
-# Email Signature Editor
+<img src=".github/icon-cropped.png" width="200" alt="App icon" align="left"/>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<div>
+<h3>Email Signature Editor</h3>
+<p>Edit HTML email signatures with a live preview, then copy into Gmail.</p>
+<a href="https://email-signature-editor.pages.dev/">→ Live demo</a>
+</div>
+
+<br/><br/>
+
+<div align="center">
+
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/xarlizard/email-signature-editor/blob/main/LICENSE)
 [![CI](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml)
 [![Production Deployment](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml)
 
-Edit HTML email signatures with a live preview, then copy into Gmail.
+<br/>
+<br/>
 
-**[→ Live demo](https://email-signature-editor.pages.dev/)**
+<img src=".github/screenshot.png" width="824" alt="Screenshot" style="border-radius: 5px;"/><br/>
 
----
+</div>
+
+<hr>
 
 ## Features
 
-### Simple mode (default)
+### Home
 
-- **Library** – Saved signatures in the browser (localStorage), card previews, create new or open an existing one
-- **Guided flow** – Choose a template, fill fields step by step, then review with **Copy for Gmail** / **Copy HTML** / **Save**
-- **Template picker** – Visual previews for each built-in template
+- **Landing page** (`/`) – Product overview, animated signature showcase, and quick links to create a signature or browse templates
 
-### Advanced mode
+### Signature editor
 
-- **Values** – All fields on one screen (name, position, company, LinkedIn, phone, email, website, image)
-- **HTML editor** – Edit the template with `{{VARIABLE}}` highlighting
-- **Resizable panels** – Horizontal or vertical layout toggle
-- **Template selector** – In the header (hidden in simple mode)
+- **Library** (`/signatures`) – Saved signatures in the browser (localStorage), card previews, create new or open an existing one
+- **Guided flow** (`/signatures/edit`) – Choose a template, fill fields step by step, then review with **Copy for Gmail** / **Copy HTML** / **Save**
+- **Template picker** – Visual previews for each built-in template before entering field steps
+
+### Template editor
+
+- **Template library** (`/templates`) – Built-in layouts plus saved custom templates; duplicate any template to customize
+- **Visual builder** (`/templates/edit`) – Edit template name, image settings, global text defaults, and row/field layout
+- **Per-field styling** – Override font, color, size, and style for individual fields
+- **Live HTML + preview** – Generated markup and rendered preview stay in sync; copy for Gmail or raw HTML
 
 ### Shared
 
-- **Templates** – Several styles (default, minimal, modern, compact, bold, elegant)
+- **Schema-driven templates** – Modern, Minimal, and Compact built-ins; HTML generated from structured template data
 - **Copy** – Rich HTML for Gmail where supported, plus plain HTML string copy
 - **Internationalization** – English, Spanish, French, German, Italian, Dutch, Catalan, Russian, Chinese
 - **Theme** – Light / dark
 - **UI** – React, Vite, TypeScript, Tailwind CSS, shadcn/ui
 
-Use **Simple** / **Advanced** in the header to switch modes (preference is stored locally).
+Use the header navigation to move between **Home**, **Templates**, and **Signatures**.
 
 ---
 
 ## Screenshots
 
-### Library (home)
+<div align="center">
 
-The **Your signatures** screen is where you land in simple mode. You can open any saved signature from the cards (each shows a live preview, title, and timestamp) or start the creation flow with **Create new signature**.
+### Signature library
 
-![Library: saved signatures and create new](src/assets/sample-home.png)
+The **Signatures** page lists your saved signatures. Open any card (live preview, title, and timestamp) or start the creation flow with **Create new signature**.
 
-### Simple mode – review
+<img src="src/assets/sample-home.png" width="824" alt="Signature library: saved signatures and create new" style="border-radius: 5px;"/><br/>
 
-At the end of the guided flow, after choosing a template and filling in your details, the **Review** step shows a full preview of the finished signature. From here you can **Copy for Gmail**, **Copy HTML**, or **Save** back to the library. Use **Edit from start** to walk through the steps again.
+### Signature editor – review
 
-![Review step at the end of the simple creation flow](src/assets/sample-review-signature.png)
+At the end of the guided flow, after choosing a template and filling in your details, the **Review** step shows a full preview. From here you can **Copy for Gmail**, **Copy HTML**, or **Save** back to the library.
 
-### Advanced mode
+<img src="src/assets/sample-review-signature.png" width="824" alt="Review step at the end of the signature editor flow" style="border-radius: 5px;"/><br/>
 
-**Advanced mode** shows the raw template in an **HTML** panel beside a **live preview**. Edit `{{VARIABLE}}` placeholders and markup directly; the preview updates as you work. Switch layout (horizontal or vertical) from the header if you prefer the editor above the preview.
+### Template editor
 
-![Advanced mode: HTML editor next to live preview](src/assets/sample-advanced-mode.png)
+The **template editor** shows generated **HTML** beside a **live preview**. Adjust template attributes, rows, and per-field styles; the preview updates as you work.
+
+<img src="src/assets/sample-advanced-mode.png" width="824" alt="Template editor: HTML panel next to live preview" style="border-radius: 5px;"/><br/>
+
+</div>
 
 ---
 
@@ -75,18 +96,24 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Usage
 
-### Simple mode
+### Create a signature
 
-1. Open the **library** – create a new signature or pick a saved one
-2. **Choose a template**, then complete each field
-3. On **Review**, copy for Gmail or copy HTML, and **Save** to the library if you want
+1. From the home page, click **Create signature**, or open **Signatures** in the header
+2. Create a new signature or open a saved one
+3. **Choose a template**, then complete each field in the guided flow
+4. On **Review**, copy for Gmail or copy HTML, and **Save** to the library if you want
 
-### Advanced mode
+### Customize a template
 
-1. Optionally pick a **template** in the header
-2. Fill **Values** and/or edit the **HTML**
-3. Use **Copy** on the HTML or Preview panel
-4. In Gmail: **Settings** → **See all settings** → **General** → **Signature** → paste
+1. Open **Templates** in the header
+2. Pick a built-in layout or a saved template, or duplicate one to start from a copy
+3. In the **template editor**, adjust attributes, rows, and per-field styles
+4. **Save** your template, then use it when creating signatures
+
+### Paste into Gmail
+
+1. Copy your signature from the review step or preview panel
+2. In Gmail: **Settings** → **See all settings** → **General** → **Signature** → paste
 
 ---
 
@@ -106,13 +133,20 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ```
 src/
-├── App.tsx                 # Layout, modes, clipboard
-├── components/             # Panels, simple mode, header, footer
-├── i18n/locales/           # Translation JSON files
-├── lib/                    # Saved signatures, preview helpers
-├── templates/              # Built-in HTML templates + resolver
-├── types.ts
-└── utils/highlight.ts      # {{VAR}} highlighting in editor
+├── pages/
+│   ├── home/               # Marketing landing page
+│   ├── signatures/         # Signature library
+│   ├── signatures-edit/    # Guided signature editor (wizard)
+│   ├── templates/          # Template library
+│   └── templates-edit/     # Visual template editor
+├── components/             # Shared UI (header, forms, panels)
+├── contexts/               # App state (signatures, templates)
+├── lib/
+│   ├── templates/          # Built-in templates + HTML builder
+│   ├── templateRows.ts     # Row/field helpers
+│   └── i18n/locales/       # Translation JSON files
+├── routes/                 # React Router config
+└── types/                  # Shared TypeScript types
 ```
 
 ---
