@@ -50,21 +50,53 @@ export const TEMPLATE_BUILDER_FIELDS = [
 
 export type TemplateBuilderField = (typeof TEMPLATE_BUILDER_FIELDS)[number];
 
-export type TemplateRows = TemplateBuilderField[][];
+export const HYPERLINK_FIELD_LABELS = [
+  'phone',
+  'email',
+  'link',
+  'socials',
+] as const satisfies readonly TemplateBuilderField[];
+
+export const DEFAULT_HYPERLINK_COLOR = '#0563C1';
+
+export function isHyperlinkFieldLabel(
+  label: TemplateBuilderField
+): label is (typeof HYPERLINK_FIELD_LABELS)[number] {
+  return (HYPERLINK_FIELD_LABELS as readonly TemplateBuilderField[]).includes(
+    label
+  );
+}
+
+export interface TemplateRowField {
+  label: TemplateBuilderField;
+  /** Per-field overrides; omitted properties inherit template `config.text`. */
+  text: Partial<TemplateTextConfig>;
+}
+
+export type TemplateRows = TemplateRowField[][];
+
+export type TemplateSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface TemplateImageConfig {
   url: string;
   placement: 'left' | 'right' | 'top';
-  size: 'sm' | 'md' | 'lg';
+  size: TemplateSize;
   shape: 'rounded' | 'circle' | 'square';
 }
 
 export interface TemplateTextConfig {
   font: string;
   color: string;
-  size: 'sm' | 'md' | 'lg';
-  shape: 'normal' | 'uppercase' | 'italic';
+  size: TemplateSize;
+  shape: 'normal' | 'bold' | 'italic';
 }
+
+export const DEFAULT_TEMPLATE_TEXT_CONFIG: TemplateTextConfig = {
+  font: 'Arial, sans-serif',
+  color: '#222222',
+  size: 'md',
+  shape: 'normal',
+};
 
 export interface NewTemplate {
   id: string;
@@ -92,5 +124,9 @@ export const DEFAULT_NEW_TEMPLATE: Omit<NewTemplate, 'id' | 'name' | 'html'> = {
       shape: 'normal',
     },
   },
-  rows: [['name', 'role'], ['company'], ['phone', 'email', 'link']],
+  rows: [
+    [{ label: 'name', text: {} }, { label: 'role', text: {} }],
+    [{ label: 'company', text: {} }],
+    [{ label: 'phone', text: { color: DEFAULT_HYPERLINK_COLOR } }, { label: 'email', text: { color: DEFAULT_HYPERLINK_COLOR } }, { label: 'link', text: { color: DEFAULT_HYPERLINK_COLOR } }],
+  ],
 };

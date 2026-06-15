@@ -16,11 +16,21 @@ import {
 import { useUserContext } from '@/contexts/UserContext';
 import { buildTemplateHtmlFromSchema } from '@/lib/templates/builder';
 import {
+  applyFieldTextPatch,
+  createTemplateRowField,
+  isRowFieldTextCustomized,
+  isRowFieldTextPropertyCustomized,
+  normalizeTemplateRows,
+  TEMPLATE_TEXT_DEFAULT_OPTION,
+} from '@/lib/templateRows';
+import { cn } from '@/lib/utils';
+import {
   DEFAULT_NEW_TEMPLATE,
   DEFAULT_SIGNATURE_VALUES,
   TEMPLATE_BUILDER_FIELDS,
   type NewTemplate,
   type TemplateBuilderField,
+  type TemplateTextConfig,
 } from '@/types/types';
 import {
   copyPreviewForGmail,
@@ -44,9 +54,18 @@ export default function TemplateEditPage() {
     rows: DEFAULT_NEW_TEMPLATE.rows,
   }));
   const [activeSection, setActiveSection] = useState<'attributes' | 'rows'>('attributes');
+  const [selectedField, setSelectedField] = useState<{
+    rowIndex: number;
+    fieldIndex: number;
+  } | null>(null);
 
   const previewIframeRef = useRef<HTMLIFrameElement>(null);
   const [copiedSection, setCopiedSection] = useState<'html' | 'preview' | null>(null);
+
+  const selectedRowField =
+    selectedField === null
+      ? null
+      : builderTemplate.rows[selectedField.rowIndex]?.[selectedField.fieldIndex] ?? null;
 
   const generatedHtml = useMemo(() => buildTemplateHtmlFromSchema(builderTemplate), [builderTemplate]);
 
@@ -63,8 +82,12 @@ export default function TemplateEditPage() {
         },
         text: { ...selectedTemplate.config.text },
       },
-      rows: selectedTemplate.rows.map((row) => [...row]),
+      rows: normalizeTemplateRows(
+        selectedTemplate.rows,
+        selectedTemplate.config.text
+      ),
     });
+    setSelectedField(null);
   }, [selectedTemplate]);
 
   useEffect(() => {
@@ -97,8 +120,9 @@ export default function TemplateEditPage() {
   const addRow = useCallback(() => {
     setBuilderTemplate((prev) => ({
       ...prev,
-      rows: [...prev.rows, ['text']],
+      rows: [...prev.rows, [createTemplateRowField('text')]],
     }));
+    setSelectedField(null);
   }, []);
 
   const removeRow = useCallback((rowIndex: number) => {
@@ -109,15 +133,22 @@ export default function TemplateEditPage() {
         rows: prev.rows.filter((_, index) => index !== rowIndex),
       };
     });
+    setSelectedField((current) =>
+      current?.rowIndex === rowIndex ? null : current
+    );
   }, []);
 
   const addFieldToRow = useCallback((rowIndex: number, field: TemplateBuilderField) => {
-    setBuilderTemplate((prev) => ({
-      ...prev,
-      rows: prev.rows.map((row, index) =>
-        index === rowIndex ? [...row, field] : row
-      ),
-    }));
+    setBuilderTemplate((prev) => {
+      const nextRows = prev.rows.map((row, index) =>
+        index === rowIndex
+          ? [...row, createTemplateRowField(field)]
+          : row
+      );
+      const fieldIndex = nextRows[rowIndex].length - 1;
+      queueMicrotask(() => setSelectedField({ rowIndex, fieldIndex }));
+      return { ...prev, rows: nextRows };
+    });
   }, []);
 
   const removeFieldFromRow = useCallback((rowIndex: number, fieldIndex: number) => {
@@ -126,10 +157,82 @@ export default function TemplateEditPage() {
       rows: prev.rows.map((row, index) => {
         if (index !== rowIndex) return row;
         const next = row.filter((_, i) => i !== fieldIndex);
-        return next.length > 0 ? next : ['text'];
+        return next.length > 0
+          ? next
+          : [createTemplateRowField('text')];
       }),
     }));
+    setSelectedField((current) => {
+      if (!current) return null;
+      if (current.rowIndex !== rowIndex) return current;
+      if (current.fieldIndex === fieldIndex) return null;
+      if (current.fieldIndex > fieldIndex) {
+        return { rowIndex, fieldIndex: current.fieldIndex - 1 };
+      }
+      return current;
+    });
   }, []);
+
+  const updateSelectedFieldText = useCallback(
+    (patch: Partial<TemplateTextConfig>) => {
+      if (!selectedField) return;
+      setBuilderTemplate((prev) => ({
+        ...prev,
+        rows: prev.rows.map((row, rowIndex) =>
+          rowIndex !== selectedField.rowIndex
+            ? row
+            : row.map((field, fieldIndex) =>
+                fieldIndex !== selectedField.fieldIndex
+                  ? field
+                  : {
+                      ...field,
+                      text: applyFieldTextPatch(
+                        field.text,
+                        patch,
+                        prev.config.text
+                      ),
+                    }
+              )
+        ),
+      }));
+    },
+    [selectedField]
+  );
+
+  const resetSelectedFieldText = useCallback(() => {
+    if (!selectedField) return;
+    setBuilderTemplate((prev) => ({
+      ...prev,
+      rows: prev.rows.map((row, rowIndex) =>
+        rowIndex !== selectedField.rowIndex
+          ? row
+          : row.map((field, fieldIndex) =>
+              fieldIndex !== selectedField.fieldIndex
+                ? field
+                : { ...field, text: {} }
+            )
+      ),
+    }));
+  }, [selectedField]);
+
+  const updateSelectedFieldLabel = useCallback(
+    (label: TemplateBuilderField) => {
+      if (!selectedField) return;
+      setBuilderTemplate((prev) => ({
+        ...prev,
+        rows: prev.rows.map((row, rowIndex) =>
+          rowIndex !== selectedField.rowIndex
+            ? row
+            : row.map((field, fieldIndex) =>
+                fieldIndex !== selectedField.fieldIndex
+                  ? field
+                  : { ...field, label }
+              )
+        ),
+      }));
+    },
+    [selectedField]
+  );
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-4 lg:flex-row lg:items-stretch">
@@ -250,6 +353,7 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="xs">Extra small</SelectItem>
                         <SelectItem value="sm">Small</SelectItem>
                         <SelectItem value="md">Medium</SelectItem>
                         <SelectItem value="lg">Large</SelectItem>
@@ -336,6 +440,7 @@ export default function TemplateEditPage() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="xs">Extra small</SelectItem>
                         <SelectItem value="sm">Small</SelectItem>
                         <SelectItem value="md">Medium</SelectItem>
                         <SelectItem value="lg">Large</SelectItem>
@@ -362,7 +467,7 @@ export default function TemplateEditPage() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="normal">Normal</SelectItem>
-                        <SelectItem value="uppercase">Uppercase</SelectItem>
+                        <SelectItem value="bold">Bold</SelectItem>
                         <SelectItem value="italic">Italic</SelectItem>
                       </SelectContent>
                     </Select>
@@ -413,28 +518,221 @@ export default function TemplateEditPage() {
                       </div>
 
                       <div className="flex flex-wrap gap-2">
-                        {row.map((field, fieldIndex) => (
-                          <div
-                            key={`${rowIndex}-${fieldIndex}`}
-                            className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-1 text-xs"
-                          >
-                            <span>{field}</span>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                removeFieldFromRow(rowIndex, fieldIndex)
-                              }
-                              aria-label="Remove field"
-                              className="opacity-70 hover:opacity-100"
+                        {row.map((field, fieldIndex) => {
+                          const isSelected =
+                            selectedField?.rowIndex === rowIndex &&
+                            selectedField.fieldIndex === fieldIndex;
+                          const isCustomized = isRowFieldTextCustomized(field);
+
+                          return (
+                            <div
+                              key={`${rowIndex}-${fieldIndex}`}
+                              className={cn(
+                                'inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs',
+                                isSelected
+                                  ? 'bg-primary text-primary-foreground'
+                                  : 'bg-muted',
+                                isCustomized && !isSelected && 'ring-1 ring-primary/40'
+                              )}
                             >
-                              <X className="size-3" />
-                            </button>
-                          </div>
-                        ))}
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setSelectedField({ rowIndex, fieldIndex })
+                                }
+                                className="font-medium"
+                              >
+                                {field.label}
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  removeFieldFromRow(rowIndex, fieldIndex)
+                                }
+                                aria-label="Remove field"
+                                className="opacity-70 hover:opacity-100"
+                              >
+                                <X className="size-3" />
+                              </button>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   ))}
                 </div>
+
+                {selectedRowField && selectedField && (
+                  <div className="space-y-4 rounded-md border border-border bg-muted/30 p-4">
+                    <div className="flex items-center justify-between gap-2">
+                      <div>
+                        <Label className="text-sm font-semibold">Field style</Label>
+                        <p className="text-xs text-muted-foreground">
+                          Override the template default text style for this field.
+                        </p>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={resetSelectedFieldText}
+                        disabled={!isRowFieldTextCustomized(selectedRowField)}
+                      >
+                        Reset to default
+                      </Button>
+                    </div>
+
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="field-label" className="text-sm font-semibold">
+                          Field
+                        </Label>
+                        <Select
+                          value={selectedRowField.label}
+                          onValueChange={(value) =>
+                            updateSelectedFieldLabel(value as TemplateBuilderField)
+                          }
+                        >
+                          <SelectTrigger id="field-label" className="h-10">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {TEMPLATE_BUILDER_FIELDS.map((field) => (
+                              <SelectItem key={field} value={field}>
+                                {field}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="field-text-font" className="text-sm font-semibold">
+                          Font
+                        </Label>
+                        <Input
+                          id="field-text-font"
+                          value={
+                            isRowFieldTextPropertyCustomized(
+                              selectedRowField,
+                              'font'
+                            )
+                              ? selectedRowField.text.font ?? ''
+                              : ''
+                          }
+                          onChange={(e) =>
+                            updateSelectedFieldText({
+                              font:
+                                e.target.value === ''
+                                  ? builderTemplate.config.text.font
+                                  : e.target.value,
+                            })
+                          }
+                          placeholder={builderTemplate.config.text.font}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="field-text-color" className="text-sm font-semibold">
+                          Color
+                        </Label>
+                        <Input
+                          id="field-text-color"
+                          value={
+                            isRowFieldTextPropertyCustomized(
+                              selectedRowField,
+                              'color'
+                            )
+                              ? selectedRowField.text.color ?? ''
+                              : ''
+                          }
+                          onChange={(e) =>
+                            updateSelectedFieldText({
+                              color:
+                                e.target.value === ''
+                                  ? builderTemplate.config.text.color
+                                  : e.target.value,
+                            })
+                          }
+                          placeholder={builderTemplate.config.text.color}
+                        />
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="field-text-size" className="text-sm font-semibold">
+                          Size
+                        </Label>
+                        <Select
+                          value={
+                            isRowFieldTextPropertyCustomized(
+                              selectedRowField,
+                              'size'
+                            )
+                              ? selectedRowField.text.size!
+                              : TEMPLATE_TEXT_DEFAULT_OPTION
+                          }
+                          onValueChange={(value) =>
+                            updateSelectedFieldText({
+                              size:
+                                value === TEMPLATE_TEXT_DEFAULT_OPTION
+                                  ? builderTemplate.config.text.size
+                                  : (value as TemplateTextConfig['size']),
+                            })
+                          }
+                        >
+                          <SelectTrigger id="field-text-size" className="h-10">
+                            <SelectValue placeholder="Default" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value={TEMPLATE_TEXT_DEFAULT_OPTION}>
+                              Default
+                            </SelectItem>
+                            <SelectItem value="xs">Extra small</SelectItem>
+                            <SelectItem value="sm">Small</SelectItem>
+                            <SelectItem value="md">Medium</SelectItem>
+                            <SelectItem value="lg">Large</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="field-text-shape" className="text-sm font-semibold">
+                          Style
+                        </Label>
+                        <Select
+                          value={
+                            isRowFieldTextPropertyCustomized(
+                              selectedRowField,
+                              'shape'
+                            )
+                              ? selectedRowField.text.shape!
+                              : TEMPLATE_TEXT_DEFAULT_OPTION
+                          }
+                          onValueChange={(value) =>
+                            updateSelectedFieldText({
+                              shape:
+                                value === TEMPLATE_TEXT_DEFAULT_OPTION
+                                  ? builderTemplate.config.text.shape
+                                  : (value as TemplateTextConfig['shape']),
+                            })
+                          }
+                        >
+                          <SelectTrigger id="field-text-shape" className="h-10">
+                            <SelectValue placeholder="Default" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value={TEMPLATE_TEXT_DEFAULT_OPTION}>
+                              Default
+                            </SelectItem>
+                            <SelectItem value="normal">Normal</SelectItem>
+                            <SelectItem value="bold">Bold</SelectItem>
+                            <SelectItem value="italic">Italic</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </CardContent>
