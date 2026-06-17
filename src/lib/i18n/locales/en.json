@@ -17,6 +17,7 @@
     "howItWorksTitle": "How it works",
     "howItWorksSubtitle": "Go from blank to a polished Gmail-ready signature in minutes — no design tools required.",
     "steps": {
+      "linkedinImportTag": "Import from LinkedIn",
       "items": [
         {
           "title": "Pick a template",
@@ -106,6 +107,16 @@
     "libraryTitle": "Your signatures",
     "librarySubtitle": "Open a saved signature or create a new one.",
     "createNew": "Create new signature",
+    "newSignature": "New signature",
+    "importFromLinkedin": "Import from LinkedIn",
+    "copy": "Copy",
+    "export": "Export",
+    "exporting": "Exporting…",
+    "exportAs": "Export as",
+    "exportHtmlClipboard": "HTML (Clipboard)",
+    "exportPng": "PNG image",
+    "exportJpeg": "JPEG image",
+    "exportWebp": "WebP image",
     "noSaved": "No saved signatures yet.",
     "delete": "Delete",
     "untitled": "Signature — {{date}}",

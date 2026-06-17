@@ -17,6 +17,7 @@
     "howItWorksTitle": "Com funciona",
     "howItWorksSubtitle": "Passeu de zero a una signatura professional llesta per a Gmail en minuts — sense eines de disseny.",
     "steps": {
+      "linkedinImportTag": "Importar des de LinkedIn",
       "items": [
         {
           "title": "Trieu una plantilla",
@@ -106,6 +107,16 @@
     "libraryTitle": "Les vostres signatures",
     "librarySubtitle": "Obriu una signatura desada o creeu-ne una de nova.",
     "createNew": "Crear nova signatura",
+    "newSignature": "Nova signatura",
+    "importFromLinkedin": "Importar des de LinkedIn",
+    "copy": "Copiar",
+    "export": "Exportar",
+    "exporting": "Exportant…",
+    "exportAs": "Exportar com a",
+    "exportHtmlClipboard": "HTML (porta-retalls)",
+    "exportPng": "Imatge PNG",
+    "exportJpeg": "Imatge JPEG",
+    "exportWebp": "Imatge WebP",
     "noSaved": "Encara no hi ha signatures desades.",
     "delete": "Suprimir",
     "untitled": "Signatura — {{date}}",

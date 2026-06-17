@@ -17,6 +17,7 @@
     "howItWorksTitle": "Cómo funciona",
     "howItWorksSubtitle": "Pasa de cero a una firma profesional lista para Gmail en minutos, sin herramientas de diseño.",
     "steps": {
+      "linkedinImportTag": "Importar desde LinkedIn",
       "items": [
         {
           "title": "Elige una plantilla",
@@ -106,6 +107,16 @@
     "libraryTitle": "Tus firmas",
     "librarySubtitle": "Abre una firma guardada o crea una nueva.",
     "createNew": "Crear nueva firma",
+    "newSignature": "Nueva firma",
+    "importFromLinkedin": "Importar desde LinkedIn",
+    "copy": "Copiar",
+    "export": "Exportar",
+    "exporting": "Exportando…",
+    "exportAs": "Exportar como",
+    "exportHtmlClipboard": "HTML (portapapeles)",
+    "exportPng": "Imagen PNG",
+    "exportJpeg": "Imagen JPEG",
+    "exportWebp": "Imagen WebP",
     "noSaved": "Aún no hay firmas guardadas.",
     "delete": "Eliminar",
     "untitled": "Firma — {{date}}",

@@ -2,15 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { CopyPlus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { LibraryCard } from '@/components/ui/LibraryCard';
+import { SignaturePreviewIframe } from '@/components/SignaturePreviewIframe';
 import { resolveTemplateFromSchema } from '@/lib/templates';
 import type { SavedTemplate } from '@/lib/savedTemplates';
 import type { NewTemplate } from '@/types/types';
 import { DEFAULT_SIGNATURE_VALUES } from '@/types/types';
-import {
-  SIGNATURE_PREVIEW_DOC_PREFIX,
-  SIGNATURE_PREVIEW_DOC_SUFFIX,
-  SIGNATURE_PREVIEW_FRAME_CLASS,
-} from '@/lib/signaturePreviewIframe';
 
 interface PageContentProps {
   defaultTemplates: NewTemplate[];
@@ -39,16 +35,7 @@ export function PageContent({
     return (
       <LibraryCard
         key={item.id}
-        content={
-          <div className="w-full shrink-0 border-b bg-[oklch(0.98_0.005_0)]">
-            <iframe
-              title={title}
-              className={`pointer-events-none block w-full border-0 ${SIGNATURE_PREVIEW_FRAME_CLASS}`}
-              srcDoc={SIGNATURE_PREVIEW_DOC_PREFIX + html + SIGNATURE_PREVIEW_DOC_SUFFIX}
-              sandbox="allow-same-origin"
-            />
-          </div>
-        }
+        content={<SignaturePreviewIframe html={html} title={title} />}
         title={title}
         subtitle={isBuiltin ? t('templates.builtin') : new Date((item as SavedTemplate).createdAt).toLocaleString()}
         footerActions={

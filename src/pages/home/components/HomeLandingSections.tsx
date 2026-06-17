@@ -1,12 +1,14 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
+import { FaLinkedin } from 'react-icons/fa';
 import {
   ArrowRight,
   Code2,
   Copy,
   Eye,
   Globe,
+  Import,
   Layers,
   LayoutTemplate,
   MousePointerClick,
@@ -27,6 +29,16 @@ import { TEMPLATES } from '@/lib/templates';
 const FEATURE_ICONS = [LayoutTemplate, MousePointerClick, Eye, Code2, Copy, Globe] as const;
 
 const STEP_ICONS = [LayoutTemplate, Sparkles, Copy] as const;
+
+function LinkedInImportTag({ label }: { label: string }) {
+  return (
+    <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-[#0A66C2]/20 bg-[#0A66C2]/10 px-2.5 py-1 text-xs font-medium text-[#0A66C2]">
+      <Import className="size-3 shrink-0" aria-hidden />
+      <FaLinkedin className="size-3 shrink-0" aria-hidden />
+      {label}
+    </span>
+  );
+}
 
 function FeatureCard({
   title,
@@ -126,6 +138,9 @@ export function HomeLandingSections() {
                       <Icon className="size-5" />
                     </div>
                     <CardTitle className="text-base">{step.title}</CardTitle>
+                    {index === 1 ? (
+                      <LinkedInImportTag label={t('home.steps.linkedinImportTag')} />
+                    ) : null}
                     <CardDescription>{step.description}</CardDescription>
                   </CardHeader>
                 </Card>

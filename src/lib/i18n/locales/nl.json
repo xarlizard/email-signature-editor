@@ -17,6 +17,7 @@
     "howItWorksTitle": "Hoe het werkt",
     "howItWorksSubtitle": "Van nul naar een professionele Gmail-klare handtekening in minuten — zonder designtools.",
     "steps": {
+      "linkedinImportTag": "Importeren vanuit LinkedIn",
       "items": [
         {
           "title": "Kies een sjabloon",
@@ -106,6 +107,16 @@
     "libraryTitle": "Uw handtekeningen",
     "librarySubtitle": "Open een opgeslagen handtekening of maak een nieuwe.",
     "createNew": "Nieuwe handtekening maken",
+    "newSignature": "Nieuwe handtekening",
+    "importFromLinkedin": "Importeren vanuit LinkedIn",
+    "copy": "Kopiëren",
+    "export": "Exporteren",
+    "exporting": "Exporteren…",
+    "exportAs": "Exporteren als",
+    "exportHtmlClipboard": "HTML (klembord)",
+    "exportPng": "PNG-afbeelding",
+    "exportJpeg": "JPEG-afbeelding",
+    "exportWebp": "WebP-afbeelding",
     "noSaved": "Nog geen opgeslagen handtekeningen.",
     "delete": "Verwijderen",
     "untitled": "Handtekening — {{date}}",

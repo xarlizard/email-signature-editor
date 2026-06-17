@@ -17,6 +17,7 @@
     "howItWorksTitle": "Comment ça marche",
     "howItWorksSubtitle": "Passez de zéro à une signature professionnelle prête pour Gmail en quelques minutes — sans outil de design.",
     "steps": {
+      "linkedinImportTag": "Importer depuis LinkedIn",
       "items": [
         {
           "title": "Choisissez un modèle",
@@ -106,6 +107,16 @@
     "libraryTitle": "Vos signatures",
     "librarySubtitle": "Ouvrez une signature enregistrée ou créez-en une nouvelle.",
     "createNew": "Créer une nouvelle signature",
+    "newSignature": "Nouvelle signature",
+    "importFromLinkedin": "Importer depuis LinkedIn",
+    "copy": "Copier",
+    "export": "Exporter",
+    "exporting": "Export en cours…",
+    "exportAs": "Exporter en",
+    "exportHtmlClipboard": "HTML (presse-papiers)",
+    "exportPng": "Image PNG",
+    "exportJpeg": "Image JPEG",
+    "exportWebp": "Image WebP",
     "noSaved": "Aucune signature enregistrée pour le moment.",
     "delete": "Supprimer",
     "untitled": "Signature — {{date}}",
