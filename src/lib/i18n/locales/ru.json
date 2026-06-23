@@ -7,6 +7,9 @@
     "login": "Войти",
     "account": "Аккаунт"
   },
+  "linkedin": {
+    "enterpriseRequired": "Импорт и вход через LinkedIn требуют доступа к API LinkedIn, который доступен только с корпоративным аккаунтом LinkedIn."
+  },
   "app": {
     "title": "Редактор подписи email",
     "subtitle": "Редактируйте HTML-подпись и копируйте в Gmail"
@@ -17,6 +20,7 @@
     "howItWorksTitle": "Как это работает",
     "howItWorksSubtitle": "От нуля до профессиональной подписи, готовой для Gmail, за минуты — без инструментов дизайна.",
     "steps": {
+      "linkedinImportTag": "Импорт из LinkedIn",
       "items": [
         {
           "title": "Выберите шаблон",
@@ -106,6 +110,16 @@
     "libraryTitle": "Ваши подписи",
     "librarySubtitle": "Откройте сохранённую подпись или создайте новую.",
     "createNew": "Создать новую подпись",
+    "newSignature": "Новая подпись",
+    "importFromLinkedin": "Импорт из LinkedIn",
+    "copy": "Копировать",
+    "export": "Экспорт",
+    "exporting": "Экспорт…",
+    "exportAs": "Экспорт как",
+    "exportHtmlClipboard": "HTML (буфер обмена)",
+    "exportPng": "Изображение PNG",
+    "exportJpeg": "Изображение JPEG",
+    "exportWebp": "Изображение WebP",
     "noSaved": "Сохранённых подписей пока нет.",
     "delete": "Удалить",
     "untitled": "Подпись — {{date}}",

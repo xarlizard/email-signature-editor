@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-06-12 — Signature image export
+
+### Added
+
+- **Signature image export** – Export signatures as **PNG**, **JPEG**, or **WebP** from the library and the signature wizard review step, using `html-to-image` and a dedicated off-screen render pass
+- **`SignatureExportButton`** – Shared export control with a portaled dropdown (HTML to clipboard, plus image formats) so menus are not clipped inside library cards
+- **Export tab flow** – Image export opens a blank tab on click, shows a generating state, then displays the image with **Save image as…** and a download link (reliable across browsers after async rendering)
+- **Review-step export** – The guided signature editor’s final step now includes the same **Export** actions as the signatures library
+- **Signatures library actions** – **Copy** (rich HTML for Gmail) and **Export** dropdown on each saved signature card
+- **Export i18n** – `signatures.copy`, `signatures.export`, `signatures.exporting`, and image-format labels across all nine locales
+
+### Changed
+
+- **Signatures library header** – Compact **New signature** and **Import from LinkedIn** actions replace the large dashed create card
+- **README production badge** – Fixed broken deploy workflow badge; now reflects live status at [email-signature-editor.pages.dev](https://email-signature-editor.pages.dev/)
+
 ## [1.2.0] - 2026-06-11
 
 ### Added

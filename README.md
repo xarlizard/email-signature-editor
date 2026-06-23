@@ -13,7 +13,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/xarlizard/email-signature-editor/blob/main/LICENSE)
 [![CI](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/xarlizard/email-signature-editor/actions/workflows/ci.yml)
-[![Production Deployment](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/xarlizard/email-signature-editor/actions/workflows/deploy.yml)
+[![Production Deployment](https://img.shields.io/website?down_message=offline&label=production&up_message=online&url=https%3A%2F%2Femail-signature-editor.pages.dev)](https://email-signature-editor.pages.dev/)
 
 <br/>
 <br/>

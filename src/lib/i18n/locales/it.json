@@ -7,6 +7,9 @@
     "login": "Accedi",
     "account": "Account"
   },
+  "linkedin": {
+    "enterpriseRequired": "L'importazione e l'accesso con LinkedIn richiedono l'accesso all'API LinkedIn, disponibile solo con un account aziendale LinkedIn."
+  },
   "app": {
     "title": "Editor firma email",
     "subtitle": "Modifica la tua firma HTML e copiala in Gmail"
@@ -17,6 +20,7 @@
     "howItWorksTitle": "Come funziona",
     "howItWorksSubtitle": "Da zero a una firma professionale pronta per Gmail in pochi minuti — senza strumenti di design.",
     "steps": {
+      "linkedinImportTag": "Importa da LinkedIn",
       "items": [
         {
           "title": "Scegli un modello",
@@ -106,6 +110,16 @@
     "libraryTitle": "Le tue firme",
     "librarySubtitle": "Apri una firma salvata o creane una nuova.",
     "createNew": "Crea nuova firma",
+    "newSignature": "Nuova firma",
+    "importFromLinkedin": "Importa da LinkedIn",
+    "copy": "Copia",
+    "export": "Esporta",
+    "exporting": "Esportazione…",
+    "exportAs": "Esporta come",
+    "exportHtmlClipboard": "HTML (appunti)",
+    "exportPng": "Immagine PNG",
+    "exportJpeg": "Immagine JPEG",
+    "exportWebp": "Immagine WebP",
     "noSaved": "Nessuna firma salvata.",
     "delete": "Elimina",
     "untitled": "Firma — {{date}}",

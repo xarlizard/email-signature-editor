@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { fieldsFromRows, SIGNATURE_KEY_TO_LABEL } from '@/lib/templateFields';
+import { SignatureExportButton } from '@/components/SignatureExportButton';
 import { TemplatePickerGrid } from '@/pages/signatures-edit/components/TemplatePickerGrid';
 import { cn } from '@/lib/utils';
 import type { NewTemplate, SignatureValues } from '@/types/types';
@@ -219,6 +220,15 @@ export function SignatureWizard({
                     <Copy className="size-3.5" />
                     {copiedHtml ? t('actions.copied') : t('signatures.copyHtml')}
                   </Button>
+                  <SignatureExportButton
+                    html={resolvedHtml}
+                    fileName={
+                      values.NAME?.trim() ||
+                      t('signatures.untitled', {
+                        date: new Date().toLocaleDateString(),
+                      })
+                    }
+                  />
                   <Button
                     variant="secondary"
                     size="sm"

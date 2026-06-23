@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
-import { ArrowRight, LayoutTemplate } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
+import { ArrowRight, Import, LayoutTemplate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LinkedInEnterpriseTooltip } from '@/components/LinkedInEnterpriseTooltip';
 import { HomeLandingSections } from '@/pages/home/components/HomeLandingSections';
 import { SignatureShowcaseCarousel } from '@/pages/home/components/SignatureShowcaseCarousel';
 
@@ -22,19 +24,32 @@ export default function HomePage() {
       <div className="flex flex-col gap-6">
         <SignatureShowcaseCarousel />
 
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 sm:flex-row sm:items-center">
-        <Button asChild size="lg" className="gap-2">
-          <Link to="/signatures">
-            {t('home.createSignature')}
-            <ArrowRight className="size-4" />
-          </Link>
-        </Button>
-        <Button asChild variant="outline" size="lg" className="gap-2">
-          <Link to="/templates">
-            <LayoutTemplate className="size-4" />
-            {t('home.browseTemplates')}
-          </Link>
-        </Button>
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 sm:flex-row sm:flex-wrap sm:items-center">
+          <Button asChild size="lg" className="gap-2">
+            <Link to="/signatures">
+              {t('home.createSignature')}
+              <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+          <LinkedInEnterpriseTooltip>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="gap-2"
+              disabled
+            >
+              <Import className="size-4" />
+              <FaLinkedin className="size-4" />
+              {t('signatures.importFromLinkedin')}
+            </Button>
+          </LinkedInEnterpriseTooltip>
+          <Button asChild variant="outline" size="lg" className="gap-2">
+            <Link to="/templates">
+              <LayoutTemplate className="size-4" />
+              {t('home.browseTemplates')}
+            </Link>
+          </Button>
         </div>
       </div>
 

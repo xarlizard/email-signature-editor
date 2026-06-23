@@ -7,6 +7,9 @@
     "login": "登录",
     "account": "账户"
   },
+  "linkedin": {
+    "enterpriseRequired": "LinkedIn 导入和登录需要 LinkedIn API 访问权限，该权限仅适用于 LinkedIn 企业账户。"
+  },
   "app": {
     "title": "Email 签名编辑器",
     "subtitle": "编辑您的 HTML 签名并复制到 Gmail"
@@ -17,6 +20,7 @@
     "howItWorksTitle": "使用方式",
     "howItWorksSubtitle": "几分钟内从零开始制作专业、可直接用于 Gmail 的签名——无需设计工具。",
     "steps": {
+      "linkedinImportTag": "从 LinkedIn 导入",
       "items": [
         {
           "title": "选择模板",
@@ -106,6 +110,16 @@
     "libraryTitle": "您的签名",
     "librarySubtitle": "打开已保存的签名或新建一个。",
     "createNew": "新建签名",
+    "newSignature": "新建签名",
+    "importFromLinkedin": "从 LinkedIn 导入",
+    "copy": "复制",
+    "export": "导出",
+    "exporting": "导出中…",
+    "exportAs": "导出为",
+    "exportHtmlClipboard": "HTML（剪贴板）",
+    "exportPng": "PNG 图片",
+    "exportJpeg": "JPEG 图片",
+    "exportWebp": "WebP 图片",
     "noSaved": "暂无已保存的签名。",
     "delete": "删除",
     "untitled": "签名 — {{date}}",

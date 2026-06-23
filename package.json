@@ -1,6 +1,6 @@
 {
   "name": "email-signature-editor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple React UI for editing and previewing HTML email signatures, ready for copy-paste into Gmail",
   "type": "module",
   "scripts": {
@@ -20,6 +20,7 @@
     "@types/node": "^25.9.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "html-to-image": "^1.11.13",
     "i18next": "^26.3.1",
     "i18next-browser-languagedetector": "^8.2.1",
     "lucide-react": "^1.17.0",
