@@ -7,6 +7,9 @@
     "login": "Login",
     "account": "Account"
   },
+  "linkedin": {
+    "enterpriseRequired": "LinkedIn import and sign-in require LinkedIn API access, which is only available with a LinkedIn enterprise account."
+  },
   "app": {
     "title": "Email Signature Editor",
     "subtitle": "Edit your HTML signature and copy it into Gmail"

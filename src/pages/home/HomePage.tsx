@@ -1,18 +1,14 @@
-import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { FaLinkedin } from 'react-icons/fa';
 import { ArrowRight, Import, LayoutTemplate } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { LinkedInEnterpriseTooltip } from '@/components/LinkedInEnterpriseTooltip';
 import { HomeLandingSections } from '@/pages/home/components/HomeLandingSections';
 import { SignatureShowcaseCarousel } from '@/pages/home/components/SignatureShowcaseCarousel';
 
 export default function HomePage() {
   const { t } = useTranslation();
-
-  const handleImportFromLinkedin = useCallback(() => {
-    // LinkedIn import flow to be implemented
-  }, []);
 
   return (
     <div className="flex w-full flex-1 flex-col gap-12 py-6">
@@ -35,17 +31,19 @@ export default function HomePage() {
               <ArrowRight className="size-4" />
             </Link>
           </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            className="gap-2"
-            onClick={handleImportFromLinkedin}
-          >
-            <Import className="size-4" />
-            <FaLinkedin className="size-4" />
-            {t('signatures.importFromLinkedin')}
-          </Button>
+          <LinkedInEnterpriseTooltip>
+            <Button
+              type="button"
+              variant="outline"
+              size="lg"
+              className="gap-2"
+              disabled
+            >
+              <Import className="size-4" />
+              <FaLinkedin className="size-4" />
+              {t('signatures.importFromLinkedin')}
+            </Button>
+          </LinkedInEnterpriseTooltip>
           <Button asChild variant="outline" size="lg" className="gap-2">
             <Link to="/templates">
               <LayoutTemplate className="size-4" />

@@ -7,6 +7,9 @@
     "login": "Connexion",
     "account": "Compte"
   },
+  "linkedin": {
+    "enterpriseRequired": "L'importation et la connexion LinkedIn nécessitent l'accès à l'API LinkedIn, disponible uniquement avec un compte entreprise LinkedIn."
+  },
   "app": {
     "title": "Éditeur de signature email",
     "subtitle": "Modifiez votre signature HTML et copiez-la dans Gmail"

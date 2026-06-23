@@ -7,6 +7,9 @@
     "login": "登录",
     "account": "账户"
   },
+  "linkedin": {
+    "enterpriseRequired": "LinkedIn 导入和登录需要 LinkedIn API 访问权限，该权限仅适用于 LinkedIn 企业账户。"
+  },
   "app": {
     "title": "Email 签名编辑器",
     "subtitle": "编辑您的 HTML 签名并复制到 Gmail"

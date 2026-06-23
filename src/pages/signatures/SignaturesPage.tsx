@@ -13,10 +13,6 @@ export default function SignaturesPage() {
     navigate("/signatures/edit");
   }, [beginCreateSession, navigate]);
 
-  const handleImportFromLinkedin = useCallback(() => {
-    // LinkedIn import flow to be implemented
-  }, []);
-
   const handleOpenSaved = useCallback(
     (id: string) => {
       if (!openSavedSession(id, 999)) return;
@@ -29,7 +25,6 @@ export default function SignaturesPage() {
     <PageContent
       items={savedLibrary}
       onCreateNew={handleCreateNew}
-      onImportFromLinkedin={handleImportFromLinkedin}
       onOpenSaved={handleOpenSaved}
       onDeleteSaved={deleteSavedItem}
     />

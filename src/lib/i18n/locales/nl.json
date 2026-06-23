@@ -7,6 +7,9 @@
     "login": "Inloggen",
     "account": "Account"
   },
+  "linkedin": {
+    "enterpriseRequired": "LinkedIn-import en aanmelding vereisen toegang tot de LinkedIn API, die alleen beschikbaar is met een LinkedIn enterprise-account."
+  },
   "app": {
     "title": "E-mailhandtekening-editor",
     "subtitle": "Bewerk uw HTML-handtekening en kopieer deze naar Gmail"

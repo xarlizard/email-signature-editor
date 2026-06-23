@@ -7,6 +7,9 @@
     "login": "Войти",
     "account": "Аккаунт"
   },
+  "linkedin": {
+    "enterpriseRequired": "Импорт и вход через LinkedIn требуют доступа к API LinkedIn, который доступен только с корпоративным аккаунтом LinkedIn."
+  },
   "app": {
     "title": "Редактор подписи email",
     "subtitle": "Редактируйте HTML-подпись и копируйте в Gmail"

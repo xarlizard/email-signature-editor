@@ -1,3 +1,4 @@
+import { LinkedInEnterpriseTooltip } from '@/components/LinkedInEnterpriseTooltip';
 import { useTranslation } from 'react-i18next';
 import { Moon, Sun } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
@@ -78,15 +79,17 @@ export function AppHeader({
 
         <div className="mx-1 h-4 w-px bg-border" />
 
-        <Button
-          key={"login"}
-          asChild
-          variant={location.pathname === "/login" ? 'secondary' : 'ghost'}
-          size="sm"
-          className="h-8 px-4 hover:bg-secondary hover:text-secondary-foreground"
-        >
-          <Link to="/login">{t('nav.login')}</Link>
-        </Button>
+        <LinkedInEnterpriseTooltip>
+          <Button
+            type="button"
+            disabled
+            variant={location.pathname === '/login' ? 'secondary' : 'ghost'}
+            size="sm"
+            className="h-8 px-4"
+          >
+            {t('nav.login')}
+          </Button>
+        </LinkedInEnterpriseTooltip>
 
         <div className="mx-1 h-4 w-px bg-border" />
 

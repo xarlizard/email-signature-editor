@@ -7,6 +7,9 @@
     "login": "Iniciar sesión",
     "account": "Cuenta"
   },
+  "linkedin": {
+    "enterpriseRequired": "La importación y el inicio de sesión con LinkedIn requieren acceso a la API de LinkedIn, disponible solo con una cuenta empresarial de LinkedIn."
+  },
   "app": {
     "title": "Editor de firma de correo",
     "subtitle": "Edita tu firma HTML y cópiala en Gmail"

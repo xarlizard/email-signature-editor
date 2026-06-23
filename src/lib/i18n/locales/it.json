@@ -7,6 +7,9 @@
     "login": "Accedi",
     "account": "Account"
   },
+  "linkedin": {
+    "enterpriseRequired": "L'importazione e l'accesso con LinkedIn richiedono l'accesso all'API LinkedIn, disponibile solo con un account aziendale LinkedIn."
+  },
   "app": {
     "title": "Editor firma email",
     "subtitle": "Modifica la tua firma HTML e copiala in Gmail"

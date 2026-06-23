@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { FaLinkedin } from 'react-icons/fa';
 import { Copy, Import, Plus, Trash2 } from 'lucide-react';
+import { LinkedInEnterpriseTooltip } from '@/components/LinkedInEnterpriseTooltip';
 import { Button } from '@/components/ui/button';
 import { LibraryCard } from '@/components/ui/LibraryCard';
 import { SignatureExportButton } from '@/components/SignatureExportButton';
@@ -13,7 +14,6 @@ import { copyRichHtmlToClipboard } from '@/utils/utils';
 interface PageContentProps {
   items: SavedSignature[];
   onCreateNew: () => void;
-  onImportFromLinkedin: () => void;
   onOpenSaved: (id: string) => void;
   onDeleteSaved: (id: string) => void;
 }
@@ -21,7 +21,6 @@ interface PageContentProps {
 export function PageContent({
   items,
   onCreateNew,
-  onImportFromLinkedin,
   onOpenSaved,
   onDeleteSaved,
 }: PageContentProps) {
@@ -45,17 +44,19 @@ export function PageContent({
             <Plus className="size-3.5" />
             {t('signatures.newSignature')}
           </Button>
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="gap-1.5"
-            onClick={onImportFromLinkedin}
-          >
-            <Import className="size-3.5" />
-            <FaLinkedin className="size-3.5" />
-            {t('signatures.importFromLinkedin')}
-          </Button>
+          <LinkedInEnterpriseTooltip>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="gap-1.5"
+              disabled
+            >
+              <Import className="size-3.5" />
+              <FaLinkedin className="size-3.5" />
+              {t('signatures.importFromLinkedin')}
+            </Button>
+          </LinkedInEnterpriseTooltip>
         </div>
       </div>
 

@@ -7,6 +7,9 @@
     "login": "Iniciar sessió",
     "account": "Compte"
   },
+  "linkedin": {
+    "enterpriseRequired": "La importació i l'inici de sessió amb LinkedIn requereixen accés a l'API de LinkedIn, disponible només amb un compte empresarial de LinkedIn."
+  },
   "app": {
     "title": "Editor de signatura de correu",
     "subtitle": "Editeu la vostra signatura HTML i copieu-la a Gmail"
